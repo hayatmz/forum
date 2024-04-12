@@ -5,11 +5,15 @@ import (
 	"net/http"
 )
 
-var port string = ":16040"
+var port string = ":15040"
 
 func Controller() {
-	var server *http.ServeMux = http.NewServeMux()
-	server.HandleFunc("/", handler)
-	fmt.Println("localhost"+port)
-	http.ListenAndServe(port, nil)
+	var mux *http.ServeMux = http.NewServeMux()
+	mux.HandleFunc("/", handler)
+	server := http.Server {
+		Addr: port,
+		Handler: mux,
+	}
+	fmt.Println("http://localhost"+port)
+	server.ListenAndServe()
 }
