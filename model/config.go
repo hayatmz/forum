@@ -1,17 +1,25 @@
 package model
 
 import (
+	"os"
 	"database/sql"
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func InitDB() (*sql.DB, error) {
+var db *sql.DB
+
+func InitDB() error {
 	const file string = "model/forum.db"
 	var errDB error
 	
-	db, errDB = sql.Open("sqlite", file)
-	if errDB != nil {
-		return nil, errDB
+	_, errFile := os.Stat(file)
+	if errFile != nil {
+		return errFile
 	}
-	return db, nil
+
+	db, errDB = sql.Open("sqlite3", file)
+	if errDB != nil {
+		return errDB
+	}
+	return nil
 }

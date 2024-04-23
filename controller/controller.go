@@ -3,13 +3,16 @@ package controller
 import (
 	"fmt"
 	"net/http"
-	"forum/model"
+	"log"
+	model "forum/model"
 )
 
 var port string = ":15040"
 
 func init() {
-	model.InitDB()
+	if model.InitDB() != nil {
+		log.Fatal("database doesn't exist")
+	}
 }
 
 func Controller() {
@@ -19,6 +22,7 @@ func Controller() {
 		Addr: port,
 		Handler: mux,
 	}
+	
 	fmt.Println("http://localhost"+port)
 	server.ListenAndServe()
 }
