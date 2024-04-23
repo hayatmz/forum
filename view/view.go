@@ -1,14 +1,13 @@
 package view
 
 import (
-	"fmt"
 	"html/template"
 )
 
-func NewTemplate() *template.Template {
-	tmpl, errTmpl := template.ParseFiles("view/templates/index.html")
+func NewTemplate(file string) (*template.Template, error) {
+	tmpl, errTmpl := template.ParseFiles("view/templates/"+file)
 	if errTmpl != nil {
-		fmt.Println("err", errTmpl)
+		return tmpl, errTmpl
 	}
-	return tmpl
+	return tmpl, nil
 }
