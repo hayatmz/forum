@@ -1,16 +1,39 @@
 package model
 
 import (
+	"errors"
 	"fmt"
-
+	"log"
 )
 
-func Model(u, p, e string) {
-	request := "INSERT INTO posts(title, content, likes, dislikes, user_id) VALUES('titreTest', 'CONTENTtetsdsdsdsdf', '5', '225', 1);"
-	fmt.Println(db)
-	_, err2 := db.Exec(request)
-	if err2 != nil {
-		fmt.Println(err2)
-		return
+type User struct {
+	Id 			int
+	Username 	string
+	Email 		string
+	Password 	string
+}
+
+func NewRegister(u, p, e string) error {
+	var user User
+	req := fmt.Sprintf("SELECT * FROM users WHERE email='%s'; &&", e)
+	fmt.Println(e)
+	rows, err := db.Query(req)
+	if err != nil {
+		return err
 	}
+	for rows.Next() {
+		err := rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password)
+		if err != nil {
+			return err
+		}
+		fmt.Println(user)
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if user.Email == "" {
+		return nil
+	}
+	
 }

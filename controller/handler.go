@@ -27,6 +27,9 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	var username string = r.FormValue("username")
 	var password string = r.FormValue("password")
 	var email string = r.FormValue("email")
-	model.Model(username, password, email)
-	http.Redirect(w, r, "https://www.google.com/", http.StatusOK)
+	mail := model.NewRegister(username, password, email)
+	if mail != nil {
+		http.Redirect(w, r, "/", http.StatusMovedPermanently)
+	}
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
