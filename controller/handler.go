@@ -7,9 +7,11 @@ import (
 )
 
 func handlers(mux *http.ServeMux) {
-	mux.HandleFunc("/", rootPage)
 	mux.HandleFunc("/registerPage", registerPage)
 	mux.HandleFunc("/registerForm", registerForm)
+	mux.HandleFunc("/loginPage", loginPage)
+	mux.HandleFunc("/loginForm", loginForm)
+	mux.HandleFunc("/", rootPage)
 }
 
 func rootPage(w http.ResponseWriter, r *http.Request) {
@@ -28,5 +30,18 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	var password string = r.FormValue("password")
 	var email string = r.FormValue("email")
 	model.Model(username, password, email)
-	http.Redirect(w, r, "https://www.google.com/", http.StatusOK)
+	http.Redirect(w, r, "/", http.StatusOK)
+}
+
+func loginPage(w http.ResponseWriter, r *http.Request) {
+	tmpl, _ := view.NewTemplate("login.html")
+	tmpl.Execute(w, nil)
+}
+
+func loginForm(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	var email string = r.FormValue("email")
+	// var password string = r.FormValue("password")
+	model.CheckIfInDB(email)
+	http.Redirect(w, r, "/", http.StatusOK)
 }

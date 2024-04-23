@@ -2,7 +2,6 @@ package model
 
 import (
 	"fmt"
-
 )
 
 func Model(u, p, e string) {
@@ -13,4 +12,20 @@ func Model(u, p, e string) {
 		fmt.Println(err2)
 		return
 	}
+}
+
+func CheckIfInDB(email string) {
+	query := `SELECT EXISTS(SELECT 1 FROM users WHERE email = email) AS row_exists;`
+	var exists bool
+	err := db.QueryRow(query).Scan(&exists)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	if exists {
+		fmt.Println("email exists")
+	} else {
+		fmt.Println("email doesn't exist")
+	}
+
 }
