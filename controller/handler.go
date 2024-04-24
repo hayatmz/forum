@@ -40,8 +40,23 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 
 func loginForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
+
 	var email string = r.FormValue("email")
-	// var password string = r.FormValue("password")
-	model.CheckIfInDB(email)
-	http.Redirect(w, r, "/", http.StatusOK)
+	var password string = r.FormValue("password")
+
+	err := model.VerifyUser(email, password)
+	if err != nil {
+
+		if err.Error() == "aller va te register" {
+			http.Redirect(w, r, "/registerPage", http.StatusFound)
+			return
+		}
+
+		if err.Error() == "bad informations" {
+			http.Redirect(w, r, "/loginPage", http.StatusFound)
+			return
+		}
+	}
+
+	http.Redirect(w, r, "/", http.StatusFound)
 }

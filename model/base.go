@@ -1,6 +1,7 @@
 package model
 
 import (
+	"database/sql"
 	"fmt"
 )
 
@@ -14,18 +15,21 @@ func Model(u, p, e string) {
 	}
 }
 
-func CheckIfInDB(email string) {
-	query := `SELECT EXISTS(SELECT 1 FROM users WHERE email = email) AS row_exists;`
-	var exists bool
-	err := db.QueryRow(query).Scan(&exists)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	if exists {
-		fmt.Println("email exists")
-	} else {
-		fmt.Println("email doesn't exist")
+// Checks if the user is already in the database
+func VerifyUser(email, password string) error {
+	var storedPassword string
+	err := db.QueryRow("SELECT password FROM users WHERE email = ?", email).Scan(&storedPassword)
+
+	if err == sql.ErrNoRows {
+		return fmt.Errorf("aller va te register")
+		
+	} else if err != nil {
+		return err
 	}
 
+	if storedPassword != password {
+		return fmt.Errorf("bad informations")
+	}
+
+	return nil
 }
