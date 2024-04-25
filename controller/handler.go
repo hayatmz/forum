@@ -50,11 +50,13 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	err := model.VerifyUser(email, password)
 	if err != nil {
 
+		// If the mail doesn't exist in the database redirect to the register page
 		if err.Error() == "aller va te register" {
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
 			return
 		}
 
+		// If the password is not good redirect to the login page
 		if err.Error() == "bad informations" {
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 			return
