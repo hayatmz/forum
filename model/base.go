@@ -61,16 +61,23 @@ func VerifyUser(email, password string) error {
 
 func NewPost(categories []string, title, content string, idUser int) error {
 	result, _ := db.Exec("INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)", title, content, idUser)
-	postId, _ := result.LastInsertId()
-	fmt.Println(postId)
-
+	idPost, _ := result.LastInsertId()
+	
 	var idCategory int
 	for _, category := range categories {
 		db.QueryRow("SELECT id FROM categories WHERE category = ?", category).Scan(&idCategory)
-		if idCategory != 0 {
-			_, err := db.Exec("INSERT INTO post_categories (post_id, category_id) VALUES (?, ?)", postId, idUser)
-			fmt.Println(err)
+		if idCategory == 0 {
+			result, err := db.Exec("INSERT INTO categories (category) VALUES (?)", category)
+			if err != nil {
+				fmt.Println(err)
+			}
+			newIdCategory, err1 := result.LastInsertId()
+			if err1 != nil {
+				fmt.Println(err)
+			}
+			idCategory = int(newIdCategory)
 		}
+		db.Exec("INSERT INTO post_categories (post_id, category_id) VALUES (?, ?)", idPost, idCategory)
 	}
 	return nil
 }
