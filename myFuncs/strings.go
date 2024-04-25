@@ -1,7 +1,6 @@
 package myFuncs
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -14,6 +13,5 @@ func SliceByPrefix(s, prefix string) []string {
 			sliceByPrefix = append(sliceByPrefix, str[1:])
 		}
 	}
-	fmt.Println(sliceByPrefix)
 	return sliceByPrefix
 }
