@@ -1,9 +1,10 @@
 package controller
 
 import (
-	"forum/view"
 	"net/http"
+
 	"forum/model"
+	"forum/view"
 )
 
 func handlers(mux *http.ServeMux) {
@@ -33,11 +34,13 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusOK)
 }
 
+// Create a new template for the login page and execute it
 func loginPage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := view.NewTemplate("login.html")
 	tmpl.Execute(w, nil)
 }
 
+// Handles the submission of the login form and verify if the user's informations are valids
 func loginForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
