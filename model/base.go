@@ -34,28 +34,7 @@ func VerifyUser(email, password string) error {
 }
 
 func VerifyUserRegister(email, username, password string) error {
-	var storedEmail string
-	var storedUsername string
-	err := db.QueryRow("SELECT EXISTS(SELECT 1 FROM users WHERE email = ?)", email).Scan(&storedEmail)
-	err2 := db.QueryRow("SELECT EXISTS(SELECT 1 FROM users WHERE username = ?)", username).Scan(&storedUsername)
+	_, err3 := db.Exec("INSERT INTO users(email, username, password) VALUES(?,?,?);", email, username, password)
 
-	if err != nil {
-		fmt.Println("err", err)
-		return err
-	}
-	if err2 != nil {
-		fmt.Println("err2", err2)
-		return err
-	}
-
-	if email != storedEmail && username != storedUsername {
-		_, err3 := db.Exec("INSERT INTO users(email, username, password) VALUES(?,?,?);", email, username, password)
-		if err3 != nil {
-			fmt.Println(err3)
-			return err3
-		}
-	} else {
-		return fmt.Errorf("username or email already used")
-	}
-	return nil
+	return err3
 }

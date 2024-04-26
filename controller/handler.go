@@ -8,15 +8,21 @@ import (
 )
 
 func handlers(mux *http.ServeMux) {
+	mux.HandleFunc("/", rootPage)
 	mux.HandleFunc("/registerPage", registerPage)
 	mux.HandleFunc("/registerForm", registerForm)
 	mux.HandleFunc("/loginPage", loginPage)
 	mux.HandleFunc("/loginForm", loginForm)
-	mux.HandleFunc("/", rootPage)
+	mux.HandleFunc("/okPage", okPage)
 }
 
 func rootPage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := view.NewTemplate("index.html")
+	tmpl.Execute(w, nil)
+}
+
+func okPage(w http.ResponseWriter, r *http.Request) {
+	tmpl, _ := view.NewTemplate("ok.html")
 	tmpl.Execute(w, nil)
 }
 
@@ -57,12 +63,18 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 
 	err := model.VerifyUserRegister(email, username, password)
 	if err != nil {
-		if err.Error() == "username or email already used" {
-			http.Redirect(w, r, "/LoginPage", http.StatusFound)
+		if err.Error() == "UNIQUE constraint failed: users.username" {
+			http.Redirect(w, r, "/registerPage", http.StatusFound)
 			return
+		} else if err.Error() == "UNIQUE constraint failed: users.email" {
+			http.Redirect(w, r, "/loginPage", http.StatusFound)
+			return
+		} else {
+			http.Redirect(w, r, "/okPage", http.StatusFound)
 		}
+	} else {
+		http.Redirect(w, r, "/okPage", http.StatusFound)
 	}
-	http.Redirect(w, r, "/", http.StatusFound)
 }
 
 func registerPage(w http.ResponseWriter, r *http.Request) {
