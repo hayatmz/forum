@@ -81,3 +81,9 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	}
 	return nil
 }
+
+func VerifyUserRegister(email, username, password string) error {
+	_, err3 := db.Exec("INSERT INTO users(email, username, password) VALUES(?,?,?);", email, username, password)
+
+	return err3
+}
