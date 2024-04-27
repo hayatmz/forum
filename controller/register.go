@@ -36,10 +36,10 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 			return
 		} else {
-			http.Redirect(w, r, "/okPage", http.StatusFound)
+			http.Redirect(w, r, "/", http.StatusFound)
 		}
 	} else {
-		http.Redirect(w, r, "/okPage", http.StatusFound)
+		http.Redirect(w, r, "/", http.StatusFound)
 	}
 }
 
