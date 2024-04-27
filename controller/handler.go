@@ -12,4 +12,8 @@ func handlers(mux *http.ServeMux) {
 	mux.HandleFunc("/postForm", postForm)
 	mux.HandleFunc("/loginPage", loginPage)
 	mux.HandleFunc("/loginForm", loginForm)
+	mux.HandleFunc("/loginPage", loginPage)
+	mux.HandleFunc("/loginForm", loginForm)
+	mux.HandleFunc("/okPage", okPage)
+
 }
