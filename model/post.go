@@ -54,11 +54,28 @@ func getIdCategory(category string) (int64, error) {
 }
 
 func (post *Post) LoadPost(idPost string) error {
-	queryIDPost := "SELECT title, content, user_id, likes, dislikes FROM posts WHERE id = ?"
+	queryIDPost := `SELECT posts.title, posts.content, posts.likes, posts.dislikes,
+					users.username FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.id = ?`
 	row := db.QueryRow(queryIDPost, idPost)
-	err := row.Scan(&post.Title, &post.Content, &post.UserId, &post.Likes, &post.Dislikes)
+	err := row.Scan(&post.Title, &post.Content, &post.Likes, &post.Dislikes, &post.Username)
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	queryCategories := `SELECT categories.category FROM categories 
+						INNER JOIN post_categories ON categories.id = post_categories.category_id 
+						WHERE post_categories.post_id = ?`
+	rows, err := db.Query(queryCategories, idPost)
+	for rows.Next() {
+		var category string
+		rows.Scan(&category)
+		post.Categories = append(post.Categories, category)
+	}
+	
+	// queryComments  := `SELECT content FROM comments WHERE post_id = ?`
 	return nil
+}
+
+func NewComment() {
+
 }
