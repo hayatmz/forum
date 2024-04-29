@@ -26,3 +26,18 @@ func postForm(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, "/", http.StatusFound)
 }
+
+func postLoadPage(w http.ResponseWriter, r *http.Request) {
+	tmpl, _ := view.NewTemplate("postLoad.html")
+	tmpl.Execute(w, nil)	
+}
+
+func postLoadForm(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	var idPost string = r.FormValue("idPost")
+
+	var post model.Post
+	post.LoadPost(idPost)
+	tmpl, _ := view.NewTemplate("postUnique.html")
+	tmpl.Execute(w, post)
+}
