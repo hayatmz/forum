@@ -17,7 +17,7 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	var email string = r.FormValue("email")
 	var password string = r.FormValue("password")
 
-	err := model.VerifyUser(email, password)
+	err := model.VerifyUserLogin(email, password)
 	if err != nil {
 
 		if err.Error() == "aller va te register" {

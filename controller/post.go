@@ -20,7 +20,9 @@ func postForm(w http.ResponseWriter, r *http.Request) {
 	var validsCategories []string = myFuncs.SliceByPrefix(categories, "#")
 	
 	
-	model.NewPost(validsCategories, title, content, 1)
+	err := model.NewPost(validsCategories, title, content, 1)
+	if err != nil {
+		http.Redirect(w, r, "/postPage", http.StatusFound)
+	}
 	http.Redirect(w, r, "/", http.StatusFound)
-
 }
