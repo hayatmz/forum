@@ -1,4 +1,4 @@
-Root -> afficher posts par ordre de derniere publication (title, category) garde l'id du post pour chaque post
+Root -> afficher posts par ordre de derniere publication (title, category) garde l'id du post pour chaque post MO
 
 Click sur une category -> affiche posts de la category par ordre de derniere publication (title, category) garde l'id du post pour chaque post, nouvelle page
 
