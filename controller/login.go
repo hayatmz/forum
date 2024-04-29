@@ -20,12 +20,12 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	err := model.VerifyUserLogin(email, password)
 	if err != nil {
 
-		if err.Error() == "aller va te register" {
+		if err.Error() == "no account associated for this email" {
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
 			return
 		}
 
-		if err.Error() == "bad informations" {
+		if err.Error() == "bad password for this account" {
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 			return
 		}
