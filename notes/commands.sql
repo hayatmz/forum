@@ -21,5 +21,5 @@ CREATE TABLE `categories` (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
 CREATE TABLE `comments` (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, user_id INTEGER, content VARCHAR(5000), post_id INTEGER, 
 date datetime DEFAULT current_timestamp, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(post_id) REFERENCES posts(id));
 
-CREATE TABLE `post_categories` (post_id INTEGER, category_id, FOREIGN KEY(post_id) REFERENCES posts(id), FOREIGN KEY(category_id) REFERENCES categories(id), 
+CREATE TABLE `post_categories` (post_id INTEGER, category_id INTEGER, FOREIGN KEY(post_id) REFERENCES posts(id), FOREIGN KEY(category_id) REFERENCES categories(id), 
 PRIMARY KEY(post_id, category_id));

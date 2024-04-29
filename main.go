@@ -4,6 +4,4 @@ import (
 	controller "forum/controller"
 )
 
-func main() {
-	controller.Controller()
-}
+func main() { controller.Controller() }
