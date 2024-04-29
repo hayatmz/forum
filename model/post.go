@@ -39,7 +39,7 @@ func getIdCategory(category string) (int64, error) {
 	var err error
 	var idCategory int64
 
-	queryCategory := "SELECT id FROM categories WitE category = ?"
+	queryCategory := "SELECT id FROM categories WHERE category = ?"
 	db.QueryRow(queryCategory, category).Scan(&idCategory)
 	
 	if idCategory == 0 {
