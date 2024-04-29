@@ -1,6 +1,6 @@
-Root -> afficher posts par ordre de derniere publication (title, category) garde l'id du post pour chaque post MO
+Root -> afficher posts par ordre de derniere publication (title, category) garde l'id du post pour chaque post | mohammed-ali
 
-Click sur une category -> affiche posts de la category par ordre de derniere publication (title, category) garde l'id du post pour chaque post, nouvelle page
+Click sur une category -> affiche posts de la category par ordre de derniere publication (title, category) garde l'id du post pour chaque post, nouvelle page | bryan
 
 
-Clique sur un post -> charge post et ses commentaires et moyen d'ajouter un commentaire qui s'affichera en dessous
+Clique sur un post -> charge post et ses commentaires et moyen d'ajouter un commentaire qui s'affichera en dessous | ismael
