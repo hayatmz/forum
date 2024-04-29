@@ -1,5 +1,6 @@
 package model
 
+import "fmt"
 
 // Insert the post with its title, content and associed isUser in the table posts.
 //
@@ -21,7 +22,7 @@ func NewPost(categories []string, title, content string, idUser int) error {
 		}
 
 		queryPostCategories := "INSERT INTO post_categories (post_id, category_id) VALUES (?, ?)"
-		_, err = execQuery(queryPostCategories, idPost, idCategory);
+		_, err = execQuery(queryPostCategories, idPost, idCategory)
 		if err != nil {
 			return err
 		}
@@ -34,14 +35,14 @@ func NewPost(categories []string, title, content string, idUser int) error {
 // If the category exist return its id.
 //
 // If the category doesn't exist, insert it in the table category,
-//and return its id.
+// and return its id.
 func getIdCategory(category string) (int64, error) {
 	var err error
 	var idCategory int64
 
 	queryCategory := "SELECT id FROM categories WHERE category = ?"
 	db.QueryRow(queryCategory, category).Scan(&idCategory)
-	
+
 	if idCategory == 0 {
 		queryCategory := "INSERT INTO categories (category) VALUES (?)"
 		idCategory, err = execQuery(queryCategory, category)
@@ -50,4 +51,32 @@ func getIdCategory(category string) (int64, error) {
 		}
 	}
 	return idCategory, err
+}
+
+func (posts *Posts) PostsRoot() {
+	var id string
+	var title string
+	rows, err := db.Query(`SELECT id , title FROM posts`)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	for rows.Next() {
+		err := rows.Scan(&id, &title)
+		posts.Posts = append(posts.Posts, Post{id, title, nil})
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+}
+
+type Posts struct {
+	Posts []Post
+}
+
+type Post struct {
+	ID       string
+	Title    string
+	Category []string
 }

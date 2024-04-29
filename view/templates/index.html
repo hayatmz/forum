@@ -10,5 +10,10 @@
     <a href="/registerPage">S'inscrire</a>
     <a href="/loginPage">Connexion</a>
     <a href="/postPage">Poster</a>
+    <br>
+    {{range .}}
+    <div>{{.ID}}</div>
+    <div>{{.Title}}</div>
+    {{end}}
 </body>
 </html>

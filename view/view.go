@@ -5,7 +5,7 @@ import (
 )
 
 func NewTemplate(file string) (*template.Template, error) {
-	tmpl, errTmpl := template.ParseFiles("view/templates/"+file)
+	tmpl, errTmpl := template.ParseFiles("view/templates/" + file)
 	if errTmpl != nil {
 		return tmpl, errTmpl
 	}
