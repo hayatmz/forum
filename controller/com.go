@@ -6,4 +6,5 @@ import (
 
 func comForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
+	
 }
