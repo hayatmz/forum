@@ -11,11 +11,14 @@ func handlers(mux *http.ServeMux) {
 
 	mux.HandleFunc("/loginPage", loginPage)
 	mux.HandleFunc("/loginForm", loginForm)
-	mux.HandleFunc("/category", categoryPage)
 	
 	mux.HandleFunc("/postPage", postPage)
 	mux.HandleFunc("/postForm", postForm)
 	
 	mux.HandleFunc("/postLoadPage", postLoadPage)
 	mux.HandleFunc("/postLoadForm", postLoadForm)
+
+	mux.HandleFunc("/comForm", comForm)
+	mux.HandleFunc("/likeForm", likeForm)
+	mux.HandleFunc("/dislikeForm", dislikeForm)
 }

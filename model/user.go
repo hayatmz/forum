@@ -42,7 +42,7 @@ func VerifyUserRegister(email, username, password string) error {
 
 func chekingUserInDB(email, username, password string) error {
 	var isFieldExisting bool
-
+	
 	queryEmail := "SELECT EXISTS(SELECT 1 FROM users WHERE email=?)"
 	err := db.QueryRow(queryEmail, email).Scan(&isFieldExisting)
 	if err != nil {
