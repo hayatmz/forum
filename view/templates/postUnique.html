@@ -17,10 +17,32 @@
             <div>{{.}}</div>
         {{end}}
     </div>
+
+    <div>
+        {{range .Comments}}
+            <div>{{.Content}}</div>
+            <div>{{.Username}}</div>
+        {{end}}
+    </div>
     <!-- pour les coms -->
     <form action="/comForm">
-        <input type="hidden" value="2">
-         <button type="submit">Comment</button>
+        <input type="hidden" name="id-user" value="2">
+        <input type="hidden" name="id-post" value="{{.ID}}">
+        <textarea name="user-com" id="" cols="30" rows="10"></textarea>
+        <button type="submit">Comment</button>
+    </form>
+
+    <!-- pour les likes -->
+    <form action="/likeForm">
+        <input type="hidden" name="id-user" value="2">
+        <input type="hidden" name="id-post" value="{{.ID}}">
+        <button type="submit">Like</button>
+    </form>
+
+    <form action="/dislikeForm">
+        <input type="hidden" name="id-user" value="2">
+        <input type="hidden" name="id-post" value="{{.ID}}">
+        <button type="submit">Dislike</button>
     </form>
 </body>
 </html>

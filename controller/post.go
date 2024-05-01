@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"forum/model"
 	myFuncs "forum/myFuncs"
 	view "forum/view"
@@ -35,9 +36,15 @@ func postLoadPage(w http.ResponseWriter, r *http.Request) {
 func postLoadForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var idPost string = r.FormValue("idPost")
+	LoadUniquePage(w, idPost)
+}
 
+func LoadUniquePage(w http.ResponseWriter, idPost string) {
 	var post model.Post
 	post.LoadPost(idPost)
-	tmpl, _ := view.NewTemplate("postUnique.html")
+	tmpl, err := view.NewTemplate("postUnique.html")
+	if err != nil {
+		fmt.Println(err)
+	}
 	tmpl.Execute(w, post)
 }
