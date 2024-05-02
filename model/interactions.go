@@ -13,13 +13,14 @@ func (post *Post) LoadPost(idPost string) error {
 		fmt.Println(err)
 	}
 
-	queryCategories := `SELECT categories.category FROM categories 
+	queryCategories := `SELECT categories.id, categories.category FROM categories 
 						INNER JOIN post_categories ON categories.id = post_categories.category_id 
 						WHERE post_categories.post_id = ?`
 	rows, err := db.Query(queryCategories, idPost)
+	fmt.Println(err)
 	for rows.Next() {
-		var category string
-		rows.Scan(&category)
+		var category Category
+		rows.Scan(&category.IDCategory, &category.Category)
 		post.Categories = append(post.Categories, category)
 	}
 	

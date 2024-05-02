@@ -8,7 +8,7 @@ type Post struct {
 	UserID		int
 	Likes		int
 	Dislikes 	int
-	Categories	[]string
+	Categories	[]Category
 	Comments	[]Comment
 }
 
@@ -20,4 +20,9 @@ type Comment struct {
 
 type Posts struct {
 	Posts []Post
+}
+
+type Category struct {
+	Category	string
+	IDCategory	string
 }

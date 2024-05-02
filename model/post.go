@@ -35,16 +35,19 @@ func NewPost(categories []string, title, content string, idUser int) error {
 func (posts *Posts) PostsRoot() {
 	var id string
 	var title string
-	rows, err := db.Query(`SELECT id , title FROM posts`)
+	var username string
+	rows, err := db.Query(`SELECT id, title, username FROM posts_view`)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	for rows.Next() {
-		err := rows.Scan(&id, &title)
+		err := rows.Scan(&id, &title, &username)
 		var post Post
+		post.Categories = getCategoriesPost(id)
 		post.Title = title
 		post.ID = id
+		post.Username = username
 		posts.Posts = append(posts.Posts, post)
 		if err != nil {
 			fmt.Println(err)

@@ -1,27 +1,34 @@
 package model
 
+import (
+	"fmt"
+	"strconv"
+)
 
-func GetPostsByCategory(category string) ([]Post, error) {
-	query := `SELECT posts.id, posts.title, posts.content, posts.user_id
-                FROM posts
-                INNER JOIN post_categories ON posts.id = post_categories.post_id
-                INNER JOIN categories ON post_categories.category_id = categories.id
-                WHERE categories.category = ? 
-                ORDER BY posts.date DESC`
-	rows, err := db.Query(query, category)
+
+func GetPostsByCategory(category string) (Posts, error) {
+	IDCategory, _ := strconv.Atoi(category)
+	query := `SELECT posts_view.id, posts_view.title, posts_view.username
+                FROM posts_view
+                INNER JOIN post_categories ON posts_view.id = post_categories.post_id
+                WHERE post_categories.category_id = ?
+                ORDER BY posts_view.date DESC`
+	rows, err := db.Query(query, IDCategory)
 	if err != nil {
-		return nil, err
+		fmt.Println(err)
+		return Posts{}, err
 	}
 	defer rows.Close()
-
-	var posts []Post
+	var posts Posts
 	for rows.Next() {
 		var post Post
-		err := rows.Scan(&post.ID, &post.Title, &post.Content, &post.UserID)
+		err := rows.Scan(&post.ID, &post.Title, &post.Username)
+		post.Categories = getCategoriesPost(post.ID)
+		fmt.Println(err)
         if err != nil {
-			return nil, err
+			return Posts{}, err
 		}
-		posts = append(posts, post)
+		posts.Posts = append(posts.Posts, post)
 	}
 	return posts, nil
 }
@@ -47,4 +54,18 @@ func getIdCategory(category string) (int64, error) {
 		}
 	}
 	return idCategory, err
+}
+
+func getCategoriesPost(idPost string) []Category {
+	queryCategories := `SELECT categories.id, categories.category FROM categories INNER JOIN post_categories 
+	ON categories.id = post_categories.category_id WHERE post_categories.post_id = ?`
+	rows, err := db.Query(queryCategories, idPost)
+	fmt.Println(err)
+	var categories []Category
+	var category Category
+	for rows.Next() {
+		rows.Scan(&category.IDCategory, &category.Category)
+		categories = append(categories, category)
+	}
+	return categories
 }

@@ -19,5 +19,5 @@ func categoryPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	tmpl.Execute(w, posts)
+	tmpl.Execute(w, posts.Posts)
 }
