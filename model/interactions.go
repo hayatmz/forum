@@ -17,7 +17,6 @@ func (post *Post) LoadPost(idPost string) error {
 						INNER JOIN post_categories ON categories.id = post_categories.category_id 
 						WHERE post_categories.post_id = ?`
 	rows, err := db.Query(queryCategories, idPost)
-	fmt.Println(err)
 	for rows.Next() {
 		var category Category
 		rows.Scan(&category.IDCategory, &category.Category)
@@ -55,13 +54,12 @@ func NewComment(idUser, idPost, userComment string) error {
 
 func Rating(idUser, idPost string, rating bool) {
 	var ratingDB bool
-	querySelectRating := "SELECT rating FROM post_ratings WHERE user_id = ?"
-	err := db.QueryRow(querySelectRating, idUser).Scan(&ratingDB)
+	querySelectRating := "SELECT rating FROM post_ratings WHERE user_id = ? AND post_id = ?"
+	err := db.QueryRow(querySelectRating, idUser, idPost).Scan(&ratingDB)
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {
 			queryInsertRating := "INSERT INTO post_ratings (post_id, user_id, rating) VALUES (?, ?, ?)"
-			_, err := execQuery(queryInsertRating, idPost, idUser, rating)
-			fmt.Println(err)
+			execQuery(queryInsertRating, idPost, idUser, rating)
 		}
 	} else if rating != ratingDB {
 		queryUpdateRating := "UPDATE post_ratings SET rating = ? WHERE user_id = ? AND post_id = ?"

@@ -24,7 +24,6 @@ func GetPostsByCategory(category string) (Posts, error) {
 		var post Post
 		err := rows.Scan(&post.ID, &post.Title, &post.Username)
 		post.Categories = getCategoriesPost(post.ID)
-		fmt.Println(err)
         if err != nil {
 			return Posts{}, err
 		}
@@ -59,8 +58,7 @@ func getIdCategory(category string) (int64, error) {
 func getCategoriesPost(idPost string) []Category {
 	queryCategories := `SELECT categories.id, categories.category FROM categories INNER JOIN post_categories 
 	ON categories.id = post_categories.category_id WHERE post_categories.post_id = ?`
-	rows, err := db.Query(queryCategories, idPost)
-	fmt.Println(err)
+	rows, _ := db.Query(queryCategories, idPost)
 	var categories []Category
 	var category Category
 	for rows.Next() {
