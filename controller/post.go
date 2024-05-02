@@ -2,6 +2,7 @@ package controller
 
 import (
 	"fmt"
+	"net/http"
 	"forum/model"
 	myFuncs "forum/myFuncs"
 	view "forum/view"
