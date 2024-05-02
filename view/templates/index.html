@@ -15,5 +15,12 @@
         <input type="hidden" name="category" value="manga">
         <button type="submit">Catégorie Manga</button>
     </form>
+    {{range .}}
+    <form action="/postLoadForm" method="post">
+        <input type="hidden" name="idPost" value=" {{.ID}}">
+        <button type="submit">Charger Post</button>
+    </form>
+    <div>{{.Title}}</div>
+    {{end}}
 </body>
 </html>
