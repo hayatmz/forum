@@ -1,11 +1,5 @@
 package model
 
-type Post struct {
-	ID      int
-	Title   string
-	Content string
-	UserID  int
-}
 
 func GetPostsByCategory(category string) ([]Post, error) {
 	query := `SELECT posts.id, posts.title, posts.content, posts.user_id

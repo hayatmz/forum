@@ -5,6 +5,7 @@ type Post struct {
 	Title 		string
 	Content 	string
 	Username 	string
+	UserID		int
 	Likes		int
 	Dislikes 	int
 	Categories	[]string
