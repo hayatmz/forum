@@ -1,7 +1,7 @@
 package model
 
 type Post struct {
-	ID 			int
+	ID 			string
 	Title 		string
 	Content 	string
 	Username 	string
@@ -16,4 +16,8 @@ type Post struct {
 type Comment struct {
 	Content		string
 	Username	string
+}
+
+type Posts struct {
+	Posts []Post
 }

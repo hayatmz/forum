@@ -121,3 +121,24 @@ func Rating(idUser, idPost string, rating bool) {
 		execQuery(queryDeleteRating, idPost, idUser)
 	}
 }
+
+func (posts *Posts) PostsRoot() {
+	var id string
+	var title string
+	rows, err := db.Query(`SELECT id , title FROM posts`)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	for rows.Next() {
+		err := rows.Scan(&id, &title)
+		var post Post
+		post.Title = title
+		post.ID = id
+		posts.Posts = append(posts.Posts, post)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+}
