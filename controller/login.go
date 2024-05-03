@@ -22,7 +22,7 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	err := model.VerifyUserLogin(email, password)
 	if err != nil {
 
-		if err.Error() == "no account associated for this email" {
+		if err.Error() == "no account associated with this email" {
 			fmt.Println("email error")
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
 			return

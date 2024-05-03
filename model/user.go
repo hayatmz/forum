@@ -21,7 +21,7 @@ func VerifyUserLogin(email, password string) error {
 
 	err = bcrypt.CompareHashAndPassword([]byte(storedPasswordHash), []byte(password))
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(storedPasswordHash, "||",password)
 		return errors.New("bad password for this account")
 	}
 
