@@ -1,9 +1,5 @@
 package model
 
-import (
-	"fmt"
-)
-
 // Insert the post with its title, content and associed isUser in the table posts.
 //
 // For each category existing, get its id and,
@@ -32,26 +28,3 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	return nil
 }
 
-func (posts *Posts) PostsRoot() {
-	var id string
-	var title string
-	var username string
-	rows, err := db.Query(`SELECT id, title, username FROM posts_view`)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	for rows.Next() {
-		err := rows.Scan(&id, &title, &username)
-		var post Post
-		post.Categories = getCategoriesPost(id)
-		post.Title = title
-		post.ID = id
-		post.Username = username
-		posts.Posts = append(posts.Posts, post)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-	}
-}
