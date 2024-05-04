@@ -6,6 +6,8 @@
         <title>Register</title>
     </head>
     <body>
+        <header id="testJQuery"></header>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <div></div>
         <form action="/registerForm" method="post">
             <input name="email" value="bryan@gmail.com" type="email" />
@@ -15,5 +17,8 @@
         </form>
         <a href="/">page d'accueil</a>
         <a href="/loginPage">Se connecter</a>
+        <script>
+            $( "#testJQuery" ).load( "/view/templates/squelette.html #ContainerHeader" );
+            </script>
     </body>
 </html>
