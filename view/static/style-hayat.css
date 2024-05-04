@@ -1,33 +1,60 @@
 @font-face {
-    font-family: 'Arimo';
+    font-family: "Arimo";
     src: url(../static/fonts/Arimo.ttf);
 }
 
 @font-face {
-    font-family: 'Arsenica';
+    font-family: "Arsenica";
     src: url(../static/fonts/Arsenica.ttf);
 }
 
 @font-face {
-    font-family: 'TTCommons';
+    font-family: "TTCommons";
     src: url(../static/fonts/TTCommons.otf);
 }
 
-* {padding:0;margin:0;}
+* {
+    padding: 0;
+    margin: 0;
+}
 
 header {
     width: 100vw;
     height: 70px;
     background-color: #131313;
     border-bottom: 1px solid red;
+    display: flex;
 }
 
-#logoHeader > img {
-    padding-left: 12px;
-    padding-top: 12px;
+#imgHeader {
+    margin-left: 12px;
+    margin-top: 12px;
 }
 
-#logoHeader > p {
-    font-family: 'TTCommons';
+#accueilHeader {
+    /* font-size: 1.2vw; */
+    font-size: min(max(1.2vw, 4vw), 22px);
+    font-family: "TTCommons";
     font-variant: all-small-caps;
+    margin-top: 29px;
+    margin-left: 40px;
+    color: #f2f1ec;
+    text-decoration-line: none;
+}
+
+#searchHeader {
+    margin-top: 33px;
+    margin-left: 10%;
+}
+
+div#linksHeader {
+    margin-top: 29px;
+}
+
+a.linkHeader {
+    font-size: min(max(1.2vw, 4vw), 22px);
+    font-family: "TTCommons";
+    font-variant: all-small-caps;
+    color: #f2f1ec;
+    text-decoration-line: none;
 }
