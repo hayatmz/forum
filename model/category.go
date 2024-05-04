@@ -36,9 +36,10 @@ func getCategoriesPost(idPost string) []Category {
 	for rows.Next() {
 		var category Category
 		err := rows.Scan(&category.IDCategory, &category.Category)
-		if err == nil {
-			categories = append(categories, category)
+		if err != nil {
+			continue
 		}
+		categories = append(categories, category)
 	}
 	return categories
 }

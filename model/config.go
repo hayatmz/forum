@@ -9,17 +9,16 @@ import (
 var db *sql.DB
 
 func InitDB() error {
-	const file string = "model/forum.db"
-	var errDB error
-	
-	_, errFile := os.Stat(file)
-	if errFile != nil {
-		return errFile
+	const file string = "model/database/forum.db"
+
+	_, err := os.Stat(file)
+	if err != nil {
+		return err
 	}
 
-	db, errDB = sql.Open("sqlite3", file)
-	if errDB != nil {
-		return errDB
+	db, err = sql.Open("sqlite3", file)
+	if err != nil {
+		return err
 	}
 	return nil
 }

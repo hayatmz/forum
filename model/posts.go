@@ -51,11 +51,12 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 
 	for rows.Next() {
 		var post Post
-		post.Categories = getCategoriesPost(post.ID)
 		err := rows.Scan(&post.ID, &post.Title, &post.Username)
-        if err == nil {
-			posts.Posts = append(posts.Posts, post)
+        if err != nil {
+			continue
 		}
+		post.Categories = getCategoriesPost(post.ID)
+		posts.Posts = append(posts.Posts, post)
 	}
 	return nil
 }

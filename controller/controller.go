@@ -7,7 +7,7 @@ import (
 	model "forum/model"
 )
 
-var port string = ":15040"
+const port string = ":15040"
 
 func init() {
 	if model.InitDB() != nil {

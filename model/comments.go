@@ -25,5 +25,5 @@ func getCommentsPost(idPost string) []Comment {
 			comments = append(comments, comment)
 		}
 	}
-	return nil
+	return comments
 }
