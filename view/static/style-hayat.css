@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Arimo';
+    src: url(../static/fonts/Arimo.ttf);
+}
+
+@font-face {
+    font-family: 'Arsenica';
+    src: url(../static/fonts/Arsenica.ttf);
+}
+
+@font-face {
+    font-family: 'TTCommons';
+    src: url(../static/fonts/TTCommons.otf);
+}
+
+* {padding:0;margin:0;}
+
+header {
+    width: 100vw;
+    height: 70px;
+    background-color: #131313;
+    border-bottom: 1px solid red;
+}
+
+#logoHeader > img {
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+#logoHeader > p {
+    font-family: 'TTCommons';
+    font-variant: all-small-caps;
+}
