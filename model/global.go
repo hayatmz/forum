@@ -21,3 +21,13 @@ func execQuery(query string, args ...any) (int64, error) {
 	}
 	return idRes, nil
 }
+
+const (
+	QueryCategories = `SELECT posts_view.id, posts_view.title, posts_view.username
+	FROM posts_view INNER JOIN post_categories 
+	ON posts_view.id = post_categories.post_id
+	WHERE post_categories.category_id = ? 
+	ORDER BY posts_view.date DESC`
+	
+	QueryRoot = `SELECT id, title, username FROM posts_view`
+)

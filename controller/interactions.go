@@ -27,7 +27,7 @@ func likeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("id-user")
 	idPost := r.FormValue("id-post")
-	model.Rating(idUser, idPost, true)
+	model.NewRating(idUser, idPost, true)
 	LoadUniquePage(w, idPost)
 }
 
@@ -35,6 +35,6 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("id-user")
 	idPost := r.FormValue("id-post")
-	model.Rating(idUser, idPost, false)
+	model.NewRating(idUser, idPost, false)
 	LoadUniquePage(w, idPost)
 }

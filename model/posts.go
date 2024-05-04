@@ -28,3 +28,34 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	return nil
 }
 
+func (post *Post) LoadPost(idPost string) error {
+	queryIDPost := `SELECT id, title, content, likes, dislikes,
+					username FROM posts_view WHERE id = ?`
+	row := db.QueryRow(queryIDPost, idPost)
+	err := row.Scan(&post.ID, &post.Title, &post.Content, &post.Likes, &post.Dislikes, &post.Username)
+	if err != nil {
+		return err
+	}
+	
+	post.Categories = getCategoriesPost(idPost)
+	post.Comments = getCommentsPost(idPost)
+	return nil
+}
+
+func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
+	rows, err := db.Query(query, args...)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var post Post
+		post.Categories = getCategoriesPost(post.ID)
+		err := rows.Scan(&post.ID, &post.Title, &post.Username)
+        if err == nil {
+			posts.Posts = append(posts.Posts, post)
+		}
+	}
+	return nil
+}
