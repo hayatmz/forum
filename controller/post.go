@@ -29,6 +29,11 @@ func postForm(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
+func postLoadForm(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	var idPost string = r.FormValue("idPost")
+	LoadUniquePage(w, idPost)
+}
 
 func LoadUniquePage(w http.ResponseWriter, idPost string) {
 	var post model.Post

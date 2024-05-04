@@ -1,5 +1,7 @@
 package model
 
+import "database/sql"
+
 func NewRating(idUser, idPost string, rating bool) error {
 	var ratingDB bool
 	querySelectRating := "SELECT rating FROM post_ratings WHERE user_id = ? AND post_id = ?"
@@ -34,14 +36,13 @@ func updateRating(idUser, idPost string, ratingDB, newRating bool) error {
 }
 
 func insertRating(err error, idUser, idPost string, newRating bool) error {
-	if err.Error() == "sql: no rows in result set" {
+	if err == sql.ErrNoRows {
 		queryInsertRating := "INSERT INTO post_ratings (post_id, user_id, rating) VALUES (?, ?, ?)"
 		_, err = execQuery(queryInsertRating, idPost, idUser, newRating)
 		if err != nil {
 			return err
 		}
-	} else {
-		return err
+		return nil
 	}
-	return nil
+	return err
 }
