@@ -47,6 +47,12 @@ header {
     margin-left: 10%;
 }
 
+input, button {
+    border: none;
+    background-color: transparent;
+    color: #f2f1ec;
+}
+
 div#linksHeader {
     margin-top: 29px;
 }
