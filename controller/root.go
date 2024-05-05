@@ -10,6 +10,6 @@ import (
 func rootPage(w http.ResponseWriter, r *http.Request) {
 	var posts model.Posts
 	posts.GetHeadersPosts(model.QueryRoot)
-	tmpl, _ := view.NewTemplate("index.html")
-	tmpl.Execute(w, posts.Posts)
+
+	view.ExecTemplate(w, "index.html", posts.Posts)
 }

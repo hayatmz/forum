@@ -16,11 +16,6 @@ func categoryPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	tmpl, err := view.NewTemplate("category.html")
-	if err != nil {
-		return
-	}
 	
-	tmpl.Execute(w, posts.Posts)
+	view.ExecTemplate(w, "headers", posts.Posts)
 }
