@@ -17,7 +17,8 @@ func categoryPage(w http.ResponseWriter, r *http.Request) {
 	} else {
 
 		var posts model.Posts
-		if posts.GetHeadersPosts(model.QueryCategories, categoryIdINT) != nil {
+		err := posts.GetHeadersPosts(model.QueryCategories, categoryIdINT)
+		if err != nil || posts.Posts == nil {
 			w.WriteHeader(http.StatusBadRequest)
 			view.ExecTemplate(w, "error.html", http.StatusBadRequest)
 		} else {

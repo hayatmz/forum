@@ -31,7 +31,7 @@ func likeForm(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}
@@ -45,7 +45,7 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	err := model.NewRating(idUser, idPost, false)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}

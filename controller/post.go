@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"forum/model"
 	myFuncs "forum/myFuncs"
 	view "forum/view"
@@ -33,7 +32,6 @@ func postLoadForm(w http.ResponseWriter, r *http.Request) {
 	var post model.Post
 	err := post.LoadPost(idPost)
 	if err != nil {
-		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
 		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
 	} else {
