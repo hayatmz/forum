@@ -1,15 +1,13 @@
 package controller
 
 import (
-	"net/http"
 	model "forum/model"
 	view "forum/view"
-	
+	"net/http"
 )
 
 func registerPage(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := view.NewTemplate("register.html")
-	tmpl.Execute(w, nil)
+	view.ExecTemplate(w, "register.html", nil)
 }
 
 
@@ -25,7 +23,7 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 		if err.Error() == "email already taken" {
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 		} else {
-			http.Redirect(w, r, "/registerPage", http.StatusFound)
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		}
 	} else {
 		http.Redirect(w, r, "/", http.StatusFound)

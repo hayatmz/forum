@@ -16,6 +16,7 @@ func getCommentsPost(idPost string) []Comment {
 	if err != nil {
 		return nil
 	}
+	defer rows.Close()
 
 	var comments []Comment
 	for rows.Next() {

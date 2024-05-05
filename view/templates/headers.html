@@ -2,8 +2,8 @@
     <h1>Posts by Category</h1>
     {{range .}}
     <div class="container">
-        <form action="/postLoadForm" method="post">
-            <input type="hidden" name="idPost" value=" {{.ID}}">
+        <form action="/postLoadForm" method="get">
+            <input type="hidden" name="id-post" value="{{.ID}}">
             <button type="submit">Charger Post</button>
         </form>
         <h2>{{.Title}}</h2>

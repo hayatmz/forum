@@ -2,20 +2,17 @@ package controller
 
 import (
 	"fmt"
-	"net/http"
 	"forum/model"
 	myFuncs "forum/myFuncs"
 	view "forum/view"
+	"net/http"
 )
 
-
-
-func postPage(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := view.NewTemplate("post.html")
-	tmpl.Execute(w, nil)
+func pageNewPost(w http.ResponseWriter, r *http.Request) {
+	view.ExecTemplate(w, "post.html", nil)
 }
 
-func postForm(w http.ResponseWriter, r *http.Request) {
+func formNewPost(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var title string = r.FormValue("title")
 	var content string = r.FormValue("content")
@@ -24,23 +21,22 @@ func postForm(w http.ResponseWriter, r *http.Request) {
 
 	err := model.NewPost(validsCategories, title, content, 1)
 	if err != nil {
-		http.Redirect(w, r, "/postPage", http.StatusFound)
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+	} else {
+		http.Redirect(w, r, "/", http.StatusFound)
 	}
-	http.Redirect(w, r, "/", http.StatusFound)
 }
 
 func postLoadForm(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
-	var idPost string = r.FormValue("idPost")
-	LoadUniquePage(w, idPost)
-}
+	var idPost string = r.URL.Query().Get("id-post")
 
-func LoadUniquePage(w http.ResponseWriter, idPost string) {
 	var post model.Post
-	post.LoadPost(idPost)
-	tmpl, err := view.NewTemplate("postUnique.html")
+	err := post.LoadPost(idPost)
 	if err != nil {
 		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+	} else {
+		view.ExecTemplate(w, "postUnique.html", post)
 	}
-	tmpl.Execute(w, post)
 }

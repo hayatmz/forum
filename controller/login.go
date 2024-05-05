@@ -7,8 +7,7 @@ import (
 )
 
 func loginPage(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := view.NewTemplate("login.html")
-	tmpl.Execute(w, nil)
+	view.ExecTemplate(w, "login.html", nil)
 }
 
 func loginForm(w http.ResponseWriter, r *http.Request) {
@@ -22,15 +21,13 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 
 		if err.Error() == "no account associated for this email" {
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
-			return
 		}
 
 		if err.Error() == "bad password for this account" {
-			http.Redirect(w, r, "/loginPage", http.StatusFound)
-			return
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		}
+	} else {
+		http.Redirect(w, r, "/", http.StatusFound)
 	}
-
-	http.Redirect(w, r, "/", http.StatusFound)
 }
 

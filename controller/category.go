@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	model "forum/model"
 	view "forum/view"
 	"net/http"
@@ -9,13 +8,20 @@ import (
 )
 
 func categoryPage(w http.ResponseWriter, r *http.Request) {
-	category := r.URL.Query().Get("category")
-	categoryId, _ := strconv.Atoi(category)
-	var posts model.Posts
-	err := posts.GetHeadersPosts(model.QueryCategories, categoryId)
+	categoryID := r.URL.Query().Get("category")
+	categoryIdINT, err := strconv.Atoi(categoryID)
+
 	if err != nil {
-		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+	} else {
+
+		var posts model.Posts
+		if posts.GetHeadersPosts(model.QueryCategories, categoryIdINT) != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		} else {
+			view.ExecTemplate(w, "headers", posts.Posts)
+		}
 	}
-	
-	view.ExecTemplate(w, "headers", posts.Posts)
 }

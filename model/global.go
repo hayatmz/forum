@@ -19,6 +19,7 @@ func execQuery(query string, args ...any) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
+	defer stmt.Close()
 
 	res, err := stmt.Exec(args...)
 	if err != nil {
