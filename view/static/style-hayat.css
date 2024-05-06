@@ -19,68 +19,198 @@
 }
 
 body {
-    /* background-color: #f2f1ec;
+    background-color: #f2f1ec;
     background-image: url(../static/img/BackgroundTop.png);
-    background-repeat: no-repeat; */
-    background-size: 100vw;
-    background-color: #1f2e43;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 header {
-    /* overflow: hidden; */
     width: 100vw;
-    height: 70px;
-    background-color: #131313;
+    background-color: transparent;
     border-bottom: 1px solid #f2f1ec;
+    font-size: 19px;
+}
+
+nav#Header {
+    width: 98%;
+    height: 20px;
+    margin: 0 auto;
     display: flex;
-}
-
-.containerLeftHeader {
-    display: flex;
-    width: 15vw;
-    float: inline-start;
-}
-
-#imgHeader {
-    margin-left: 15%;
-    margin-top: 12px;
-}
-
-#accueilHeader {
-    font-size: min(max(1.2vw, 4vw), 22px);
-    font-family: "TTCommons";
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0;
+    font-family: "Arimo";
     font-variant: all-small-caps;
-    margin-top: 29px;
-    margin-left: 15%;
     color: #f2f1ec;
-    text-decoration-line: none;
 }
 
-#accueilA {
-    margin-left: 10%;
+.HeaderLinksResponsive {
+    display: none;
 }
 
-#searchHeader {
-    margin-top: 33px;
-    margin-left: 5%;
+.fa {
+    color: #f2f1ec;
+    font-size: 25px;
+    position: absolute;
+    top: 1.5em;
+    right: 2em;
+    cursor: pointer;
+    display: none;
 }
 
-#inputHeader, #buttonHeader {
+.AccueilResponsive a {
+    color: #a9bbc9;
+    text-decoration: none;
+    font-size: 20px;
+    position: absolute;
+    top: 1.8em;
+    left: 45%;
+    cursor: pointer;
+    text-align: center;
+    font-variant: all-small-caps;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.AccueilResponsive a:hover {
+    color: #f2f1ec;
+}
+
+.AccueilResponsive p:hover {
+    color: #a9bbc9;
+}
+
+.HeaderLogo img {
+    /* width: 12%; */
+    float: left;
+}
+
+.HeaderLogoResponsive {
+    float: left;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    display: none;
+}
+
+.HeaderLinks {
+    width: 40%;
+}
+
+.HeaderLinks ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.HeaderLinks li {
+    list-style-type: none;
+}
+
+.HeaderLinks a {
+    text-decoration: none;
+    color: #f2f1ec;
+    cursor: pointer;
+    padding-bottom: 0.5em;
+    background-image: linear-gradient(#a9bbc9, #a9bbc9);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.3s;
+}
+
+.HeaderLinks a:hover {
+    color: #a9bbc9;
+    background-size: 80% 0.1em;
+}
+
+#buttonHeader,
+#inputHeader {
     border: none;
+    font-size: 16px;
     background-color: transparent;
     color: #f2f1ec;
 }
 
-div#linksHeader {
-    margin-top: 29px;
+#inputHeader {
+    margin-left: 5px;
+    text-align: center;
+    font-family: "Arimo";
+    padding: 6px;
+    padding-bottom: 0.5em;
+    background-image: linear-gradient(#a9bbc9, #a9bbc9);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.3s;
 }
 
-a.linkHeader {
-    font-size: min(max(1.2vw, 4vw), 22px);
-    font-family: "TTCommons";
-    font-variant: all-small-caps;
-    color: #f2f1ec;
-    text-decoration-line: none;
+#inputHeader:hover {
+    background-size: 90% 0.1em;
+}
+
+#buttonHeader:hover {
+    color: #a9bbc9;
+}
+
+@media screen and (max-width: 1023px) {
+    .HeaderLogo {
+        display: none;
+    }
+
+    #searchHeader {
+        display: none;
+    }
+
+    .HeaderLogoResponsive {
+        display: block;
+    }
+
+    .HeaderLinks {
+        display: none;
+    }
+
+    .AccueilResponsive a {
+        display: block;
+    }
+
+    .fa {
+        display: block;
+    }
+
+    .fa:hover {
+        color: #a9bbc9;
+    }
+
+    .HeaderLinksResponsive li {
+        text-align: center;
+    }
+
+    .HeaderLinksResponsive li {
+        padding: 0.5em 0;
+    }
+
+    .HeaderLinksResponsive a {
+        text-decoration: none;
+        font-family: "Arimo";
+        font-variant: all-small-caps;
+        color: #f2f1ec;
+        font-size: 17px;
+        cursor: pointer;
+        background-image: linear-gradient(#a9bbc9, #a9bbc9);
+        background-size: 0% 0.1em;
+        background-position-y: 100%;
+        background-position-x: 50%;
+        background-repeat: no-repeat;
+        transition: background-size ease-in-out 0.3s;
+    }
+
+    .HeaderLinksResponsive a:hover {
+        color: #a9bbc9;
+        background-size: 80% 0.1em;
+    }
 }
 
 #accueilTitre {
@@ -104,11 +234,11 @@ a.linkHeader {
     margin-top: 5vh;
 }
 
-/* #boutonsCoAccueil {
+#boutonsCoAccueil {
     width: 20vw;
     margin: auto;
     margin-top: 5%;
-    display: inline-block;
+    display: block;
     text-align: center;
 }
 
@@ -126,4 +256,4 @@ a.linkHeader {
     padding: 13px;
     border: 1px solid #1f2e43;
     font-size: 1.3em;
-} */
+}
