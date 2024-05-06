@@ -38,3 +38,14 @@ func postLoadForm(w http.ResponseWriter, r *http.Request) {
 		view.ExecTemplate(w, "postUnique.html", post)
 	}
 }
+
+func postsByUser(w http.ResponseWriter, r *http.Request) {
+	var posts model.Posts
+	err := posts.GetHeadersPosts(model.QueryUserPosts, 2)
+	if err != nil || posts.Posts == nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+	} else {
+		view.ExecTemplate(w, "headers", posts.Posts)
+	}
+}

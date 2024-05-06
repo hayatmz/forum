@@ -8,6 +8,11 @@ const (
 	ORDER BY posts_view.date DESC`
 	
 	QueryRoot = `SELECT id, title, username FROM posts_view`
+
+	QueryLikes = `SELECT posts_view.id, posts_view.title, posts_view.username FROM posts_view INNER JOIN 
+	post_ratings ON posts_view.id = post_ratings.post_id WHERE post_ratings.user_id = ? AND post_ratings.rating = 1`
+
+	QueryUserPosts = `SELECT id, title, username FROM posts_view WHERE user_id = ?`
 )
 
 // Prepare the query which returns a stmt.

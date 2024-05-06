@@ -33,6 +33,7 @@ SELECT
     p.id AS id,
     u.username AS username,
     p.title AS title,
+    u.id AS user_id,
     p.content AS content,
     COALESCE(SUM(CASE WHEN pr.rating = 1 THEN 1 ELSE 0 END), 0) AS likes,
     COALESCE(SUM(CASE WHEN pr.rating = 0 THEN 1 ELSE 0 END), 0) AS dislikes,

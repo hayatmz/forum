@@ -50,3 +50,15 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}
 }
+
+func postsByLikes(w http.ResponseWriter, r *http.Request) {
+
+	var posts model.Posts
+	err := posts.GetHeadersPosts(model.QueryLikes, 3)
+	if err != nil || posts.Posts == nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+	} else {
+		view.ExecTemplate(w, "headers", posts.Posts)
+	}
+}

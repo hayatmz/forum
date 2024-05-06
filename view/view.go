@@ -8,12 +8,16 @@ import (
 var tmpl *template.Template
 
 func init() {
+	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	tmpl = template.Must(template.ParseGlob("view/templates/*"))
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
+	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("view/static"))))
+	// http.Handle("/visualizer/static/", http.StripPrefix("/visualizer/static/", http.FileServer(http.Dir("visualizer/static"))))
 }
 
 func ExecTemplate(w http.ResponseWriter, tpl string, data any) {
-	if tmpl.ExecuteTemplate(w, tpl, data) != nil {
-		
+	err := tmpl.ExecuteTemplate(w, tpl, data)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		tmpl.ExecuteTemplate(w, "error", http.StatusInternalServerError)
 	}
 }

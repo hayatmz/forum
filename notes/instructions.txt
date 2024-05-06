@@ -4,3 +4,9 @@ Click sur une category -> affiche posts de la category par ordre de derniere pub
 
 
 Clique sur un post -> charge post et ses commentaires et moyen d'ajouter un commentaire qui s'affichera en dessous | ismael
+
+
+
+
+
+if rating == 1 
