@@ -18,36 +18,54 @@
     margin: 0;
 }
 
+body {
+    /* background-color: #f2f1ec;
+    background-image: url(../static/img/BackgroundTop.png);
+    background-repeat: no-repeat; */
+    background-size: 100vw;
+    background-color: #1f2e43;
+}
+
 header {
+    /* overflow: hidden; */
     width: 100vw;
     height: 70px;
     background-color: #131313;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #f2f1ec;
     display: flex;
 }
 
+.containerLeftHeader {
+    display: flex;
+    width: 15vw;
+    float: inline-start;
+}
+
 #imgHeader {
-    margin-left: 12px;
+    margin-left: 15%;
     margin-top: 12px;
 }
 
 #accueilHeader {
-    /* font-size: 1.2vw; */
     font-size: min(max(1.2vw, 4vw), 22px);
     font-family: "TTCommons";
     font-variant: all-small-caps;
     margin-top: 29px;
-    margin-left: 40px;
+    margin-left: 15%;
     color: #f2f1ec;
     text-decoration-line: none;
 }
 
-#searchHeader {
-    margin-top: 33px;
+#accueilA {
     margin-left: 10%;
 }
 
-#buttonHeader, #inputHeader {
+#searchHeader {
+    margin-top: 33px;
+    margin-left: 5%;
+}
+
+#inputHeader, #buttonHeader {
     border: none;
     background-color: transparent;
     color: #f2f1ec;
@@ -64,3 +82,48 @@ a.linkHeader {
     color: #f2f1ec;
     text-decoration-line: none;
 }
+
+#accueilTitre {
+    font-size: 6em;
+    width: 80vw;
+    margin: auto;
+    font-family: "Arimo";
+    color: #f2f1ec;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+#accueilSlogan {
+    font-size: 5em;
+    width: 80vw;
+    font-family: "Arsenica";
+    color: #1f2e43;
+    font-weight: 80;
+    margin: auto;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+/* #boutonsCoAccueil {
+    width: 20vw;
+    margin: auto;
+    margin-top: 5%;
+    display: inline-block;
+    text-align: center;
+}
+
+#bInscrireAccueil {
+    background-color: transparent;
+    border: 1px solid #1f2e43;
+    color: #1f2e43;
+    padding: 13px;
+    font-size: 1.3em;
+}
+
+#bCoAccueil {
+    background-color: #1f2e43;
+    color: #f2f1ec;
+    padding: 13px;
+    border: 1px solid #1f2e43;
+    font-size: 1.3em;
+} */
