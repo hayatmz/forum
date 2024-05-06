@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css"
             href="../static/style-marina.css" />
-        <title>Register</title>
+        <title>Créer un compte</title>
     </head>
     <body id="bodyRegister">
         <header>
@@ -47,11 +47,13 @@
                         minlength="8" required />
                 </div>
                 <div id=" itemContainerRegister itemButtonRegister">
-                    <button type="submit" id="buttonRegister">Envoyer</button>
+                    <button type="submit" id="buttonRegister">ENVOYER</button>
                 </div>
             </div>
         </form>
-        <a href="/">page d'accueil</a>
-        <a href="/loginPage">Se connecter</a>
+            <div id="containerLinkAccueilSignIn">
+                <p id="itemLinkAccueilSignIn">Déjà un compte ?</p>
+                <button id="buttonSignIn itemLinkAccueilSignIn"><a id="linkAccueilSignIn" href="/loginPage">SE CONNECTER</a></button>
+            </div>
     </body>
 </html>
