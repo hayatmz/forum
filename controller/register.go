@@ -9,11 +9,19 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// Execute the new template register.
 func registerPage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := view.NewTemplate("register.html")
 	tmpl.Execute(w, nil)
 }
 
+// Parse the form and take his informations.
+//
+// Hash the password with the default cost.
+//
+// Use the VerifyUserRegister for storing users informations in the database.
+//
+// Redirect to the login page if the email is already taken.
 func registerForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
@@ -32,7 +40,7 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 		if err.Error() == "email already taken" {
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 		} else {
-			http.Redirect(w, r, "/registerPage", http.StatusFound)
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		}
 	} else {
 		http.Redirect(w, r, "/", http.StatusFound)

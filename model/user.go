@@ -8,7 +8,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// Checks if the user is already in the database
+// Checks if the user is already in the database.
+//
+// Take his hashed password and compare it with the input password.
 func VerifyUserLogin(email, password string) error {
 	var storedPasswordHash string
 	err := db.QueryRow("SELECT password FROM users WHERE email = ?", email).Scan(&storedPasswordHash)
@@ -28,6 +30,9 @@ func VerifyUserLogin(email, password string) error {
 	return nil
 }
 
+// Use the checkingUserInDB function for checking if the user is already in the database.
+//
+// If he is not, store his informations in the database.
 func VerifyUserRegister(email, username, password string) error {
 	err := checkingUserInDB(email, username)
 	if err != nil {
@@ -42,7 +47,7 @@ func VerifyUserRegister(email, username, password string) error {
 	return nil
 }
 
-
+// Check if the username and/or the email are already in the database.
 func checkingUserInDB(email, username string) error {
 	var isFieldExisting bool
 
