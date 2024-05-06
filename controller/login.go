@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	model "forum/model"
@@ -23,17 +22,15 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 
 		if err.Error() == "no account associated with this email" {
-			fmt.Println("email error")
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
 			return
 		}
 
 		if err.Error() == "bad password for this account" {
-			fmt.Println("password error")
 			http.Redirect(w, r, "/loginPage", http.StatusFound)
 			return
 		}
 	}
-
+	
 	http.Redirect(w, r, "/", http.StatusFound)
 }
