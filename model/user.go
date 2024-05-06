@@ -21,7 +21,7 @@ func VerifyUserLogin(email, password string) error {
 
 	err = bcrypt.CompareHashAndPassword([]byte(storedPasswordHash), []byte(password))
 	if err != nil {
-		//fmt.Println(storedPasswordHash, "||",password)
+		fmt.Println(err)
 		return errors.New("bad password for this account")
 	}
 
@@ -29,23 +29,19 @@ func VerifyUserLogin(email, password string) error {
 }
 
 func VerifyUserRegister(email, username, password string) error {
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	if err != nil {
-		return err
-	}
-
-	err = checkingUserInDB(email, username)
+	err := checkingUserInDB(email, username)
 	if err != nil {
 		return err
 	}
 
 	queryUserRegister := "INSERT INTO users(email, username, password) VALUES(?,?,?);"
-	_, err = execQuery(queryUserRegister, email, username, string(hashedPassword))
+	_, err = execQuery(queryUserRegister, email, username, password)
 	if err != nil {
 		return err
 	}
 	return nil
 }
+
 
 func checkingUserInDB(email, username string) error {
 	var isFieldExisting bool
