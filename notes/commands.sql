@@ -27,6 +27,9 @@ PRIMARY KEY(post_id, category_id));
 CREATE TABLE `post_ratings` (post_id INTEGER, user_id INTEGER, rating INTEGER NOT NULL, FOREIGN KEY(post_id) REFERENCES posts(id), 
 FOREIGN KEY(user_id) REFERENCES users(id), PRIMARY KEY(post_id, user_id));
 
+CREATE TABLE `comment_ratings` (comment_id INTEGER, user_id INTEGER, rating INTEGER NOT NULL, FOREIGN KEY(comment_id) REFERENCES comments(id),
+FOREIGN KEY(user_id) REFERENCES users(id), PRIMARY KEY(comment_id, user_id));
+
 
 CREATE VIEW posts_view AS
 SELECT 
@@ -46,3 +49,22 @@ LEFT JOIN
     users u ON p.user_id = u.id
 GROUP BY 
     p.id;
+
+
+CREATE VIEW comments_view AS
+SELECT 
+    c.id AS id,
+    u.username AS username,
+    u.id AS user_id,
+    c.content AS content,
+    COALESCE(SUM(CASE WHEN cr.rating = 1 THEN 1 ELSE 0 END), 0) AS likes,
+    COALESCE(SUM(CASE WHEN cr.rating = 0 THEN 1 ELSE 0 END), 0) AS dislikes,
+    c.date AS date
+FROM 
+    comments c
+LEFT JOIN 
+    comment_ratings cr ON c.id = cr.comment_id
+LEFT JOIN 
+    users u ON c.user_id = u.id
+GROUP BY 
+    c.id;
