@@ -1,33 +1,48 @@
 package model
 
-import "database/sql"
+import (
+	"strings"
+	"database/sql"
+)
 
-func NewRating(idUser, idPost string, rating bool) error {
+func (rt Rating) NewRating() error {
 	var ratingDB bool
-	querySelectRating := "SELECT rating FROM post_ratings WHERE user_id = ? AND post_id = ?"
-	err := db.QueryRow(querySelectRating, idUser, idPost).Scan(&ratingDB)
+	querySelectRating := rt.queryRT("SELECT rating FROM post_ratings WHERE user_id = ? AND post_id = ?")
+	err := db.QueryRow(querySelectRating, rt.IdUser, rt.IdPost).Scan(&ratingDB)
 
 	if err != nil {
-		return insertRating(err, idUser, idPost, rating)
+		return rt.insertRating(err)
 	}
 
-	err = updateRating(idUser, idPost, ratingDB, rating)
+	err = rt.updateRating(ratingDB)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func updateRating(idUser, idPost string, ratingDB, newRating bool) error {
-	if newRating != ratingDB {
-		queryUpdateRating := "UPDATE post_ratings SET rating = ? WHERE user_id = ? AND post_id = ?"
-		_, err := execQuery(queryUpdateRating, newRating, idUser, idPost)
+func (rt Rating) insertRating(err error) error {
+	if err == sql.ErrNoRows {
+		queryInsertRating := rt.queryRT("INSERT INTO post_ratings (post_id, user_id, rating) VALUES (?, ?, ?)")
+		_, err = execQuery(queryInsertRating, rt.IdPost, rt.IdUser, rt.NewRT)
+		if err != nil {
+			return err
+		}
+		return nil
+	}
+	return err
+}
+
+func (rt Rating) updateRating(ratingDB bool) error {
+	if rt.NewRT != ratingDB {
+		queryUpdateRating := rt.queryRT("UPDATE post_ratings SET rating = ? WHERE user_id = ? AND post_id = ?")
+		_, err := execQuery(queryUpdateRating, rt.NewRT, rt.IdUser, rt.IdPost)
 		if err != nil {
 			return err
 		}
 	} else {
-		queryDeleteRating := "DELETE FROM post_ratings WHERE post_id = ? AND user_id = ?"
-		_, err := execQuery(queryDeleteRating, idPost, idUser)
+		queryDeleteRating := rt.queryRT("DELETE FROM post_ratings WHERE post_id = ? AND user_id = ?")
+		_, err := execQuery(queryDeleteRating, rt.IdPost, rt.IdUser)
 		if err != nil {
 			return err
 		}
@@ -35,14 +50,9 @@ func updateRating(idUser, idPost string, ratingDB, newRating bool) error {
 	return nil
 }
 
-func insertRating(err error, idUser, idPost string, newRating bool) error {
-	if err == sql.ErrNoRows {
-		queryInsertRating := "INSERT INTO post_ratings (post_id, user_id, rating) VALUES (?, ?, ?)"
-		_, err = execQuery(queryInsertRating, idPost, idUser, newRating)
-		if err != nil {
-			return err
-		}
-		return nil
+func (rt Rating) queryRT(query string) string {
+	if rt.IsComment {
+		return(strings.ReplaceAll(query, "post", "comment"))
 	}
-	return err
+	return query
 }

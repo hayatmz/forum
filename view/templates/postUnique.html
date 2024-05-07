@@ -24,6 +24,18 @@
         {{range .Comments}}
             <div>{{.Content}}</div>
             <div>{{.Username}}</div>
+            <div>{{.Likes}}</div>
+            <div>{{.Dislikes}}</div>
+            <form action="like-comment">
+                <input type="hidden" name="id-user" value="1">
+                <input type="hidden" name="id-comment" value="{{.ID}}">
+                <button type="submit">Like</button>
+            </form>
+            <form action="dislike-comment">
+                <input type="hidden" name="id-user" value="1">
+                <input type="hidden" name="id-comment" value="{{.ID}}">
+                <button type="submit">Dislike</button>
+            </form>
         {{end}}
     </div>
     <!-- pour les coms -->

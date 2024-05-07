@@ -10,8 +10,7 @@ func NewComment(idUser, idPost, userComment string) error {
 }
 
 func getCommentsPost(idPost string) []Comment {
-	queryComments  := 	`SELECT comments.content, users.username FROM users INNER JOIN comments 
-						ON users.id = comments.user_id WHERE comments.post_id = ?`
+	queryComments  := 	`SELECT id, username, content, likes, dislikes FROM comments_view WHERE comments_view.post_id = ?`
 	rows, err := db.Query(queryComments, idPost)
 	if err != nil {
 		return nil
@@ -21,7 +20,7 @@ func getCommentsPost(idPost string) []Comment {
 	var comments []Comment
 	for rows.Next() {
 		var comment Comment
-		err := rows.Scan(&comment.Content, &comment.Username)
+		err := rows.Scan(&comment.ID, &comment.Username, &comment.Content, &comment.Likes, &comment.Dislikes)
 		if err == nil {
 			comments = append(comments, comment)
 		}

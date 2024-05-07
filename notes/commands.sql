@@ -54,6 +54,7 @@ GROUP BY
 CREATE VIEW comments_view AS
 SELECT 
     c.id AS id,
+    p.id AS post_id,
     u.username AS username,
     u.id AS user_id,
     c.content AS content,
@@ -66,5 +67,7 @@ LEFT JOIN
     comment_ratings cr ON c.id = cr.comment_id
 LEFT JOIN 
     users u ON c.user_id = u.id
+LEFT JOIN 
+    posts p ON c.post_id = p.id
 GROUP BY 
     c.id;

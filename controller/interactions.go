@@ -27,7 +27,9 @@ func likeForm(w http.ResponseWriter, r *http.Request) {
 	idUser := r.FormValue("id-user")
 	idPost := r.FormValue("id-post")
 
-	err := model.NewRating(idUser, idPost, true)
+	var rt model.Rating = model.Rating{idUser, idPost, false, true}
+	err := rt.NewRating()
+
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -42,7 +44,9 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	idUser := r.FormValue("id-user")
 	idPost := r.FormValue("id-post")
 
-	err := model.NewRating(idUser, idPost, false)
+	var rt model.Rating = model.Rating{idUser, idPost, false, false}
+	err := rt.NewRating()
+	
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
@@ -60,5 +64,39 @@ func postsByLikes(w http.ResponseWriter, r *http.Request) {
 		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
 	} else {
 		view.ExecTemplate(w, "headers", posts.Posts)
+	}
+}
+
+
+func likeCommentForm(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	idUser := r.FormValue("id-user")
+	idComment := r.FormValue("id-comment")
+
+	var rt model.Rating = model.Rating{idUser, idComment, true, true}
+	err := rt.NewRating()
+
+	if err != nil {
+		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+	} else {
+		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+	}
+}
+
+func dislikeCommentForm(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	idUser := r.FormValue("id-user")
+	idComment := r.FormValue("id-comment")
+
+	var rt model.Rating = model.Rating{idUser, idComment, true, false}
+	err := rt.NewRating()
+	
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+	} else {
+		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}
 }

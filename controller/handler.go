@@ -19,6 +19,11 @@ func handlers(mux *http.ServeMux) {
 	mux.HandleFunc("/postLoadForm", postLoadForm)
 
 	mux.HandleFunc("/comForm", comForm)
+
+	mux.HandleFunc("/like-comment", likeCommentForm)
+	mux.HandleFunc("/dislike-comment", dislikeCommentForm)
+
+
 	mux.HandleFunc("/likeForm", likeForm)
 	mux.HandleFunc("/dislikeForm", dislikeForm)
 	mux.HandleFunc("/postsByLikes", postsByLikes)
