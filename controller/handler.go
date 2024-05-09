@@ -30,4 +30,6 @@ func handlers(mux *http.ServeMux) {
 	mux.HandleFunc("/postsByUser", postsByUser)
 
 	mux.HandleFunc("/category", categoryPage)
+	
+	mux.HandleFunc("/cookies", cookies)
 }
