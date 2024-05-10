@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../static/style-hayat.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <title>Unity</title>
-        <link rel="stylesheet" type="text/css" href="../static/style-hayat.css"/>
         <link rel="icon" type="image/png" href="../static/img/logos/logoDark.png" />
     </head>
     <body>
@@ -13,27 +13,30 @@
             <nav id="Header">
                 <div class="HeaderLogo">
                     <a href="/">
-                        <img src="../static/img/logos/HeaderLogoAccueil.png" alt="UnityLogo"/>
+                        <img src="../static/img/HeaderLogoAccueil.png" alt="UnityLogo"/>
                     </a>
                 </div>
+
                 <div id="searchHeader">
                     <button id="buttonHeader" type="submit" value="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                     <input id="inputHeader" type="search" placeholder="Rechercher une catégorie" maxlength="200" spellcheck="false"/>
                 </div>
+
                 <div class="HeaderLinks">
                     <ul>
-                        <li><a href="/category">Catégories</a></li>
-                        <li><a href="/postPage">Poster</a></li>
+                        <li><a href="#">Catégories</a></li>
+                        <li><a href="#">Poster</a></li>
                         <li><a href="#">Mes posts</a></li>
                         <li><a href="#">Mes likes ♥</a></li>
                     </ul>
                 </div>
             </nav>
+
             <div class="HeaderLogoResponsive">
                 <a href="/">
-                    <img src="../static/img/logos/logoLight.png" alt="UnityLogo" width="60px"/>
+                    <img src="../static/img/logoLight.png" alt="UnityLogo" width="60px"/>
                 </a>
             </div>
             <div class="AccueilResponsive">
@@ -42,13 +45,23 @@
             <i class="fa fa-bars"></i>
             <div class="HeaderLinksResponsive">
                 <ul>
-                    <li><a href="/category">Catégories</a></li>
-                    <li><a href="/postPage">Poster</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">Poster</a></li>
                     <li><a href="#">Mes posts</a></li>
                     <li><a href="#">Mes likes ♥</a></li>
                 </ul>
             </div>
         </header>
+
+        <div id="titresAccueil">
+            <h1 id="accueilTitre">Unity<br />Unleashed</h1>
+            <h2 id="accueilSlogan">Where Minds Meet</h2>
+        </div>
+
+        <div id="boutonsCoAccueil">
+            <button id="bInscrireAccueil">S'inscrire</button>
+            <button id="bCoAccueil">Se connecter</button>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
         <script src="../static/HeaderScriptHayat.js"></script>
     </body>

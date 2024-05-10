@@ -50,12 +50,6 @@ nav#Header {
 }
 
 .fa {
-    color: #f2f1ec;
-    font-size: 25px;
-    position: absolute;
-    top: 1.5em;
-    right: 2em;
-    cursor: pointer;
     display: none;
 }
 
@@ -178,6 +172,12 @@ nav#Header {
 
     .fa {
         display: block;
+        color: #f2f1ec;
+        font-size: 25px;
+        position: absolute;
+        top: 1.5em;
+        right: 2em;
+        cursor: pointer;
     }
 
     .fa:hover {
@@ -256,4 +256,88 @@ nav#Header {
     padding: 13px;
     border: 1px solid #1f2e43;
     font-size: 1.3em;
+}
+
+footer {
+    width: 100vw;
+    background-color: rgba(31, 46, 67, 0.9);
+    font-family: "Arimo";
+    position: absolute;
+    bottom: 0;
+}
+
+footer li {
+    list-style-type: none;
+}
+
+footer p:not(.discord) {
+    color: #a9bbc9;
+    font-weight: 800;
+    font-variant: all-small-caps;
+    margin-bottom: 1em;
+    font-family: "Arimo";
+}
+
+.discord {
+    color: #f2f1ec;
+    font-family: "Arimo";
+}
+
+.footerContainer {
+    width: 80%;
+    margin: 2em auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerDiv {
+    width: 20%;
+    padding: 1em;
+}
+
+.footerDiv a {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+.footerZone {
+    width: 40%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.footerZone ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerZone img {
+    border-radius: 50%;
+}
+
+footer > hr {
+    width: 33%;
+    margin: 2em auto;
+    color: #1f2e43;
+}
+
+.footerMentions {
+    width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+    margin-bottom: 1em;
+    color: #a9bbc9;
+}
+
+#aMentions {
+    color: #a9bbc9;
+}
+
+.footerSpace {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
 }
