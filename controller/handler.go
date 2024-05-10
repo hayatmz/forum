@@ -4,36 +4,35 @@ import (
 	model "forum/model"
 	"net/http"
 	"strings"
-	"net/url"
 )
 
 func handlers(mux *http.ServeMux) {
 	mux.HandleFunc("/", rootPage)
 	
 	mux.HandleFunc("/registerPage", registerPage)
-	mux.HandleFunc("/registerForm", registerForm)
+	mux.Handle("/registerForm", checkFormValues(http.HandlerFunc(registerForm)))
 	mux.HandleFunc("/loginPage", loginPage)
 	mux.HandleFunc("/loginForm", loginForm)
 	
 	mux.HandleFunc("/pageNewPost", pageNewPost)
-	mux.Handle("/formNewPost", userConnected(http.HandlerFunc(formNewPost)))
+	mux.Handle("/formNewPost", checkFormValues(checkValidSession(http.HandlerFunc(formNewPost))))
 	
-	mux.Handle("/postLoadForm", userConnected(http.HandlerFunc(postLoadForm)))
-	mux.Handle("/comForm", userConnected(http.HandlerFunc(comForm)))
+	mux.Handle("/postLoadForm", checkValidSession(http.HandlerFunc(postLoadForm)))
+	mux.Handle("/comForm", checkValidSession(http.HandlerFunc(comForm)))
 
-	mux.Handle("/like-comment", userConnected(http.HandlerFunc(likeCommentForm)))
-	mux.Handle("/dislike-comment", userConnected(http.HandlerFunc(dislikeCommentForm)))
+	mux.Handle("/like-comment", checkValidSession(http.HandlerFunc(likeCommentForm)))
+	mux.Handle("/dislike-comment", checkValidSession(http.HandlerFunc(dislikeCommentForm)))
 
 
-	mux.Handle("/likeForm", userConnected(http.HandlerFunc(likeForm)))
-	mux.Handle("/dislikeForm", userConnected(http.HandlerFunc(dislikeForm)))
-	mux.Handle("/postsByLikes", userConnected(http.HandlerFunc(postsByLikes)))
-	mux.Handle("/postsByUser", userConnected(http.HandlerFunc(postsByUser)))
+	mux.Handle("/likeForm", checkValidSession(http.HandlerFunc(likeForm)))
+	mux.Handle("/dislikeForm", checkValidSession(http.HandlerFunc(dislikeForm)))
+	mux.Handle("/postsByLikes", checkValidSession(http.HandlerFunc(postsByLikes)))
+	mux.Handle("/postsByUser", checkValidSession(http.HandlerFunc(postsByUser)))
 
 	mux.HandleFunc("/category", categoryPage)
 }
 
-func userConnected(next http.Handler) http.Handler {
+func checkValidSession(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")
 		if err != nil {
@@ -47,22 +46,31 @@ func userConnected(next http.Handler) http.Handler {
 		}
 
 		r.ParseForm()
-		if !checkFormValues(r.Form) {
-			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
-			return
-		}
 		r.Form.Add("idUser", idUser)
 		next.ServeHTTP(w, r)
 	})
 }
 
-func checkFormValues(form url.Values) bool {
-	for _, values := range form {
-		for _, value := range values {
-			if len(strings.TrimSpace(value)) == 0 {
-				return false
+func checkFormValues(next http.Handler) http.Handler {
+	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+		r.ParseForm()
+		for _, values := range r.Form {
+			for _, value := range values {
+				if len(strings.TrimSpace(value)) == 0 {
+					http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+					return
+				}
 			}
 		}
-	}
-	return true
+		next.ServeHTTP(w, r)
+	})
 }
+
+
+// for _, values := range form {
+// 	for _, value := range values {
+// 		fmt.Println(values)
+// 		if len(strings.TrimSpace(value)) == 0 {
+			
+// 		}
+// 	}
