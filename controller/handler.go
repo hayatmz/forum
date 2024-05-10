@@ -3,6 +3,8 @@ package controller
 import (
 	model "forum/model"
 	"net/http"
+	"strings"
+	"net/url"
 )
 
 func handlers(mux *http.ServeMux) {
@@ -43,8 +45,24 @@ func userConnected(next http.Handler) http.Handler {
 			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 			return
 		}
+
 		r.ParseForm()
+		if !checkFormValues(r.Form) {
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+			return
+		}
 		r.Form.Add("idUser", idUser)
 		next.ServeHTTP(w, r)
 	})
+}
+
+func checkFormValues(form url.Values) bool {
+	for _, values := range form {
+		for _, value := range values {
+			if len(strings.TrimSpace(value)) == 0 {
+				return false
+			}
+		}
+	}
+	return true
 }
