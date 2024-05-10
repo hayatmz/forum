@@ -37,3 +37,13 @@ func execQuery(query string, args ...any) (int64, error) {
 	}
 	return idRes, nil
 }
+
+func GetIdUser(token string) (string, error){
+	var idUser string
+	queryUser := "SELECT id FROM users WHERE session = ?"
+	err := db.QueryRow(queryUser, token).Scan(&idUser)
+	if err != nil {
+		return "", err
+	}
+	return idUser, nil
+}

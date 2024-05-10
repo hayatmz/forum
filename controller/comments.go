@@ -8,7 +8,8 @@ import (
 
 func comForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	idUser := r.FormValue("id-user")
+
+	idUser := r.FormValue("idUser")
 	idPost := r.FormValue("id-post")
 	userComment := r.FormValue("user-com")
 

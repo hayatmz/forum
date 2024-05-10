@@ -5,23 +5,23 @@ import (
 	"errors"
 )
 
-
 // Checks if the user is already in the database
-func VerifyUserLogin(email, password string) error {
+func VerifyUserLogin(email, password string) (int, error) {
 	var storedPassword string
-	err := db.QueryRow("SELECT password FROM users WHERE email = ?", email).Scan(&storedPassword)
+	var idUser int
+	err := db.QueryRow("SELECT id, password FROM users WHERE email = ?", email).Scan(&idUser, &storedPassword)
 
 	if err == sql.ErrNoRows {
-		return errors.New("no account associated for this email")
+		return 0, errors.New("no account associated for this email")
 	} else if err != nil {
-		return err
+		return 0, err
 	}
 
 	if storedPassword != password {
-		return errors.New("bad password for this account")
+		return 0, errors.New("bad password for this account")
 	}
 
-	return nil
+	return idUser, nil
 }
 
 
@@ -59,6 +59,15 @@ func chekingUserInDB(email, username, password string) error {
 	}
 	if isFieldExisting {
 		return errors.New("username already taken")
+	}
+	return nil
+}
+
+func NewSession(token string, idUser int) error {
+	queryUser := "UPDATE `users` SET session = ? WHERE id = ?"
+	_, err := execQuery(queryUser, token, idUser)
+	if err != nil {
+		return err
 	}
 	return nil
 }

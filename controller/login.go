@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"net/http"
 	model "forum/model"
 	view "forum/view"
+	"net/http"
 )
 
 func loginPage(w http.ResponseWriter, r *http.Request) {
@@ -12,13 +12,12 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 
 func loginForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-
 	var email string = r.FormValue("email")
 	var password string = r.FormValue("password")
 
-	err := model.VerifyUserLogin(email, password)
-	if err != nil {
+	id, err := model.VerifyUserLogin(email, password)
 
+	if err != nil {
 		if err.Error() == "no account associated for this email" {
 			http.Redirect(w, r, "/registerPage", http.StatusFound)
 		}
@@ -27,7 +26,22 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		}
 	} else {
-		http.Redirect(w, r, "/", http.StatusFound)
+		newSession(w, r, id)
 	}
 }
 
+func newSession(w http.ResponseWriter, r *http.Request, id int) {
+	cookie, err := newCookie()
+	if err != nil {
+		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+	} else {
+		err := model.NewSession(cookie.Value, id)
+		
+		if err != nil {
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+		} else {
+			http.SetCookie(w, cookie)
+			http.Redirect(w, r, "/", http.StatusFound)
+		}
+	}
+}

@@ -19,7 +19,7 @@ func ExecTemplate(w http.ResponseWriter, tpl string, data any) {
 	if err != nil {
 		err := tmpl.ExecuteTemplate(w, "error", http.StatusInternalServerError)
 		if err != nil {
-			http.Error(w, "Internal Servor Error", http.StatusInternalServerError)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 		} else {
 			w.WriteHeader(http.StatusInternalServerError)
 		}
