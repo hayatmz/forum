@@ -10,7 +10,9 @@ func SliceByPrefix(s, prefix string) []string {
 	
 	for _, str := range sliceFields {
 		if strings.HasPrefix(str, prefix) {
-			sliceByPrefix = append(sliceByPrefix, str[1:])
+			if !(len(str) <= 1) {
+				sliceByPrefix = append(sliceByPrefix, str[1:])
+			}
 		}
 	}
 	return sliceByPrefix

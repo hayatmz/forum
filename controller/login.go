@@ -29,19 +29,3 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 		newSession(w, r, id)
 	}
 }
-
-func newSession(w http.ResponseWriter, r *http.Request, id int) {
-	cookie, err := newCookie()
-	if err != nil {
-		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
-	} else {
-		err := model.NewSession(cookie.Value, id)
-		
-		if err != nil {
-			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
-		} else {
-			http.SetCookie(w, cookie)
-			http.Redirect(w, r, "/", http.StatusFound)
-		}
-	}
-}

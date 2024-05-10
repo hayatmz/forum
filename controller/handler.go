@@ -15,10 +15,10 @@ func handlers(mux *http.ServeMux) {
 	mux.HandleFunc("/loginForm", loginForm)
 	
 	mux.HandleFunc("/pageNewPost", pageNewPost)
-	mux.Handle("/formNewPost", checkFormValues(checkValidSession(http.HandlerFunc(formNewPost))))
+	mux.Handle("/formNewPost", checkValidSession(checkFormValues(http.HandlerFunc(formNewPost))))
 	
-	mux.Handle("/postLoadForm", checkValidSession(http.HandlerFunc(postLoadForm)))
-	mux.Handle("/comForm", checkValidSession(http.HandlerFunc(comForm)))
+	mux.HandleFunc("/postLoadForm", postLoadForm)
+	mux.Handle("/comForm", checkValidSession(checkFormValues(http.HandlerFunc(comForm))))
 
 	mux.Handle("/like-comment", checkValidSession(http.HandlerFunc(likeCommentForm)))
 	mux.Handle("/dislike-comment", checkValidSession(http.HandlerFunc(dislikeCommentForm)))

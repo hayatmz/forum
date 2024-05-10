@@ -24,7 +24,7 @@ func comForm(w http.ResponseWriter, r *http.Request) {
 
 func likeCommentForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	idUser := r.FormValue("id-user")
+	idUser := r.FormValue("idUser")
 	idComment := r.FormValue("id-comment")
 
 	var rt model.Rating = model.Rating{idUser, idComment, true, true}
@@ -40,7 +40,7 @@ func likeCommentForm(w http.ResponseWriter, r *http.Request) {
 
 func dislikeCommentForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	idUser := r.FormValue("id-user")
+	idUser := r.FormValue("idUser")
 	idComment := r.FormValue("id-comment")
 
 	var rt model.Rating = model.Rating{idUser, idComment, true, false}

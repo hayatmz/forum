@@ -5,6 +5,7 @@ import (
 	myFuncs "forum/myFuncs"
 	view "forum/view"
 	"net/http"
+	"strconv"
 )
 
 func pageNewPost(w http.ResponseWriter, r *http.Request) {
@@ -16,9 +17,16 @@ func formNewPost(w http.ResponseWriter, r *http.Request) {
 	var title string = r.FormValue("title")
 	var content string = r.FormValue("content")
 	var categories string = r.FormValue("categories")
+	var idUser string = r.FormValue("idUser")
+	
+	idUserINT, err := strconv.Atoi(idUser)
+	if err != nil {
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		return
+	}
 	var validsCategories []string = myFuncs.SliceByPrefix(categories, "#")
 
-	err := model.NewPost(validsCategories, title, content, 1)
+	err = model.NewPost(validsCategories, title, content, idUserINT)
 	if err != nil {
 		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
 	} else {
@@ -40,8 +48,15 @@ func postLoadForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func postsByUser(w http.ResponseWriter, r *http.Request) {
+	var idUser string = r.FormValue("idUser")
+	idUserINT, err := strconv.Atoi(idUser)
+	if err != nil {
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		return
+	}
+	
 	var posts model.Posts
-	err := posts.GetHeadersPosts(model.QueryUserPosts, 2)
+	err = posts.GetHeadersPosts(model.QueryUserPosts, idUserINT)
 	if err != nil || posts.Posts == nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)

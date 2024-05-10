@@ -4,11 +4,12 @@ import (
 	model "forum/model"
 	view "forum/view"
 	"net/http"
+	"strconv"
 )
 
 func likeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	idUser := r.FormValue("id-user")
+	idUser := r.FormValue("idUser")
 	idPost := r.FormValue("id-post")
 
 	var rt model.Rating = model.Rating{idUser, idPost, false, true}
@@ -24,7 +25,7 @@ func likeForm(w http.ResponseWriter, r *http.Request) {
 
 func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	idUser := r.FormValue("id-user")
+	idUser := r.FormValue("idUser")
 	idPost := r.FormValue("id-post")
 
 	var rt model.Rating = model.Rating{idUser, idPost, false, false}
@@ -39,8 +40,15 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func postsByLikes(w http.ResponseWriter, r *http.Request) {
+	var idUser string = r.FormValue("idUser")
+	idUserINT, err := strconv.Atoi(idUser)
+	if err != nil {
+		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		return
+	}
+
 	var posts model.Posts
-	err := posts.GetHeadersPosts(model.QueryLikes, 3)
+	err = posts.GetHeadersPosts(model.QueryLikes, idUserINT)
 	if err != nil || posts.Posts == nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
