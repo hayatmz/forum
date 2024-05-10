@@ -57,7 +57,7 @@ func postsByUser(w http.ResponseWriter, r *http.Request) {
 	
 	var posts model.Posts
 	err = posts.GetHeadersPosts(model.QueryUserPosts, idUserINT)
-	if err != nil || posts.Posts == nil {
+	if err != nil  {
 		w.WriteHeader(http.StatusInternalServerError)
 		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
 	} else {
