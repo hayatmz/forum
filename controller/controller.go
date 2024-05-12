@@ -22,7 +22,9 @@ func Controller() {
 		Addr: port,
 		Handler: mux,
 	}
-	
+
+	mux.Handle("/view/static/", http.StripPrefix("/view/static/", http.FileServer(http.Dir("view/static"))))
+
 	fmt.Println("http://localhost"+port)
 	server.ListenAndServe()
 }

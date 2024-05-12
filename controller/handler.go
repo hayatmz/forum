@@ -36,7 +36,7 @@ func checkValidSession(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")
 		if err != nil {
-			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusUnauthorized)
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 			return
 		}
 		idUser, err := model.GetIdUser(cookie.Value)
