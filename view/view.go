@@ -11,9 +11,10 @@ func init() {
 	tmpl = template.Must(template.ParseGlob("view/templates/*"))
 }
 
-func ExecTemplate(w http.ResponseWriter, tpl string, data any) {
+func ExecTemplate(w http.ResponseWriter, tpl, msg string, data any) {
 	var allDATA DataTMPL
 	allDATA.loadAllDATA(w, data)
+	allDATA.Msg = msg
 
 	err := tmpl.ExecuteTemplate(w, tpl, allDATA)
 	if err != nil {

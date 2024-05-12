@@ -7,7 +7,7 @@ import (
 )
 
 func registerPage(w http.ResponseWriter, r *http.Request) {
-	view.ExecTemplate(w, "register.html", nil)
+	view.ExecTemplate(w, "register.html", "", nil)
 }
 
 

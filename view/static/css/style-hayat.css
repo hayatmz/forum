@@ -20,9 +20,10 @@
 
 body {
     background-color: #f2f1ec;
-    background-image: url(/view/static/img/backgrounds/backgroudTopSmall.png);
-    background-size: cover;
+    background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
+    background-size: 100% 100vh;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 header {

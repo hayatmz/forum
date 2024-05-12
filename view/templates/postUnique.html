@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POSTER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" type="text/css" href="/view/static/css/style-hayat.css"/>
+    <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
 </head>
 <body>
-    <div>{{.Title}}</div>
-    <div>{{.Username}}</div>
-    <div>{{.Content}}</div>
-    <div>{{.Likes}}</div>
-    <div>{{.Dislikes}}</div>
+    {{if eq .Tmpl "connected"}}
+        {{template "headerConnected"}}
+    {{else}}
+        {{template "headerNotConnected"}}
+    {{end}}
+    <div>{{.Data.Title}}</div>
+    <div>{{.Data.Username}}</div>
+    <div>{{.Data.Content}}</div>
+    <div>{{.Data.Likes}}</div>
+    <div>{{.Data.Dislikes}}</div>
     <div>
-        {{range .Categories}}
+        {{range .Data.Categories}}
             <form action="/category" method="get">
                 <input type="hidden" name="category" value="{{.IDCategory}}">
                 <button type="submit">{{.Category}}</button>
@@ -21,7 +29,7 @@
     </div>
 
     <div>
-        {{range .Comments}}
+        {{range .Data.Comments}}
             <div>{{.Content}}</div>
             <div>{{.Username}}</div>
             <div>{{.Likes}}</div>
@@ -38,20 +46,22 @@
     </div>
     <!-- pour les coms -->
     <form action="/comForm">
-        <input type="hidden" name="id-post" value="{{.ID}}">
+        <input type="hidden" name="id-post" value="{{.Data.ID}}">
         <textarea name="user-com" id="" cols="30" rows="10"></textarea>
         <button type="submit">Comment</button>
     </form>
 
     <!-- pour les likes -->
     <form action="/likeForm">
-        <input type="hidden" name="id-post" value="{{.ID}}">
+        <input type="hidden" name="id-post" value="{{.Data.ID}}">
         <button type="submit">Like</button>
     </form>
 
     <form action="/dislikeForm">
-        <input type="hidden" name="id-post" value="{{.ID}}">
+        <input type="hidden" name="id-post" value="{{.Data.ID}}">
         <button type="submit">Dislike</button>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="/view/static/js/HeaderScriptHayat.js"></script>
 </body>
 </html>

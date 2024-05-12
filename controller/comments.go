@@ -16,7 +16,7 @@ func comForm(w http.ResponseWriter, r *http.Request) {
 	err := model.NewComment(idUser, idPost, userComment)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", "", http.StatusBadRequest)
 	} else {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}
@@ -32,7 +32,7 @@ func likeCommentForm(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+		view.ExecTemplate(w, "error.html", "", http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}
@@ -48,7 +48,7 @@ func dislikeCommentForm(w http.ResponseWriter, r *http.Request) {
 	
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusInternalServerError)
+		view.ExecTemplate(w, "error.html", "", http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 	}

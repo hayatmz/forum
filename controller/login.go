@@ -7,7 +7,7 @@ import (
 )
 
 func loginPage(w http.ResponseWriter, r *http.Request) {
-	view.ExecTemplate(w, "login.html", nil)
+	view.ExecTemplate(w, "login.html", "", nil)
 }
 
 func loginForm(w http.ResponseWriter, r *http.Request) {

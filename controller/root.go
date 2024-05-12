@@ -11,8 +11,8 @@ func rootPage(w http.ResponseWriter, r *http.Request) {
 	var posts model.Posts
 	if posts.GetHeadersPosts(model.QueryRoot) != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		view.ExecTemplate(w, "error.html", http.StatusBadRequest)
+		view.ExecTemplate(w, "error.html", "", http.StatusBadRequest)
 	} else {
-		view.ExecTemplate(w, "index.html", posts.Posts)
+		view.ExecTemplate(w, "index.html", "", posts.Posts)
 	}
 }

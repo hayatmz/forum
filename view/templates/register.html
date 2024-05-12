@@ -3,31 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css"
-            href="/view/static/css/style-marina.css" />
+        <link rel="stylesheet" type="text/css" href="/view/static/css/style-marina.css" />
+        <link rel="stylesheet" type="text/css" href="/view/static/css/style-hayat.css" />
         <title>Créer un compte</title>
     </head>
+    {{if eq .Tmpl "connected"}}
+        {{template "headerConnected"}}
+    {{else}}
+        {{template "headerNotConnected"}}
+    {{end}}
     <body id="bodyRegister">
-        <header>
-            <a href="/">
-                <img id="imgHeader" src="/view/static/img/logoLight.png" alt="logo"
-                    width="45px">
-            </a>
-            <p id="accueilHeader">accueil</p>
-            <div id="searchHeader">
-                <input id="inputHeader" type="search"
-                    placeholder="Rechercher une catégorie"
-                    maxlength="100" spellcheck="false">
-                <button id="buttonHeader" type="submit" value="search"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            <div id="linksHeader">
-                <a class="linkHeader" href="/category">catégories</a>
-                <a class="linkHeader" href="/postPage">poster</a>
-                <a class="linkHeader"
-                    href="/loginPage">connexion/inscription</a>
-            </div>
-        </header>
         <div id="inscriptionTitle">Inscription</div>
         <form action="/registerForm" method="post">
             <div id="containerFormRegister">
