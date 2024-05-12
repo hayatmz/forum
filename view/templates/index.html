@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page d'accueil</title>
-    <link rel="stylesheet" href="/view/static/css/style-hayat.css">
 </head>
 <body>
+    {{if eq .Tmpl "connected"}}
+        {{template "headerConnected"}}
+    {{else}}
+        {{template "headerNotConnected"}}
+    {{end}}
     <h1>Page d'Accueil</h1>
     <a href="/registerPage">S'inscrire</a>
     <a href="/loginPage">Connexion</a>
@@ -14,6 +18,7 @@
     <a href="/postsByLikes">Liked Posts</a>
     <a href="/postsByUser">Mes Posts</a>
     
-    {{template "headers" .}}
+    {{template "headers" .Data}}
+
 </body>
 </html>

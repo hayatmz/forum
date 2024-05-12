@@ -7,17 +7,17 @@ import (
 )
 
 func handlers(mux *http.ServeMux) {
-	mux.HandleFunc("/", rootPage)
+	mux.Handle("/", isConnected(http.HandlerFunc(rootPage)))
 	
-	mux.HandleFunc("/registerPage", registerPage)
+	mux.Handle("/registerPage", isConnected(http.HandlerFunc(registerPage)))
 	mux.Handle("/registerForm", checkFormValues(http.HandlerFunc(registerForm)))
-	mux.HandleFunc("/loginPage", loginPage)
-	mux.HandleFunc("/loginForm", loginForm)
+	mux.Handle("/loginPage", isConnected(http.HandlerFunc(loginPage)))
+	mux.Handle("/loginForm", isConnected(http.HandlerFunc(loginForm)))
 	
-	mux.HandleFunc("/pageNewPost", pageNewPost)
+	mux.Handle("/pageNewPost", isConnected(http.HandlerFunc(pageNewPost)))
 	mux.Handle("/formNewPost", checkValidSession(checkFormValues(http.HandlerFunc(formNewPost))))
 	
-	mux.HandleFunc("/postLoadForm", postLoadForm)
+	mux.Handle("/postLoadForm", isConnected(http.HandlerFunc(postLoadForm)))
 	mux.Handle("/comForm", checkValidSession(checkFormValues(http.HandlerFunc(comForm))))
 
 	mux.Handle("/like-comment", checkValidSession(http.HandlerFunc(likeCommentForm)))
@@ -29,7 +29,7 @@ func handlers(mux *http.ServeMux) {
 	mux.Handle("/postsByLikes", checkValidSession(http.HandlerFunc(postsByLikes)))
 	mux.Handle("/postsByUser", checkValidSession(http.HandlerFunc(postsByUser)))
 
-	mux.HandleFunc("/category", categoryPage)
+	mux.Handle("/category", isConnected(http.HandlerFunc(categoryPage)))
 }
 
 func checkValidSession(next http.Handler) http.Handler {
@@ -47,6 +47,7 @@ func checkValidSession(next http.Handler) http.Handler {
 
 		r.ParseForm()
 		r.Form.Add("idUser", idUser)
+		w.Header().Add("connected", "connected")
 		next.ServeHTTP(w, r)
 	})
 }
@@ -66,11 +67,19 @@ func checkFormValues(next http.Handler) http.Handler {
 	})
 }
 
-
-// for _, values := range form {
-// 	for _, value := range values {
-// 		fmt.Println(values)
-// 		if len(strings.TrimSpace(value)) == 0 {
-			
-// 		}
-// 	}
+func isConnected(next http.Handler) http.Handler {
+	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+		cookie, err := r.Cookie("session")
+		if err != nil {
+			goto notConnected
+		}
+		_, err = model.GetIdUser(cookie.Value)
+		if err != nil {
+			goto notConnected
+		}
+		r.ParseForm()
+		w.Header().Add("connected", "connected")
+		notConnected:
+		next.ServeHTTP(w, r)
+	})
+}
