@@ -19,6 +19,9 @@
 }
 
 body {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
     background-color: #f2f1ec;
     background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
     background-size: 100% 100vh;
@@ -263,7 +266,7 @@ footer {
     width: 100vw;
     background-color: rgba(31, 46, 67, 0.9);
     font-family: "Arimo";
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
@@ -327,7 +330,7 @@ footer > hr {
     width: 50%;
     margin: 0 auto;
     padding: 1em;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
     color: #a9bbc9;
 }
 

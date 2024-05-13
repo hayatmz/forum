@@ -7,12 +7,12 @@
         <link rel="stylesheet" type="text/css" href="/view/static/css/style-hayat.css" />
         <title>Créer un compte</title>
     </head>
-    {{if eq .Tmpl "connected"}}
-        {{template "headerConnected"}}
-    {{else}}
-        {{template "headerNotConnected"}}
-    {{end}}
     <body id="bodyRegister">
+        {{if eq .Tmpl "connected"}}
+            {{template "headerConnected"}}
+        {{else}}
+            {{template "headerNotConnected"}}
+        {{end}}
         <div id="inscriptionTitle">Inscription</div>
         <form action="/registerForm" method="post">
             <div id="containerFormRegister">
@@ -36,9 +36,10 @@
                 </div>
             </div>
         </form>
-            <div id="containerLinkAccueilSignIn">
-                <p id="itemLinkAccueilSignIn">Déjà un compte ?</p>
-                <button id="buttonSignIn itemLinkAccueilSignIn"><a id="linkAccueilSignIn" href="/loginPage">SE CONNECTER</a></button>
-            </div>
+        <div id="containerLinkAccueilSignIn">
+            <p id="itemLinkAccueilSignIn">Déjà un compte ?</p>
+            <button id="buttonSignIn itemLinkAccueilSignIn"><a id="linkAccueilSignIn" href="/loginPage">SE CONNECTER</a></button>
+        </div>
+        {{template "footer"}}
     </body>
 </html>
