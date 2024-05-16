@@ -27,7 +27,7 @@ body {
 
 header {
     width: 100vw;
-    background-color: transparent;
+    background-color: #1f2e43;
     border-bottom: 1px solid #f2f1ec;
     font-size: 19px;
 }
@@ -50,7 +50,13 @@ nav#Header {
 }
 
 .fa {
-    display: none;
+    color: #f2f1ec;
+    font-size: 25px;
+    position: absolute;
+    top: 1.5em;
+    right: 2em;
+    cursor: pointer;
+    visibility: hidden;
 }
 
 .AccueilResponsive a {
@@ -76,7 +82,6 @@ nav#Header {
 }
 
 .HeaderLogo img {
-    /* width: 12%; */
     float: left;
 }
 
@@ -149,70 +154,6 @@ nav#Header {
     color: #a9bbc9;
 }
 
-@media screen and (max-width: 1023px) {
-    .HeaderLogo {
-        display: none;
-    }
-
-    #searchHeader {
-        display: none;
-    }
-
-    .HeaderLogoResponsive {
-        display: block;
-    }
-
-    .HeaderLinks {
-        display: none;
-    }
-
-    .AccueilResponsive a {
-        display: block;
-    }
-
-    .fa {
-        display: block;
-        color: #f2f1ec;
-        font-size: 25px;
-        position: absolute;
-        top: 1.5em;
-        right: 2em;
-        cursor: pointer;
-    }
-
-    .fa:hover {
-        color: #a9bbc9;
-    }
-
-    .HeaderLinksResponsive li {
-        text-align: center;
-    }
-
-    .HeaderLinksResponsive li {
-        padding: 0.5em 0;
-    }
-
-    .HeaderLinksResponsive a {
-        text-decoration: none;
-        font-family: "Arimo";
-        font-variant: all-small-caps;
-        color: #f2f1ec;
-        font-size: 17px;
-        cursor: pointer;
-        background-image: linear-gradient(#a9bbc9, #a9bbc9);
-        background-size: 0% 0.1em;
-        background-position-y: 100%;
-        background-position-x: 50%;
-        background-repeat: no-repeat;
-        transition: background-size ease-in-out 0.3s;
-    }
-
-    .HeaderLinksResponsive a:hover {
-        color: #a9bbc9;
-        background-size: 80% 0.1em;
-    }
-}
-
 #accueilTitre {
     font-size: 6em;
     width: 80vw;
@@ -260,7 +201,7 @@ nav#Header {
 
 footer {
     width: 100vw;
-    background-color: rgba(31, 46, 67, 0.9);
+    background-color: #1f2e43;
     font-family: "Arimo";
     position: absolute;
     bottom: 0;
@@ -285,7 +226,7 @@ footer p:not(.discord) {
 
 .footerContainer {
     width: 80%;
-    margin: 2em auto;
+    margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -293,7 +234,7 @@ footer p:not(.discord) {
 
 .footerDiv {
     width: 20%;
-    padding: 1em;
+    padding: 0.8em;
 }
 
 .footerDiv a {
@@ -303,7 +244,7 @@ footer p:not(.discord) {
 
 .footerZone {
     width: 40%;
-    margin: 2em auto;
+    margin: auto;
     text-align: center;
 }
 
@@ -318,15 +259,14 @@ footer p:not(.discord) {
 
 footer > hr {
     width: 33%;
-    margin: 2em auto;
+    margin: 0.7em auto;
     color: #1f2e43;
 }
 
 .footerMentions {
     width: 50%;
-    margin: 0 auto;
-    padding: 1em;
-    margin-bottom: 1em;
+    margin: auto;
+    margin-bottom: 0.7em;
     color: #a9bbc9;
 }
 
@@ -340,4 +280,62 @@ footer > hr {
 
 .bold {
     font-weight: bold;
+}
+
+@media screen and (max-width: 1023px) {
+    .HeaderLogo {
+        display: none;
+    }
+
+    #searchHeader {
+        display: none;
+    }
+
+    .HeaderLogoResponsive {
+        display: block;
+    }
+
+    .HeaderLinks {
+        display: none;
+    }
+
+    .AccueilResponsive a {
+        display: block;
+    }
+
+    .fa {
+        display: block;
+    }
+
+    .fa:hover {
+        color: #a9bbc9;
+    }
+
+    .HeaderLinksResponsive li {
+        text-align: center;
+    }
+
+    .HeaderLinksResponsive li {
+        padding: 0.5em 0;
+    }
+
+    .HeaderLinksResponsive a {
+        text-decoration: none;
+        font-family: "Arimo";
+        font-variant: all-small-caps;
+        color: #f2f1ec;
+        font-size: 17px;
+        cursor: pointer;
+        background-image: linear-gradient(#a9bbc9, #a9bbc9);
+        background-size: 0% 0.1em;
+        background-position-y: 100%;
+        background-position-x: 50%;
+        background-repeat: no-repeat;
+        transition: background-size ease-in-out 0.3s;
+    }
+
+    .HeaderLinksResponsive a:hover {
+        color: #a9bbc9;
+        background-size: 80% 0.1em;
+    }
 }
