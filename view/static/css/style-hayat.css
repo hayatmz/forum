@@ -235,7 +235,7 @@ nav#Header {
 
 #accueilSlogan {
     margin: auto;
-    margin-top: 6%;
+    margin-top: 7%;
     font-size: 5em;
     font-family: "Arsenica";
     color: #1f2e43;
@@ -279,6 +279,54 @@ nav#Header {
     border-bottom: 2px solid #1f2e43;
     border-top: 2px solid #1f2e43;
     padding: 7px;
+}
+
+.container-headers {
+    width: 80vw;
+    margin: auto;
+}
+
+#postTable {
+    width: 100%;
+    border: 2px solid #1f2e43;
+    padding: 9px;
+}
+
+#postFirstCell {
+    width: 90%;
+    border-right: 2px solid #1f2e43;
+}
+
+#postUsername {
+    width: max-content;
+    border: 2px solid #8b744b;
+    border-radius: 15px;
+    padding: 3px 5px;
+    color: #8b744b;
+}
+
+#boutonPostTitre {
+    width: max-content;
+    border: none;
+    font-size: 1.4em;
+    font-family: "Arimo";
+    font-variant: all-small-caps;
+    color: #1f2e43;
+}
+
+#postCategories {
+    width: 15%;
+    display: inline-flex;
+    overflow-x: scroll;
+}
+
+#postCategory {
+    border: none;
+    background-color: none;
+}
+
+#postLastCell {
+    text-align: center;
 }
 
 footer {
