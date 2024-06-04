@@ -292,6 +292,7 @@ nav#Header {
 
 table#postTable {
     width: 100%;
+    margin: auto;
     border: 2px solid #1f2e43;
     background-color: #f2f1ec;
 }
@@ -299,12 +300,6 @@ table#postTable {
 td#postFirstCell {
     width: 95%;
     border-right: 1px solid #1f2e43;
-}
-
-form#formTitre {
-    text-wrap: nowrap;
-    max-width: 45vw;
-    overflow-x: scroll;
 }
 
 p#postUsername {
@@ -323,7 +318,14 @@ div#containerTitreCategory {
     justify-content: space-between;
 }
 
+form#formTitre {
+    text-wrap: nowrap;
+    max-width: 45vw;
+    overflow-x: scroll;
+}
+
 button#boutonPostTitre {
+    max-width: 45vw;
     border: none;
     font-size: 1.4em;
     font-family: "Arimo";
@@ -346,13 +348,13 @@ div#postCategory {
 }
 
 #postCategory:hover {
-    background-color: #1f2e43;
+    background-color: #a9bbc9;
     border-radius: 10px;
 }
 
 button#postButtonCategory {
     font-size: 1em;
-    color: #a9bbc9;
+    color: #1f2e43;
     border: none;
     margin: 5px;
     background-color: transparent;
