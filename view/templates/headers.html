@@ -30,16 +30,22 @@
             <tr>
                 <td id="postFirstCell">
                     <p id="postUsername">{{.Username}}</p>
-                    <form action="/postLoadForm" method="get">
-                        <input type="hidden" name="id-post" value="{{.ID}}">
-                        <button id="boutonPostTitre" type="submit">{{.Title}}</button>
-                    </form>
-                    {{range .Categories}}
-                    <form id="postCategories" action="/category" method="get">
-                        <input type="hidden" name="category" value="{{.IDCategory}}">
-                        <button id="postCategory" type="submit">{{.Category}}</button>
-                    </form>
-                {{end}}
+                    <div id="containerTitreCategory">
+                        <div id="postTitre">
+                            <form id="formTitre" action="/postLoadForm" method="get">
+                                <input type="hidden" name="id-post" value="{{.ID}}">
+                                <button id="boutonPostTitre" type="submit">{{.Title}}</button>
+                            </form>
+                        </div>
+                        <div id="postCategory">
+                        {{range .Categories}}
+                            <form id="formCategory" action="/category" method="get">
+                                <input type="hidden" name="category" value="{{.IDCategory}}">
+                                <button id="postButtonCategory" type="submit">{{.Category}}</button>
+                            </form>
+                        {{end}}
+                        </div>
+                    </div>
                 </td>
                 <td id="postLastCell">
                     <p>date</p>

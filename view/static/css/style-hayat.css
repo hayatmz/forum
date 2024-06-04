@@ -28,6 +28,9 @@ body {
     background-size: 100% 68vh;
     background-repeat: no-repeat;
     background-attachment: sticky;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -269,6 +272,7 @@ nav#Header {
 }
 
 #AccueilDerniersMsg {
+    width: 100%;
     margin: 6% auto;
     color: #1f2e43;
     text-align: center;
@@ -282,55 +286,90 @@ nav#Header {
 }
 
 .container-headers {
-    width: 80vw;
+    width: 70vw;
     margin: auto;
 }
 
-#postTable {
+table#postTable {
     width: 100%;
     border: 2px solid #1f2e43;
-    padding: 9px;
+    background-color: #f2f1ec;
 }
 
-#postFirstCell {
-    width: 90%;
-    border-right: 2px solid #1f2e43;
+td#postFirstCell {
+    width: 95%;
+    border-right: 1px solid #1f2e43;
 }
 
-#postUsername {
+form#formTitre {
+    text-wrap: nowrap;
+    max-width: 45vw;
+    overflow-x: scroll;
+}
+
+p#postUsername {
     width: max-content;
+    margin: 5px;
     border: 2px solid #8b744b;
     border-radius: 15px;
     padding: 3px 5px;
     color: #8b744b;
 }
 
-#boutonPostTitre {
-    width: max-content;
+div#containerTitreCategory {
+    width: 100%;
+    margin: 5px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+button#boutonPostTitre {
     border: none;
     font-size: 1.4em;
     font-family: "Arimo";
     font-variant: all-small-caps;
     color: #1f2e43;
+    background-color: #f2f1ec;
 }
 
-#postCategories {
-    width: 15%;
+#boutonPostTitre:hover {
+    background-color: #f2f1ec;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div#postCategory {
     display: inline-flex;
+    justify-items: end;
     overflow-x: scroll;
+    margin-right: 10px;
 }
 
-#postCategory {
+#postCategory:hover {
+    background-color: #1f2e43;
+    border-radius: 10px;
+}
+
+button#postButtonCategory {
+    font-size: 1em;
+    color: #a9bbc9;
     border: none;
-    background-color: none;
+    margin: 5px;
+    background-color: transparent;
 }
 
-#postLastCell {
+#postButtonCategory:hover {
+    font-weight: bold;
+}
+
+td#postLastCell {
     text-align: center;
+    color: #8b744b;
 }
 
 footer {
     width: 100vw;
+    margin-top: 2%;
     background-color: rgba(31, 46, 67, 0.9);
     font-family: "Arimo";
     position: relative;
@@ -345,18 +384,13 @@ footer p:not(.discord) {
     color: #a9bbc9;
     font-weight: 800;
     font-variant: all-small-caps;
-    margin-bottom: 1em;
-    font-family: "Arimo";
-}
-
-.discord {
-    color: #f2f1ec;
     font-family: "Arimo";
 }
 
 .footerContainer {
     width: 80%;
-    margin: 2em auto;
+    margin: auto;
+    margin-top: 1%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -364,7 +398,7 @@ footer p:not(.discord) {
 
 .footerDiv {
     width: 20%;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .footerDiv a {
@@ -374,7 +408,7 @@ footer p:not(.discord) {
 
 .footerZone {
     width: 40%;
-    margin: 2em auto;
+    margin: auto;
     text-align: center;
 }
 
@@ -389,7 +423,7 @@ footer p:not(.discord) {
 
 footer > hr {
     width: 33%;
-    margin: 2em auto;
+    margin: 1em auto;
     color: #1f2e43;
 }
 
@@ -397,7 +431,6 @@ footer > hr {
     width: 50%;
     margin: 0 auto;
     padding: 1em;
-    /* margin-bottom: 1em; */
     color: #a9bbc9;
 }
 
