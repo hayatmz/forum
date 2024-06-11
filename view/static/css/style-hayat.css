@@ -272,7 +272,7 @@ nav#Header {
 }
 
 #AccueilDerniersMsg {
-    width: 100%;
+    width: 99%;
     margin: 6% auto;
     color: #1f2e43;
     text-align: center;
@@ -286,7 +286,7 @@ nav#Header {
 }
 
 .container-headers {
-    width: 70vw;
+    width: 60vw;
     margin: auto;
 }
 
@@ -304,23 +304,24 @@ td#postFirstCell {
 
 p#postUsername {
     width: max-content;
-    margin: 5px;
+    margin: 8px;
     border: 2px solid #8b744b;
     border-radius: 15px;
-    padding: 3px 5px;
+    padding: 4px 5px;
     color: #8b744b;
 }
 
 div#containerTitreCategory {
     width: 100%;
     margin: 5px;
+    margin-top: 0px;
     display: inline-flex;
     justify-content: space-between;
 }
 
 form#formTitre {
     text-wrap: nowrap;
-    max-width: 45vw;
+    max-width: 40vw;
     overflow-x: scroll;
 }
 
