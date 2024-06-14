@@ -24,36 +24,28 @@
 
 {{define "headers"}}
     <h1>{{.Msg}}</h1>
-    <div class="container-headers">
         {{range .Data}}
         <table id="postTable">
             <tr>
-                <td id="postFirstCell">
-                    <p id="postUsername">{{.Username}}</p>
-                    <div id="containerTitreCategory">
-                        <div id="postTitre">
-                            <form id="formTitre" action="/postLoadForm" method="get">
-                                <input type="hidden" name="id-post" value="{{.ID}}">
-                                <button id="boutonPostTitre" type="submit">{{.Title}}</button>
-                            </form>
-                        </div>
-                        <div id="postCategory">
-                        {{range .Categories}}
-                            <form id="formCategory" action="/category" method="get">
-                                <input type="hidden" name="category" value="{{.IDCategory}}">
-                                <button id="postButtonCategory" type="submit">{{.Category}}</button>
-                            </form>
-                        {{end}}
-                        </div>
-                    </div>
+                <td id="tabCellUsername" colspan="2"><p id="tabUsername">{{.Username}}</p></td>
+                <td id="tabDateHeure" rowspan="2">date heure</td>
+            </tr>
+            <tr id="titreTagCell">
+                <td id="tabTitre">
+                    <form id="formTitre" action="/postLoadForm" method="get">
+                        <input type="hidden" name="id-post" value="{{.ID}}">
+                        <button id="boutonPostTitre" type="submit">{{.Title}}</button>
+                    </form>
                 </td>
-                <td id="postLastCell">
-                    <p>date</p>
-                    <p>heure</p>
+                <td id="tabTags">
+                    {{range .Categories}}
+                    <form id="formCategory" action="/category" method="get">
+                        <input type="hidden" name="category" value="{{.IDCategory}}">
+                        <button id="boutonCategory" type="submit">{{.Category}}</button>
+                    </form>
+                    {{end}}
                 </td>
             </tr>
         </table>
         {{end}}
-    </div>
 {{end}}
-

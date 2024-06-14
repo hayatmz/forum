@@ -285,43 +285,42 @@ nav#Header {
     padding: 7px;
 }
 
-.container-headers {
-    width: 60vw;
-    margin: auto;
-}
-
 table#postTable {
-    width: 100%;
+    width: 50%;
+    border-collapse: collapse;
+    border: solid 1px #1f2e43;
     margin: auto;
-    border: 2px solid #1f2e43;
-    background-color: #f2f1ec;
+    /* margin-bottom: 1vh; */
 }
 
-td#postFirstCell {
-    width: 95%;
-    border-right: 1px solid #1f2e43;
+td {
+    padding: 0.2rem;
 }
 
-p#postUsername {
-    width: max-content;
-    margin: 8px;
-    border: 2px solid #8b744b;
-    border-radius: 15px;
+#tabUsername {
+    width: fit-content;
+    margin: 5px;
     padding: 4px 5px;
     color: #8b744b;
+    font-family: "Arsenica";
+    border: 1px solid #8b744b;
+    border-radius: 15px;
 }
 
-div#containerTitreCategory {
-    width: 100%;
-    margin: 5px;
-    margin-top: 0px;
-    display: inline-flex;
-    justify-content: space-between;
+#tabDateHeure {
+    width: 5vw;
+    text-align: center;
+    font-family: "Arsenica";
+    color: #8b744b;
+    border-left: 1px solid #1f2e43;
+}
+
+#tabTitre {
+    width: 75%;
 }
 
 form#formTitre {
     text-wrap: nowrap;
-    max-width: 40vw;
     overflow-x: scroll;
 }
 
@@ -335,39 +334,60 @@ button#boutonPostTitre {
     background-color: #f2f1ec;
 }
 
-#boutonPostTitre:hover {
+button#boutonPostTitre:hover {
     background-color: #f2f1ec;
     font-weight: bold;
     cursor: pointer;
 }
 
-div#postCategory {
-    display: inline-flex;
-    justify-items: end;
+#tabTags {
+    width: fit-content;
     overflow-x: scroll;
-    margin-right: 10px;
+    display: inline-flex;
 }
 
-#postCategory:hover {
+#tabTags:hover {
     background-color: #a9bbc9;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
-button#postButtonCategory {
+button#boutonCategory {
     font-size: 1em;
     color: #1f2e43;
     border: none;
-    margin: 5px;
+    margin: 2.5px;
     background-color: transparent;
 }
 
-#postButtonCategory:hover {
+button#boutonCategory:hover {
     font-weight: bold;
 }
 
-td#postLastCell {
-    text-align: center;
-    color: #8b744b;
+@media (max-width: 650px) {
+
+    #accueilTitre {
+        font-size: 4em;
+    }
+
+    #accueilSlogan {
+        font-size: 3em;
+    }
+
+    td {
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+
+    #tabDateHeure {
+        border-left: none;
+    }
+
+    #tabTags {
+        margin: 3px;
+        padding: 2px;
+    }
+
 }
 
 footer {
