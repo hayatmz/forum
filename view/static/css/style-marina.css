@@ -13,19 +13,6 @@
     src: url(/view/static/fonts/TTCommons.otf);
 }
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-header {
-    width: 100vw;
-    height: 70px;
-    background-color: #131313;
-    border-bottom: 1px solid #f2f1ec;
-    display: flex;
-}
-
 #imgHeader {
     margin-left: 12px;
     margin-top: 12px;
