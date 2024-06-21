@@ -33,6 +33,7 @@ body {
     flex-direction: column;
 }
 
+/* HEADER */
 header {
     width: 100vw;
     background-color: transparent;
@@ -221,6 +222,8 @@ nav#Header {
     }
 }
 
+/* MESSAGES PAGE ACCUEIL */
+
 #titresAccueil {
     width: 70vw;
     margin: 40px auto;
@@ -284,6 +287,8 @@ nav#Header {
     border-top: 2px solid #1f2e43;
     padding: 7px;
 }
+
+/* TEMPLATE LISTE DES POSTS */
 
 table#postTable {
     width: 870px;
@@ -397,6 +402,48 @@ button#boutonCategory:hover {
     }
 
 }
+
+/* PAGE POST UNIQUE */
+
+h1#postUniqueTitre {
+    width: 70%;
+    overflow: scroll;
+    scrollbar-width: thin;
+    margin: 50px auto;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #a9bbc9;
+    font-family: "Arsenica";
+    font-size: 3em;
+}
+
+h3#postUniqueUser {
+    color: #8b744b;
+    border: 2px solid #8b744b;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #f2f1ec;
+    font-family: "Arsenica";
+}
+
+div#postUniqueContent {
+    width: 50%;
+    margin: 10px auto;
+    /* background-color: rgba(242, 241, 236, 0.6); */
+    background-color: rgba(169, 187, 201, 0.6);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: justify;
+    color: #1f2e43;
+    font-family: "Arimo";
+    font-size: 1.2em;
+}
+
+/* FOOTER */
 
 footer {
     width: 100vw;
