@@ -272,7 +272,7 @@ nav#Header {
 }
 
 #AccueilDerniersMsg {
-    width: 99%;
+    width: 97%;
     margin: 6% auto;
     color: #1f2e43;
     text-align: center;
@@ -286,15 +286,19 @@ nav#Header {
 }
 
 table#postTable {
-    width: 50%;
+    width: 870px;
     border-collapse: collapse;
     border: solid 1px #1f2e43;
     margin: auto;
-    /* margin-bottom: 1vh; */
+    background-color: #f2f1ec;
 }
 
 td {
     padding: 0.2rem;
+}
+
+#tabCellUsername {
+    width: 790px;
 }
 
 #tabUsername {
@@ -308,24 +312,27 @@ td {
 }
 
 #tabDateHeure {
-    width: 5vw;
+    width: 80px;
     text-align: center;
     font-family: "Arsenica";
     color: #8b744b;
     border-left: 1px solid #1f2e43;
 }
 
-#tabTitre {
-    width: 75%;
+#titreTagCell {
+    width: 790px;
+}
+
+#tabTitre, #formTitre {
+    width: 500px;
 }
 
 form#formTitre {
-    text-wrap: nowrap;
     overflow-x: scroll;
+    scrollbar-width: thin;
 }
 
 button#boutonPostTitre {
-    max-width: 45vw;
     border: none;
     font-size: 1.4em;
     font-family: "Arimo";
@@ -336,14 +343,15 @@ button#boutonPostTitre {
 
 button#boutonPostTitre:hover {
     background-color: #f2f1ec;
-    font-weight: bold;
+    font-weight: bolder;
     cursor: pointer;
 }
 
-#tabTags {
-    width: fit-content;
+#tabTags, #formTags {
     overflow-x: scroll;
     display: inline-flex;
+    float: right;
+    margin-right: 3px;
 }
 
 #tabTags:hover {
@@ -355,7 +363,7 @@ button#boutonCategory {
     font-size: 1em;
     color: #1f2e43;
     border: none;
-    margin: 2.5px;
+    margin: 2px;
     background-color: transparent;
 }
 
