@@ -13,6 +13,11 @@
     src: url(/view/static/fonts/TTCommons.otf);
 }
 
+@font-face {
+    font-family: "Belleza";
+    src: url(/view/static/fonts/Belleza-Regular.ttf);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -409,8 +414,8 @@ h1#postUniqueTitre {
     width: 70%;
     overflow: scroll;
     scrollbar-width: thin;
-    margin: 50px auto;
-    margin-bottom: 5px;
+    margin: 100px auto 30px auto;
+    /* margin-bottom: 5px; */
     text-align: center;
     color: #a9bbc9;
     font-family: "Arsenica";
@@ -423,17 +428,16 @@ h3#postUniqueUser {
     border-radius: 20px;
     width: fit-content;
     padding: 5px;
-    margin: 0 auto;
+    margin: 0px auto;
+    /* margin-top: 0px; */
     text-align: center;
-    margin-bottom: 30px;
     background-color: #f2f1ec;
     font-family: "Arsenica";
 }
 
 div#postUniqueContent {
     width: 50%;
-    margin: 10px auto;
-    /* background-color: rgba(242, 241, 236, 0.6); */
+    margin: 120px auto 10px auto;
     background-color: rgba(169, 187, 201, 0.6);
     border-radius: 20px;
     padding: 20px;
@@ -441,6 +445,24 @@ div#postUniqueContent {
     color: #1f2e43;
     font-family: "Arimo";
     font-size: 1.2em;
+    border: 1px solid #1f2e43;
+    /* box-shadow: 3px 3px 20px #1f2e43,
+                -3px -3px 20px #1f2e43; */
+}
+
+#postUniqueLikeDislike {
+    width: 90px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#postUniqueLike {
+    color: blue;
+}
+
+#postUniqueDislike {
+    color: red;
 }
 
 /* FOOTER */

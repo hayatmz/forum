@@ -17,8 +17,10 @@
     <h1 id="postUniqueTitre">{{.Data.Title}}</h1>
     <h3 id="postUniqueUser">{{.Data.Username}}</h3>
     <div id="postUniqueContent">{{.Data.Content}}</div>
-    <div>{{.Data.Likes}}</div>
-    <div>{{.Data.Dislikes}}</div>
+    <div id="postUniqueLikeDislike">
+        <p id="postUniqueLike">{{.Data.Likes}}</p>
+        <p id="postUniqueDislike">{{.Data.Dislikes}}</p>
+    </div>
     <div>
         {{range .Data.Categories}}
             <form action="/category" method="get">
