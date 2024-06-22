@@ -68,6 +68,7 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 }
 
 func convertDate(date *time.Time, postDate *string) {
+	*date = date.Local()
 	dateFormat := date.Format("2006-01-02 15:04:05")
 	*postDate = dateFormat
 }
