@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -56,8 +55,9 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 
 	for rows.Next() {
 		var post Post
-		err := rows.Scan(&post.ID, &post.Title, &post.Username, &post.Date)
-		convertDate(&post.Date)
+		var datePost time.Time
+		err := rows.Scan(&post.ID, &post.Title, &post.Username, &datePost)
+		convertDate(&datePost, &post.Date)
         if err != nil {
 			continue
 		}
@@ -67,7 +67,7 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 	return nil
 }
 
-func convertDate(date *time.Time) {
+func convertDate(date *time.Time, postDate *string) {
 	dateFormat := date.Format("2006-01-02 15:04:05")
-	fmt.Println(dateFormat)
+	*postDate = dateFormat
 }
