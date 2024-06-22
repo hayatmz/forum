@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 type Post struct {
 	ID 			string
 	Title 		string
@@ -8,6 +10,7 @@ type Post struct {
 	UserID		int
 	Likes		int
 	Dislikes 	int
+	Date 		time.Time
 	Categories	[]Category
 	Comments	[]Comment
 }

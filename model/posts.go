@@ -1,5 +1,10 @@
 package model
 
+import (
+	"fmt"
+	"time"
+)
+
 // Insert the post with its title, content and associed isUser in the table posts.
 //
 // For each category existing, get its id and,
@@ -51,7 +56,8 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 
 	for rows.Next() {
 		var post Post
-		err := rows.Scan(&post.ID, &post.Title, &post.Username)
+		err := rows.Scan(&post.ID, &post.Title, &post.Username, &post.Date)
+		convertDate(&post.Date)
         if err != nil {
 			continue
 		}
@@ -59,4 +65,9 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 		posts.Posts = append(posts.Posts, post)
 	}
 	return nil
+}
+
+func convertDate(date *time.Time) {
+	dateFormat := date.Format("2006-01-02 15:04:05")
+	fmt.Println(dateFormat)
 }
