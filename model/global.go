@@ -1,7 +1,7 @@
 package model
 
 const (
-	QueryCategories = `SELECT posts_view.id, posts_view.title, posts_view.username
+	QueryCategories = `SELECT posts_view.id, posts_view.title, posts_view.username, posts_view.date
 	FROM posts_view INNER JOIN post_categories 
 	ON posts_view.id = post_categories.post_id
 	WHERE post_categories.category_id = ? 
@@ -9,10 +9,11 @@ const (
 	
 	QueryRoot = `SELECT id, title,username, date FROM posts_view ORDER BY date DESC`
 
-	QueryLikes = `SELECT posts_view.id, posts_view.title, posts_view.username FROM posts_view INNER JOIN 
-	post_ratings ON posts_view.id = post_ratings.post_id WHERE post_ratings.user_id = ? AND post_ratings.rating = 1`
+	QueryLikes = `SELECT posts_view.id, posts_view.title, posts_view.username, posts_view.date FROM posts_view INNER JOIN 
+	post_ratings ON posts_view.id = post_ratings.post_id WHERE post_ratings.user_id = ? AND post_ratings.rating = 1
+	ORDER BY posts_view.date DESC`
 
-	QueryUserPosts = `SELECT id, title, username FROM posts_view WHERE user_id = ?`
+	QueryUserPosts = `SELECT id, title, username, date FROM posts_view WHERE user_id = ? ORDER BY date DESC`
 )
 
 // Prepare the query which returns a stmt.

@@ -2,6 +2,7 @@ package myFuncs
 
 import (
 	"strings"
+	"slices"
 )
 
 func SliceByPrefix(s, prefix string) []string {
@@ -15,5 +16,16 @@ func SliceByPrefix(s, prefix string) []string {
 			}
 		}
 	}
-	return sliceByPrefix
+	return removeDoublonSlice(sliceByPrefix)
+}
+
+func removeDoublonSlice(sliceByPrefix []string) []string {
+	var sliceWithoutDoublon []string
+
+	for _, category := range sliceByPrefix {
+		if !slices.Contains(sliceWithoutDoublon, category) {
+			sliceWithoutDoublon = append(sliceWithoutDoublon, category)
+		}
+	}
+	return sliceWithoutDoublon
 }
