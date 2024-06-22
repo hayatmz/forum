@@ -435,6 +435,29 @@ h3#postUniqueUser {
     font-family: "Belleza";
 }
 
+#postUniqueTags {
+    /* background-color: red; */
+    width: 50%;
+    margin: 10px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+}
+
+#postUniqueTag {
+    border: none;
+    margin: 5px;
+    padding: 3px 5px;
+    background-color: #a9bbc9;
+    border-radius: 15px;
+    color: #1f2e43;
+}
+
+#postUniqueTag:hover {
+    font-weight: bolder;
+}
+
 div#postUniqueContent {
     width: 50%;
     margin: 120px auto 10px auto;
@@ -450,24 +473,29 @@ div#postUniqueContent {
                 -3px -3px 20px #1f2e43; */
 }
 
+/* BOUTONS LIKE & DISLIKE D'UN POST */
+
 #postUniqueLikeDislike {
-    width: 90px;
-    margin: auto;
+    width: 150px;
+    margin: 10px auto;
     display: flex;
     justify-content: space-between;
 }
 
-#postUniqueLike, #postUniqueDislike {
+#buttonPostLike, #buttonPostDislike {
+    font-size: 16px;
+    border: none;
+    padding: 5px 9px;
+    border-radius: 15px;
     color: #f2f1ec;
-    padding: 5px;
-    border-radius: 30%;
+    background-color: #1f2e43;
 }
 
-#postUniqueLike {
+#buttonPostLike:hover {
     background-color: #518ebd;
 }
 
-#postUniqueDislike {
+#buttonPostDislike:hover {
     background-color: #d13f47;
 }
 
