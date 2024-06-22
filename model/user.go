@@ -3,13 +3,14 @@ package model
 import (
 	"database/sql"
 	"errors"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // Checks if the user is already in the database
 func VerifyUserLogin(email, password string) (int, error) {
-	var storedPassword string
+	var storedPasswordHash string
 	var idUser int
-	err := db.QueryRow("SELECT id, password FROM users WHERE email = ?", email).Scan(&idUser, &storedPassword)
+	err := db.QueryRow("SELECT id, password FROM users WHERE email = ?", email).Scan(&idUser, &storedPasswordHash)
 
 	if err == sql.ErrNoRows {
 		return 0, errors.New("no account associated for this email")
@@ -17,7 +18,8 @@ func VerifyUserLogin(email, password string) (int, error) {
 		return 0, err
 	}
 
-	if storedPassword != password {
+	err = bcrypt.CompareHashAndPassword([]byte(storedPasswordHash), []byte(password))
+	if err != nil {
 		return 0, errors.New("bad password for this account")
 	}
 
