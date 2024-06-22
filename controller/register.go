@@ -19,11 +19,7 @@ func registerPage(w http.ResponseWriter, r *http.Request) {
 //
 // Redirect to the login page if the email is already taken.
 func registerForm(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
-	var email string = r.FormValue("email")
-	var username string = r.FormValue("username")
-	var password string = r.FormValue("password")
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	email, username, hashedPassword, err := getUserInfos(r)
 	if err != nil {
 		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		return
@@ -32,11 +28,22 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	err = model.VerifyUserRegister(email, username, string(hashedPassword))
 	if err != nil {
 		if err.Error() == "email already taken" {
-			http.Redirect(w, r, "/loginPage", http.StatusFound)
+			view.ExecTemplate(w, "login.html", err.Error(), nil)
+		} else if err.Error() == "username already taken" {
+			view.ExecTemplate(w, "login.html", err.Error(), nil)
 		} else {
-			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+			view.ExecTemplate(w, "login.html", err.Error(), nil)
 		}
 	} else {
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
+}
+
+func getUserInfos(r *http.Request) (string, string, []byte, error) {
+	r.ParseForm()
+	var email string = r.FormValue("email")
+	var username string = r.FormValue("username")
+	var password string = r.FormValue("password")
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	return email, username, hashedPassword, err
 }

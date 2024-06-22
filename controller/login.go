@@ -19,10 +19,10 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		if err.Error() == "no account associated for this email" {
-			http.Redirect(w, r, "/registerPage", http.StatusFound)
-		}
-
-		if err.Error() == "bad password for this account" {
+			view.ExecTemplate(w, "register.html", err.Error(), nil)
+		} else if err.Error() == "bad password for this account" {
+			view.ExecTemplate(w, "login.html", err.Error(), nil)
+		} else {
 			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 		}
 	} else {
