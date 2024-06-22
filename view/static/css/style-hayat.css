@@ -316,7 +316,7 @@ td {
     margin: 5px;
     padding: 4px 5px;
     color: #8b744b;
-    font-family: "Arsenica";
+    font-family: "Belleza";
     border: 1px solid #8b744b;
     border-radius: 15px;
 }
@@ -324,7 +324,7 @@ td {
 #tabDateHeure {
     width: 80px;
     text-align: center;
-    font-family: "Arsenica";
+    font-family: "Belleza";
     color: #8b744b;
     border-left: 1px solid #1f2e43;
 }
@@ -418,7 +418,7 @@ h1#postUniqueTitre {
     /* margin-bottom: 5px; */
     text-align: center;
     color: #a9bbc9;
-    font-family: "Arsenica";
+    font-family: "Belleza";
     font-size: 3em;
 }
 
@@ -432,7 +432,7 @@ h3#postUniqueUser {
     /* margin-top: 0px; */
     text-align: center;
     background-color: #f2f1ec;
-    font-family: "Arsenica";
+    font-family: "Belleza";
 }
 
 div#postUniqueContent {
@@ -457,12 +457,18 @@ div#postUniqueContent {
     justify-content: space-between;
 }
 
+#postUniqueLike, #postUniqueDislike {
+    color: #f2f1ec;
+    padding: 5px;
+    border-radius: 30%;
+}
+
 #postUniqueLike {
-    color: blue;
+    background-color: #518ebd;
 }
 
 #postUniqueDislike {
-    color: red;
+    background-color: #d13f47;
 }
 
 /* FOOTER */
