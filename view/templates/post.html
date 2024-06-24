@@ -16,11 +16,11 @@
     {{end}}
 
     <div id="page-poster">
-        <h1 id="titrePoster">Poster un nouveau sujet</h1>
+        <h1 id="h1Poster">Poster Un Nouveau Sujet</h1>
         <form id="formPoster" action="/formNewPost" method="post">
-            <input type="text" name="title" id="" value="testTitle"> 
-            <textarea name="content" id="" cols="30" rows="10">testContent</textarea>
-            <input type="text" name="categories" id="" value="#categories #dsdf dfd sd #manga">
+            <input id="titrePoster" type="text" name="title" placeholder="Titre..."> 
+            <textarea name="content" cols="30" rows="10" placeholder="Contenu du post..."></textarea>
+            <input type="text" name="categories" placeholder="#tags #séparés #par #des #espaces">
             <button type="submit">Post</button>
         </form>
     </div>

@@ -578,18 +578,36 @@ p#comment-user {
 
 /* PAGE POSTER */
 #page-poster {
-    height: 90vh;
+    height: 60vh;
 }
 
-#titrePoster {
-    color: red;
+#h1Poster {
+    width: fit-content;
+    font-family: "Arsenica";
+    font-variant: small-caps;
+    text-align: center;
+    color: #a9bbc9;
+    margin: 50px auto;
+    font-size: 2.5em;
 }
 
 #formPoster {
-    width: 80%;
+    width: fit-content;
     margin: auto;
 }
 
+#titrePoster {
+    background-color: #a9bbc9;
+    border-radius: 15px;
+    padding: 5px;
+    display: block;
+    margin: auto;
+    border: none;
+}
+
+#titrePoster:focus {
+    outline: none;
+}
 
 /* FOOTER */
 footer {
