@@ -416,7 +416,6 @@ button#boutonCategory:hover {
 }
 
 /* PAGE DES POST UNIQUE (quand click sur un titre) */
-/* titre du post */
 h1#postUniqueTitre {
     width: 70%;
     overflow: scroll;
