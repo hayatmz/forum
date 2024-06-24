@@ -292,12 +292,20 @@ nav#Header {
     padding: 7px;
 }
 
+/* TITRE SUR PAGE MES LIKES ETC */
+#templatesTitre {
+    margin: 70px auto;
+    color: #a9bbc9;
+    font-family: "Belleza";
+    font-size: 3em;
+}
+
 /* TEMPLATE LISTE DES POSTS */
 table#postTable {
     width: 870px;
     border-collapse: collapse;
     border: solid 1px #1f2e43;
-    margin: auto;
+    margin: 0px auto;
     background-color: #f2f1ec;
 }
 
@@ -668,12 +676,11 @@ p#comment-user {
 
 /* FOOTER */
 footer {
-    width: 100vw;
+    width: 100%;
+    height: 30%;
     margin-top: 2%;
     background-color: rgba(31, 46, 67, 0.9);
     font-family: "Arimo";
-    position: relative;
-    bottom: 0;
 }
 
 footer li {
