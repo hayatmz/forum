@@ -26,8 +26,6 @@
 
 body {
     position: relative;
-    height: auto;
-    min-height: 100vh;
     background-color: #f2f1ec;
     background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
     background-size: 100% 68vh;
@@ -414,7 +412,7 @@ h1#postUniqueTitre {
     width: 70%;
     overflow: scroll;
     scrollbar-width: thin;
-    margin: 100px auto 30px auto;
+    margin: 70px auto 10px auto;
     /* margin-bottom: 5px; */
     text-align: center;
     color: #a9bbc9;
@@ -436,9 +434,8 @@ h3#postUniqueUser {
 }
 
 #postUniqueTags {
-    /* background-color: red; */
     width: 50%;
-    margin: 10px auto 0px auto;
+    margin: 30px auto 0px auto;
     display: flex;
     justify-content: center;
     overflow-x: scroll;
@@ -461,7 +458,7 @@ h3#postUniqueUser {
 div#postUniqueContent {
     width: 50%;
     margin: 120px auto 10px auto;
-    background-color: rgba(169, 187, 201, 0.6);
+    background-color: rgba(31, 46, 67, 0.5);
     border-radius: 20px;
     padding: 20px;
     text-align: justify;
@@ -482,7 +479,7 @@ div#postUniqueContent {
     justify-content: space-between;
 }
 
-#buttonPostLike, #buttonPostDislike {
+.buttonPostLike, .buttonPostDislike {
     font-size: 16px;
     border: none;
     padding: 5px 9px;
@@ -491,12 +488,88 @@ div#postUniqueContent {
     background-color: #1f2e43;
 }
 
-#buttonPostLike:hover {
+.buttonPostLike:hover {
     background-color: #518ebd;
 }
 
-#buttonPostDislike:hover {
+.buttonPostDislike:hover {
     background-color: #d13f47;
+}
+
+/* COMMENTAIRES PAGE POST */
+
+#comments-container {
+    width: 30%;
+    margin: 10px auto 0px auto;
+}
+
+#comment-container {
+    background-color: #a9bbc9;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    padding: 0px 10px 10px 10px;
+}
+
+p#comments {
+    font-family: "TTCommons";
+    font-size: 1.3em;
+    color: #1f2e43;
+    border-bottom: 1px solid #1f2e43;
+    padding: 10px;
+    margin: 10px;
+   overflow: scroll;
+   scrollbar-width: thin;
+}
+
+p#comment-user {
+    color: #8b744b;
+    border: 1px solid #8b744b;
+    border-radius: 20px;
+    background-color: #f2f1ec;
+    width: fit-content;
+    float: right;
+    padding: 3px 5px;
+    font-family: "Belleza";
+}
+
+/* AJOUTER UN COMMENTAIRE PAGE POST */
+
+#comment-likeDislike {
+    width: fit-content;
+    display: flex;
+}
+
+#formAddComment {
+    width: 50%;
+    margin: auto;
+}
+
+#textarea-addComment {
+    margin-top: 15px;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(31, 46, 67, 0.7);
+    border-radius: 15px;
+    padding: 10px;
+    color: #fff;
+    resize: none;
+}
+
+#button-addComment {
+    font-family: "Belleza";
+    float: right;
+    background-color: #a9bbc9;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    color: #1f2e43;
+    border: 1px solid transparent;
+}
+
+#button-addComment:hover {
+    border: 1px solid #1f2e43;
+    background-color: #9fb1be;
 }
 
 /* FOOTER */

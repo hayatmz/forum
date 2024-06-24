@@ -30,7 +30,7 @@
     <div id="postUniqueLikeDislike">
         <form id="formPostLike" action="/likeForm">
             <input type="hidden" name="id-post" value="{{.Data.ID}}">
-            <button id="buttonPostLike" type="submit">
+            <button class="buttonPostLike" type="submit">
                 <i class="fa-regular fa-thumbs-up"></i>
                 {{.Data.Likes}}
             </button>
@@ -38,34 +38,43 @@
     
         <form id="formPostDislike" action="/dislikeForm">
             <input type="hidden" name="id-post" value="{{.Data.ID}}">
-            <button id="buttonPostDislike" type="submit">
+            <button class="buttonPostDislike" type="submit">
                 <i class="fa-regular fa-thumbs-down"></i>
                 {{.Data.Dislikes}}
             </button>
         </form>
     </div>
 
-    <div>
+    <div id="comments-container">
         {{range .Data.Comments}}
-            <div>{{.Content}}</div>
-            <div>{{.Username}}</div>
-            <div>{{.Likes}}</div>
-            <div>{{.Dislikes}}</div>
-            <form action="like-comment">
-                <input type="hidden" name="id-comment" value="{{.ID}}">
-                <button type="submit">Like</button>
-            </form>
-            <form action="dislike-comment">
-                <input type="hidden" name="id-comment" value="{{.ID}}">
-                <button type="submit">Dislike</button>
-            </form>
+        <div id="comment-container">
+            <p id="comments">{{.Content}}</p>
+            <p id="comment-user">{{.Username}}</p>
+            <div id="comment-likeDislike">
+                <form action="like-comment">
+                    <input type="hidden" name="id-comment" value="{{.ID}}">
+                    <button class="buttonPostLike" type="submit">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        {{.Likes}}
+                    </button>
+                </form>
+                <form action="dislike-comment">
+                    <input type="hidden" name="id-comment" value="{{.ID}}">
+                    <button class="buttonPostDislike" type="submit">
+                        <i class="fa-regular fa-thumbs-down"></i>
+                        {{.Dislikes}}
+                    </button>
+                </form>
+            </div>
+        </div>
         {{end}}
     </div>
-    <!-- pour les coms -->
-    <form action="/comForm">
+
+    <!-- pour ajouter un commentaire -->
+    <form id="formAddComment" action="/comForm">
         <input type="hidden" name="id-post" value="{{.Data.ID}}">
-        <textarea name="user-com" id="" cols="30" rows="10"></textarea>
-        <button type="submit">Comment</button>
+        <textarea id="textarea-addComment" name="user-com" cols="30" rows="10" placeholder="Ajouter un commentaire..."></textarea>
+        <button id="button-addComment" type="submit">Comment</button>
     </form>
 
     {{template "footer"}}
