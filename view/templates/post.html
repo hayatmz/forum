@@ -19,9 +19,11 @@
         <h1 id="h1Poster">Poster Un Nouveau Sujet</h1>
         <form id="formPoster" action="/formNewPost" method="post">
             <input id="titrePoster" type="text" name="title" placeholder="Titre..."> 
-            <textarea name="content" cols="30" rows="10" placeholder="Contenu du post..."></textarea>
-            <input type="text" name="categories" placeholder="#tags #séparés #par #des #espaces">
-            <button type="submit">Post</button>
+            <textarea id="contenuPoster" name="content" cols="30" rows="10" placeholder="Contenu du post..."></textarea>
+            <div id="tagsButtonPoster">
+                <input id="tagsPoster" type="text" name="categories" placeholder="#tags #séparés #par #des #espaces">
+                <button id="buttonPoster" type="submit">Poster</button>
+            </div>
         </form>
     </div>
 
