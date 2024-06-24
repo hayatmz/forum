@@ -88,7 +88,6 @@ nav#Header {
 }
 
 .HeaderLogo img {
-    /* width: 12%; */
     float: left;
 }
 
@@ -161,6 +160,7 @@ nav#Header {
     color: #a9bbc9;
 }
 
+/* RESPONSIVE HEADER */
 @media screen and (max-width: 1023px) {
     .HeaderLogo {
         display: none;
@@ -226,7 +226,6 @@ nav#Header {
 }
 
 /* MESSAGES PAGE ACCUEIL */
-
 #titresAccueil {
     width: 70vw;
     margin: 40px auto;
@@ -258,6 +257,7 @@ nav#Header {
     justify-content: center;
 }
 
+/* BOUTONS INSCRIPTION & CONNEXION (disparaissent lorsqu'un user est co) */
 #bInscrireAccueil, #bCoAccueil {
     padding: 10px 15px;
     cursor: pointer;
@@ -277,6 +277,7 @@ nav#Header {
     font-size: 1.3em;
 }
 
+/* BANDEROLE "DERNIERS MESSAGES" */
 #AccueilDerniersMsg {
     width: 97%;
     margin: 6% auto;
@@ -292,7 +293,6 @@ nav#Header {
 }
 
 /* TEMPLATE LISTE DES POSTS */
-
 table#postTable {
     width: 870px;
     border-collapse: collapse;
@@ -379,6 +379,7 @@ button#boutonCategory:hover {
     font-weight: bold;
 }
 
+/* RESPONSIVE TABLEAU TEMPLATE LISTE DES POSTS */
 @media (max-width: 650px) {
 
     #accueilTitre {
@@ -406,20 +407,20 @@ button#boutonCategory:hover {
 
 }
 
-/* PAGE POST UNIQUE */
-
+/* PAGE DES POST UNIQUE (quand click sur un titre) */
+/* titre du post */
 h1#postUniqueTitre {
     width: 70%;
     overflow: scroll;
     scrollbar-width: thin;
     margin: 70px auto 10px auto;
-    /* margin-bottom: 5px; */
     text-align: center;
     color: #a9bbc9;
     font-family: "Belleza";
     font-size: 3em;
 }
 
+/* nom de l'user */
 h3#postUniqueUser {
     color: #8b744b;
     border: 2px solid #8b744b;
@@ -433,6 +434,7 @@ h3#postUniqueUser {
     font-family: "Belleza";
 }
 
+/* tags du post */
 #postUniqueTags {
     width: 50%;
     margin: 30px auto 0px auto;
@@ -455,6 +457,7 @@ h3#postUniqueUser {
     font-weight: bolder;
 }
 
+/* contenu du post */
 div#postUniqueContent {
     width: 50%;
     margin: 120px auto 10px auto;
@@ -471,7 +474,6 @@ div#postUniqueContent {
 }
 
 /* BOUTONS LIKE & DISLIKE D'UN POST */
-
 #postUniqueLikeDislike {
     width: 150px;
     margin: 10px auto;
@@ -497,7 +499,6 @@ div#postUniqueContent {
 }
 
 /* COMMENTAIRES PAGE POST */
-
 #comments-container {
     width: 30%;
     margin: 10px auto 0px auto;
@@ -532,13 +533,12 @@ p#comment-user {
     font-family: "Belleza";
 }
 
-/* AJOUTER UN COMMENTAIRE PAGE POST */
-
 #comment-likeDislike {
     width: fit-content;
     display: flex;
 }
 
+/* AJOUTER UN COMMENTAIRE PAGE POST */
 #formAddComment {
     width: 50%;
     margin: auto;
@@ -553,6 +553,10 @@ p#comment-user {
     padding: 10px;
     color: #fff;
     resize: none;
+}
+
+#textarea-addComment:focus {
+    outline: none;
 }
 
 #button-addComment {
@@ -572,8 +576,22 @@ p#comment-user {
     background-color: #9fb1be;
 }
 
-/* FOOTER */
+/* PAGE POSTER */
+#page-poster {
+    height: 90vh;
+}
 
+#titrePoster {
+    color: red;
+}
+
+#formPoster {
+    width: 80%;
+    margin: auto;
+}
+
+
+/* FOOTER */
 footer {
     width: 100vw;
     margin-top: 2%;

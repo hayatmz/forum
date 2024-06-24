@@ -15,12 +15,16 @@
         {{template "headerNotConnected"}}
     {{end}}
 
-    <form action="/formNewPost" method="post">
-        <input type="text" name="title" id="" value="testTitle"> 
-        <textarea name="content" id="" cols="30" rows="10">testContent</textarea>
-        <input type="text" name="categories" id="" value="#categories #dsdf dfd sd #manga">
-        <button type="submit">Post</button>
-    </form>
+    <div id="page-poster">
+        <h1 id="titrePoster">Poster un nouveau sujet</h1>
+        <form id="formPoster" action="/formNewPost" method="post">
+            <input type="text" name="title" id="" value="testTitle"> 
+            <textarea name="content" id="" cols="30" rows="10">testContent</textarea>
+            <input type="text" name="categories" id="" value="#categories #dsdf dfd sd #manga">
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
     {{template "footer"}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="/view/static/js/HeaderScriptHayat.js"></script>
