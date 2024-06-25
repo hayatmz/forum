@@ -26,3 +26,8 @@ func categoryPage(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
+
+
+func categoryFilter(w http.ResponseWriter, r *http.Request) {
+
+}
