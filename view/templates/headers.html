@@ -25,23 +25,23 @@
 {{define "headers"}}
     <h1 id="templatesTitre">{{.Msg}}</h1>
         {{range .Data}}
-        <table id="postTable">
+        <table class="postTable">
             <tr>
-                <td id="tabCellUsername" colspan="2"><p id="tabUsername">{{.Username}}</p></td>
-                <td id="tabDateHeure" rowspan="2">{{.Date}}</td>
+                <td class="tabCellUsername" colspan="2"><p class="tabUsername">{{.Username}}</p></td>
+                <td class="tabDateHeure" rowspan="2">{{.Date}}</td>
             </tr>
-            <tr id="titreTagCell">
-                <td id="tabTitre">
-                    <form id="formTitre" action="/postLoadForm" method="get">
+            <tr class="titreTagCell">
+                <td class="tabTitre">
+                    <form class="formTitre" action="/postLoadForm" method="get">
                         <input type="hidden" name="id-post" value="{{.ID}}">
-                        <button id="boutonPostTitre" type="submit">{{.Title}}</button>
+                        <button class="boutonPostTitre" type="submit">{{.Title}}</button>
                     </form>
                 </td>
-                <td id="tabTags">
+                <td class="tabTags">
                     {{range .Categories}}
-                    <form id="formCategory" action="/category" method="get">
+                    <form class="formCategory" action="/category" method="get">
                         <input type="hidden" name="category" value="{{.IDCategory}}">
-                        <button id="boutonCategory" type="submit">{{.Category}}</button>
+                        <button class="boutonCategory" type="submit">{{.Category}}</button>
                     </form>
                     {{end}}
                 </td>

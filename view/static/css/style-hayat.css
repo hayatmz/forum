@@ -316,7 +316,7 @@ nav#Header {
 }
 
 /* TEMPLATE LISTE DES POSTS */
-table#postTable {
+table.postTable {
     width: 870px;
     border-collapse: collapse;
     border: solid 1px #1f2e43;
@@ -328,11 +328,11 @@ td {
     padding: 0.2rem;
 }
 
-#tabCellUsername {
+.tabCellUsername {
     width: 790px;
 }
 
-#tabUsername {
+.tabUsername {
     width: fit-content;
     margin: 5px;
     padding: 4px 5px;
@@ -342,7 +342,7 @@ td {
     border-radius: 15px;
 }
 
-#tabDateHeure {
+.tabDateHeure {
     width: 80px;
     text-align: center;
     font-family: "Belleza";
@@ -350,20 +350,20 @@ td {
     border-left: 1px solid #1f2e43;
 }
 
-#titreTagCell {
+.titreTagCell {
     width: 790px;
 }
 
-#tabTitre, #formTitre {
+.tabTitre, .formTitre {
     width: 500px;
 }
 
-form#formTitre {
+form.formTitre {
     overflow-x: scroll;
     scrollbar-width: thin;
 }
 
-button#boutonPostTitre {
+button.boutonPostTitre {
     border: none;
     font-size: 1.4em;
     font-family: "Arimo";
@@ -372,25 +372,25 @@ button#boutonPostTitre {
     background-color: #f2f1ec;
 }
 
-button#boutonPostTitre:hover {
+button.boutonPostTitre:hover {
     background-color: #f2f1ec;
     font-weight: bolder;
     cursor: pointer;
 }
 
-#tabTags, #formTags {
+.tabTags, .formTags {
     overflow-x: scroll;
     display: inline-flex;
     float: right;
     margin-right: 3px;
 }
 
-#tabTags:hover {
+.tabTags:hover {
     background-color: #a9bbc9;
     border-radius: 15px;
 }
 
-button#boutonCategory {
+button.boutonCategory {
     font-size: 1em;
     color: #1f2e43;
     border: none;
@@ -398,7 +398,7 @@ button#boutonCategory {
     background-color: transparent;
 }
 
-button#boutonCategory:hover {
+button.boutonCategory:hover {
     font-weight: bold;
 }
 
