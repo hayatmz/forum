@@ -71,10 +71,12 @@ func isConnected(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")
 		if err != nil {
+			w.Header().Add("connected", "noConnected")
 			goto notConnected
 		}
 		_, err = model.GetIdUser(cookie.Value)
 		if err != nil {
+			w.Header().Add("connected", "noConnected")
 			goto notConnected
 		}
 		r.ParseForm()
