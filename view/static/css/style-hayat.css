@@ -32,8 +32,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: sticky;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+display: grid;
+grid-template-rows: auto 1fr auto;
 }
 
 /* HEADER */
@@ -298,6 +298,10 @@ nav#Header {
     color: #a9bbc9;
     font-family: "Belleza";
     font-size: 3em;
+}
+
+#templatesTitre:empty {
+    display: none;
 }
 
 /* TEMPLATE LISTE DES POSTS */
@@ -674,12 +678,17 @@ p#comment-user {
 }
 
 /* FOOTER */
+
+/* .site-footer {
+    margin-top: 30px;
+} */
 footer {
     width: 100%;
-    height: 30%;
-    margin-top: 2%;
+    margin-top: 70px;
     background-color: rgba(31, 46, 67, 0.9);
     font-family: "Arimo";
+    /* position: absolute;
+    bottom: 0; */
 }
 
 footer li {

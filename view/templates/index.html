@@ -11,29 +11,33 @@
     <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
 </head>
 <body>
-    {{if eq .Tmpl "connected"}}
-        {{template "headerConnected"}}
-    {{else}}
-        {{template "headerNotConnected"}}
-    {{end}}
+    <header class="site-header">
+        {{if eq .Tmpl "connected"}}
+            {{template "headerConnected"}}
+        {{else}}
+            {{template "headerNotConnected"}}
+        {{end}}
+    </header>
     
-    <div id="titresAccueil">
-        <h1 id="accueilTitre">Unity<br />Unleashed</h1>
-        <h2 id="accueilSlogan">Where Minds Meet</h2>
-    </div>
+    <main class="site-content">
+        <div id="titresAccueil">
+            <h1 id="accueilTitre">Unity<br />Unleashed</h1>
+            <h2 id="accueilSlogan">Where Minds Meet</h2>
+        </div>
+        
+        {{if not (eq .Tmpl "connected")}}
+        <!-- A DISPLAY UNIQUEMENT SI PAS CO -->
+        <div id="boutonsAccueil">
+            <form action="/registerPage"><button id="bInscrireAccueil">S'inscrire</button></form>
+            <form action="/loginPage"><button id="bCoAccueil">Se connecter</button></form>
+        </div>
+        {{end}}
     
-    {{if not (eq .Tmpl "connected")}}
-    <!-- A DISPLAY UNIQUEMENT SI PAS CO -->
-    <div id="boutonsAccueil">
-        <form action="/registerPage"><button id="bInscrireAccueil">S'inscrire</button></form>
-        <form action="/loginPage"><button id="bCoAccueil">Se connecter</button></form>
-    </div>
-    {{end}}
-
-    <p id="AccueilDerniersMsg">↓ Les derniers messages ↓</p>
-
-    {{template "headers" .}}
-    {{template "footer"}}
+        <p id="AccueilDerniersMsg">↓ Les derniers messages ↓</p>
+    
+        {{template "headers" .}}
+    </main>
+        {{template "footer"}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="/view/static/js/HeaderScriptHayat.js"></script>
 </body>
