@@ -15,7 +15,7 @@
             {{template "headerNotConnected"}}
         {{end}}
         <div id="inscriptionTitle">Connexion</div>
-        {{.Msg}}
+        <p class="errorCo">{{.Msg}}</p>
         <form action="/loginForm" method="post">
             <div id="containerFormRegister">
                 <div id="itemContainerRegister">

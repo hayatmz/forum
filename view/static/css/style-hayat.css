@@ -36,6 +36,17 @@ display: grid;
 grid-template-rows: auto 1fr auto;
 }
 
+/* MESSAGE D'ERREUR POUR CO ET REGISTER */
+.errorCo {
+    width: fit-content;
+    margin: auto;
+    font-family: "TTCommons";
+    align-items: center;
+    color: #d13f47;
+    font-size: 1.5em;
+    font-variant: all-small-caps;
+}
+
 /* HEADER */
 header {
     width: 100vw;

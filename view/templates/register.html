@@ -14,7 +14,7 @@
             {{template "headerNotConnected"}}
         {{end}}
         <div id="inscriptionTitle">Inscription</div>
-        {{.Msg}}
+        <p class="errorCo">{{.Msg}}</p>
         <form action="/registerForm" method="post">
             <div id="containerFormRegister">
                 <div id="itemContainerRegister">
