@@ -29,7 +29,7 @@ func VerifyUserLogin(email, password string) (int, error) {
 
 func VerifyUserRegister(email, username, password string) error {
 	
-	err := chekingUserInDB(email, username, password)
+	err := chekingUserInDB(email, username)
 	if err != nil {
 		return err
 	}
@@ -42,7 +42,7 @@ func VerifyUserRegister(email, username, password string) error {
 	return nil
 }
 
-func chekingUserInDB(email, username, password string) error {
+func chekingUserInDB(email, username string) error {
 	var isFieldExisting bool
 	
 	queryEmail := "SELECT EXISTS(SELECT 1 FROM users WHERE email=?)"
@@ -54,8 +54,8 @@ func chekingUserInDB(email, username, password string) error {
 		return errors.New("email already taken")
 	}
 
-	queryUserName := "SELECT EXISTS(SELECT 1 FROM users WHERE email=?)"
-	err = db.QueryRow(queryUserName, password).Scan(&isFieldExisting)
+	queryUserName := "SELECT EXISTS(SELECT 1 FROM users WHERE username=?)"
+	err = db.QueryRow(queryUserName, username).Scan(&isFieldExisting)
 	if err != nil {
 		return err
 	}
