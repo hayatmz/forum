@@ -23,7 +23,7 @@ func handlers(mux *http.ServeMux) {
 	mux.Handle("/postsByLikes", checkValidSession(http.HandlerFunc(postsByLikes)))
 	mux.Handle("/postsByUser", checkValidSession(http.HandlerFunc(postsByUser)))
 	mux.Handle("/category", isConnected(http.HandlerFunc(categoryPage)))
-	mux.Handle("/categoryFilter", isConnected(http.HandlerFunc(categoryFilter)))
+	mux.Handle("/categorySearch", isConnected(http.HandlerFunc(categorySearch)))
 }
 
 func checkValidSession(next http.Handler) http.Handler {
@@ -65,12 +65,10 @@ func isConnected(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")
 		if err != nil {
-			w.Header().Add("connected", "noConnected")
 			goto notConnected
 		}
 		_, err = model.GetIdUser(cookie.Value)
 		if err != nil {
-			w.Header().Add("connected", "noConnected")
 			goto notConnected
 		}
 		r.ParseForm()

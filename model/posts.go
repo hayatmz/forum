@@ -18,7 +18,7 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	}
 
 	for _, category := range categories {
-		idCategory, err := getIdCategory(category)
+		idCategory, err := GetIdCategory(category, true)
 		if err != nil {
 			return err
 		}

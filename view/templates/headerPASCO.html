@@ -9,10 +9,12 @@
                 </a>
         </div>
         <div id="searchHeader">
-            <button id="buttonHeader" type="submit" value="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input id="inputHeader" type="search" placeholder="Rechercher une catégorie" maxlength="200" spellcheck="false"/>
+            <form action="/categorySearch">
+                <button id="buttonHeader" type="submit" value="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input id="inputHeader" name="categoryFilter" type="search" placeholder="Rechercher une catégorie" maxlength="200" spellcheck="false"/>
+            </form>
         </div>
         <div class="HeaderLinks">
             <ul>
