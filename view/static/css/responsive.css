@@ -1,5 +1,6 @@
-/* RESPONSIVE HEADER */
-@media screen and (max-width:768px) {
+/* RESPONSIVE XS / S / M */
+@media (max-width:992px) {
+    /* HEADER */
     .HeaderLogo {
         display: none;
     }
@@ -60,5 +61,61 @@
     .HeaderLinksResponsive a:hover {
         color: #a9bbc9;
         background-size: 80% 0.1em;
+    }
+
+    .site-content {
+        width: 100vw;
+    }
+
+    #accueilTitre {
+        font-size: 4em;
+    }
+
+    #accueilSlogan {
+        font-size: 3em;
+    }
+    
+/* TABLEAU TEMPLATE, LISTE DES POSTS */
+    .postTable {
+        display: none;
+    }
+
+    #postTableResponsive {
+        display: block;
+        width: 50%;
+        margin: 0px auto;
+        border: 1px solid #1f2e43;
+    }
+
+    .usernameResponsive {
+        width: fit-content;
+        margin: 5px auto;
+        padding: 4px 5px;
+        color: #8b744b;
+        font-family: Belleza;
+        border: 1px solid #8b744b;
+        border-radius: 15px;
+    }
+
+    .dateHeureResponsive {
+        color: #8b744b;
+        font-family: "Belleza";
+        text-align: center;
+    }
+
+    .formTitreResponsive {
+        max-width: 90%;
+        margin: auto;
+        text-align: center;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    .titreResponsive {
+        background-color: #f2f1ec;
+        border: none;
+        white-space: nowrap;
+        color: #1f2e43;
+        font-size: 1em;
     }
 }
