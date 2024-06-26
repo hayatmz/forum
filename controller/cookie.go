@@ -2,8 +2,9 @@ package controller
 
 import (
 	model "forum/model"
-	"github.com/gofrs/uuid"
 	"net/http"
+	"strconv"
+	"github.com/gofrs/uuid"
 )
 
 func newSession(w http.ResponseWriter, r *http.Request, id int) {
@@ -36,4 +37,13 @@ func newCookie() (*http.Cookie, error) {
 		HttpOnly: true,
 	}
 	return cookie, nil
+}
+
+func disconnect(w http.ResponseWriter, r *http.Request) {
+	idUser, err := strconv.Atoi(r.FormValue("idUser"))
+	if err != nil {
+		http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
+	}
+	model.NewSession(nil, idUser)
+	http.Redirect(w, r, "/", http.StatusFound)
 }

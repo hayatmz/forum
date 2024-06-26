@@ -24,6 +24,7 @@ func handlers(mux *http.ServeMux) {
 	mux.Handle("/postsByUser", checkValidSession(http.HandlerFunc(postsByUser)))
 	mux.Handle("/category", isConnected(http.HandlerFunc(categoryPage)))
 	mux.Handle("/categorySearch", isConnected(http.HandlerFunc(categorySearch)))
+	mux.Handle("/disconnect", checkValidSession(http.HandlerFunc(disconnect)))
 }
 
 func checkValidSession(next http.Handler) http.Handler {
