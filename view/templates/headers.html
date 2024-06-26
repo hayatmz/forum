@@ -47,5 +47,20 @@
                 </td>
             </tr>
         </table>
+
+        <div id="postTableResponsive">
+            <p class="usernameResponsive">{{.Username}}</p>
+            <p class="dateHeureResponsive">{{.Date}}</p>
+            <form class="formTitreResponsive" action="/postLoadForm" method="get">
+                <input type="hidden" name="id-post" value="{{.ID}}">
+                <button class="titreResponsive" type="submit">{{.Title}}</button>
+            </form>
+            {{range .Categories}}
+                    <form class="formCategoryResponsive" action="/category" method="get">
+                        <input type="hidden" name="category" value="{{.IDCategory}}">
+                        <button type="submit">{{.Category}}</button>
+                    </form>
+            {{end}}
+        </div>
         {{end}}
 {{end}}
