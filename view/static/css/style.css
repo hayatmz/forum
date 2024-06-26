@@ -242,7 +242,8 @@ nav#Header {
     margin: 40px auto;
 }
 
-#accueilTitre, #accueilSlogan {
+#accueilTitre,
+#accueilSlogan {
     text-align: center;
 }
 
@@ -269,7 +270,8 @@ nav#Header {
 }
 
 /* BOUTONS INSCRIPTION & CONNEXION (disparaissent lorsqu'un user est co) */
-#bInscrireAccueil, #bCoAccueil {
+#bInscrireAccueil,
+#bCoAccueil {
     padding: 10px 15px;
     cursor: pointer;
 }
@@ -301,6 +303,102 @@ nav#Header {
     border-bottom: 2px solid #1f2e43;
     border-top: 2px solid #1f2e43;
     padding: 7px;
+}
+
+/* PAGE REGISTER */
+#inscriptionTitle {
+    text-align: center;
+    font-family: "Arimo";
+    font-size: 6rem;
+    color: #f2f1ec;
+    margin: 3%;
+}
+
+#bodyRegister {
+    background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#containerFormRegister {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-left: 28%;
+    margin-right: 28%;
+    border-radius: 20px 20px / 20px 20px;
+    margin-top: 2%;
+    background-color: rgba(242, 241, 236, 0.33);
+    box-shadow: 0px 0px 5px 4px #3d3d3d;
+    border: none;
+    backdrop-filter: blur(2px);
+}
+
+#containerLinkAccueilSignIn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3%;
+    gap: 3%;
+    align-items: center;
+}
+
+a#linkAccueilSignIn:link {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:visited {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:hover {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:active {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+#buttonRegister,
+button#buttonSignIn\ itemLinkAccueilSignIn {
+    background-color: #1f2e43;
+    color: #f2f1ec;
+    border: none;
+    width: 150px;
+    height: 44px;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 5px 2px #3d3d3d;
+}
+
+div#\ itemContainerRegister\ itemButtonRegister {
+    margin: 2%;
+}
+
+#itemContainerRegister {
+    text-align: left;
+    flex: 1 0 calc(33.33% - 20px);
+    padding: 10px;
+    color: #1f2e43;
+    background-color: #f2f1ec;
+    opacity: 0.4;
+    margin: 2%;
+    width: 48%;
+    box-shadow: 0px 0px 5px 4px black;
+}
+
+#inputRegister {
+    background: transparent;
+    border: none;
+    color: #1f2e43;
+    caret-color: #1f2e43;
 }
 
 /* TITRE SUR PAGE MES LIKES ETC */
@@ -354,7 +452,8 @@ td {
     width: 790px;
 }
 
-.tabTitre, .formTitre {
+.tabTitre,
+.formTitre {
     width: 500px;
 }
 
@@ -378,7 +477,8 @@ button.boutonPostTitre:hover {
     cursor: pointer;
 }
 
-.tabTags, .formTags {
+.tabTags,
+.formTags {
     overflow-x: scroll;
     display: inline-flex;
     float: right;
@@ -404,7 +504,6 @@ button.boutonCategory:hover {
 
 /* RESPONSIVE TABLEAU TEMPLATE LISTE DES POSTS */
 @media (max-width: 650px) {
-
     #accueilTitre {
         font-size: 4em;
     }
@@ -427,7 +526,6 @@ button.boutonCategory:hover {
         margin: 3px;
         padding: 2px;
     }
-
 }
 
 /* PAGE DES POST UNIQUE (quand click sur un titre) */
@@ -503,7 +601,8 @@ div#postUniqueContent {
     justify-content: space-between;
 }
 
-.buttonPostLike, .buttonPostDislike {
+.buttonPostLike,
+.buttonPostDislike {
     font-size: 16px;
     border: none;
     padding: 5px 9px;
@@ -540,8 +639,8 @@ p#comments {
     border-bottom: 1px solid #1f2e43;
     padding: 10px;
     margin: 10px;
-   overflow: scroll;
-   scrollbar-width: thin;
+    overflow: scroll;
+    scrollbar-width: thin;
 }
 
 p#comment-user {
