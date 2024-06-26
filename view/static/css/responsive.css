@@ -81,10 +81,12 @@
     }
 
     #postTableResponsive {
+        background-color: #f2f1ec;
         display: block;
         width: 50%;
         margin: 0px auto;
-        border: 1px solid #1f2e43;
+        padding: 10px;
+        border-bottom: 1px solid #1f2e43;
     }
 
     .usernameResponsive {
@@ -116,6 +118,37 @@
         border: none;
         white-space: nowrap;
         color: #1f2e43;
+        font-size: 1.3em;
+        margin: 8px;
+        font-variant: all-small-caps;
+    }
+
+    .titreResponsive:hover {
+        font-weight: bolder;
+    }
+
+    .categoriesContainResponsive {
+        display: inline-flex;
+        margin-top: 8px;
+    }
+
+    .categoriesContainResponsive:hover {
+        background-color: #a9bbc9;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+
+    .buttonCategoryResponsive {
+        background-color: transparent;
+        border: none;
+        margin: 3px 5px;
+        color: #1f2e43;
+        font-family: "Belleza";
         font-size: 1em;
     }
+
+    .buttonCategoryResponsive:hover {
+        font-weight: bolder;
+    }
+
 }
