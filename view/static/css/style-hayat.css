@@ -32,8 +32,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: sticky;
     min-height: 100vh;
-display: grid;
-grid-template-rows: auto 1fr auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 /* MESSAGE D'ERREUR POUR CO ET REGISTER */
@@ -111,7 +111,7 @@ nav#Header {
 }
 
 .HeaderLinks {
-    width: 40%;
+    width: 20%;
 }
 
 .HeaderLinks ul {
