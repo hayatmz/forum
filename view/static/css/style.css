@@ -349,6 +349,10 @@ div#\ itemContainerRegister\ itemButtonRegister {
 }
 
 /* TEMPLATE LISTE DES POSTS */
+#postTableResponsive {
+    display: none;
+}
+
 table.postTable {
     width: 870px;
     border-collapse: collapse;
@@ -435,32 +439,6 @@ button.boutonCategory {
 
 button.boutonCategory:hover {
     font-weight: bold;
-}
-
-/* RESPONSIVE TABLEAU TEMPLATE LISTE DES POSTS */
-@media (max-width: 650px) {
-    #accueilTitre {
-        font-size: 4em;
-    }
-
-    #accueilSlogan {
-        font-size: 3em;
-    }
-
-    td {
-        display: block;
-        margin: auto;
-        text-align: center;
-    }
-
-    #tabDateHeure {
-        border-left: none;
-    }
-
-    #tabTags {
-        margin: 3px;
-        padding: 2px;
-    }
 }
 
 /* PAGE DES POST UNIQUE (quand click sur un titre) */
