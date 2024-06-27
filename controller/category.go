@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// filter the posts by category
 func categoryPage(w http.ResponseWriter, r *http.Request) {
 	categoryID := r.URL.Query().Get("category")
 	categoryIdINT, err := strconv.Atoi(categoryID)
@@ -19,6 +20,7 @@ func categoryPage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// filter the posts by category from the search bar
 func categorySearch(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idCategory, err := model.GetIdCategory(r.FormValue("categoryFilter"), false)
@@ -29,6 +31,7 @@ func categorySearch(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// display the headers of the posts (title, username, categories, date) 
 func getHeadersCategories(w http.ResponseWriter, categoryIdINT int) {
 	var posts model.Posts
 		err := posts.GetHeadersPosts(model.QueryCategories, categoryIdINT)

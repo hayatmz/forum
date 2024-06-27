@@ -6,10 +6,14 @@ import (
 	"net/http"
 )
 
+// load and display the login page
 func loginPage(w http.ResponseWriter, r *http.Request) {
 	view.ExecTemplate(w, "login.html", "", nil)
 }
 
+// get the infos of the login form
+//
+// connect the person with a new session if its infos are correct, else return on the same page with an error message
 func loginForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var email string = r.FormValue("email")

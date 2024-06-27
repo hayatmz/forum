@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// all handlers
 func handlers(mux *http.ServeMux) {
 	mux.Handle("/", isConnected(http.HandlerFunc(rootPage)))
 	mux.Handle("/registerPage", isConnected(http.HandlerFunc(registerPage)))
@@ -27,6 +28,11 @@ func handlers(mux *http.ServeMux) {
 	mux.Handle("/disconnect", checkValidSession(http.HandlerFunc(disconnect)))
 }
 
+// MIDDLEWARE
+//
+// check if the user has a valid session, valid session's cookie associated to a user
+// 
+// for actions which request to be connected as like or dislike a post...
 func checkValidSession(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")
@@ -47,6 +53,9 @@ func checkValidSession(next http.Handler) http.Handler {
 	})
 }
 
+// MIDDLEWARE
+//
+// check if all values of a form are no empty
 func checkFormValues(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
@@ -62,6 +71,11 @@ func checkFormValues(next http.Handler) http.Handler {
 	})
 }
 
+// MIDDLEWARE
+//
+// add to the response a header "connected" if the user is connected, valid session's cookie associated to a user
+//
+// this additionnal header will permit to load either the header for the connected user or for the not connected user 
 func isConnected(next http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("session")

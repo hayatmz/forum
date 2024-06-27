@@ -8,10 +8,12 @@ import (
 	"strconv"
 )
 
+// load and display the page to post
 func pageNewPost(w http.ResponseWriter, r *http.Request) {
 	view.ExecTemplate(w, "post.html", "", nil)
 }
 
+// get the infos of the form to post and if no info of the form is empty, add the post of the post's list
 func formNewPost(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var title string = r.FormValue("title")
@@ -34,6 +36,8 @@ func formNewPost(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// load and display the post with its infos (title, content, username, comments with likes and dislikes, likes and dislikes of the post, categories)
+// load the zone to comment the post and like and dislike the comments or the post
 func postLoadForm(w http.ResponseWriter, r *http.Request) {
 	var idPost string = r.URL.Query().Get("id-post")
 
@@ -47,6 +51,7 @@ func postLoadForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// load and display the headers posts made by the connected user
 func postsByUser(w http.ResponseWriter, r *http.Request) {
 	var idUser string = r.FormValue("idUser")
 	idUserINT, err := strconv.Atoi(idUser)

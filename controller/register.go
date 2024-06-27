@@ -7,6 +7,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// load and display the register's page
 func registerPage(w http.ResponseWriter, r *http.Request) {
 	view.ExecTemplate(w, "register.html", "", nil)
 }
@@ -39,6 +40,7 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// get the infos from the request's form and return the same infos with the hashed password
 func getUserInfos(r *http.Request) (string, string, []byte, error) {
 	r.ParseForm()
 	var email string = r.FormValue("email")

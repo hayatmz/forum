@@ -7,6 +7,7 @@ import (
 	view "forum/view"
 )
 
+// load and display all posts headers on the root page
 func rootPage(w http.ResponseWriter, r *http.Request) {
 	var posts model.Posts
 	if posts.GetHeadersPosts(model.QueryRoot) != nil {

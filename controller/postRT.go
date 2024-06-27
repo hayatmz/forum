@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// like a post
 func likeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("idUser")
@@ -23,6 +24,7 @@ func likeForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// dislike a post
 func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("idUser")
@@ -39,6 +41,7 @@ func dislikeForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// load and display the headers posts liked by the connected user 
 func postsByLikes(w http.ResponseWriter, r *http.Request) {
 	var idUser string = r.FormValue("idUser")
 	idUserINT, err := strconv.Atoi(idUser)

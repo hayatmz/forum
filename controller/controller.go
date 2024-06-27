@@ -9,12 +9,14 @@ import (
 
 const port string = ":15040"
 
+// init the database and open it
 func init() {
 	if model.InitDB() != nil {
 		log.Fatal("database doesn't exist")
 	}
 }
 
+// main function, listen and serve the server, load the assets, and listen the handlers
 func Controller() {
 	var mux *http.ServeMux = http.NewServeMux()
 	handlers(mux)

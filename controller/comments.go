@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// comment a post
 func comForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
@@ -22,6 +23,7 @@ func comForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// like a comment's post
 func likeCommentForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("idUser")
@@ -38,6 +40,7 @@ func likeCommentForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// dislike a comment's post
 func dislikeCommentForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	idUser := r.FormValue("idUser")

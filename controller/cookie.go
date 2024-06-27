@@ -7,6 +7,7 @@ import (
 	"github.com/gofrs/uuid"
 )
 
+// set a new session for an user
 func newSession(w http.ResponseWriter, r *http.Request, id int) {
 	cookie, err := newCookie()
 	if err != nil {
@@ -23,6 +24,7 @@ func newSession(w http.ResponseWriter, r *http.Request, id int) {
 	}
 }
 
+// return a session's cookie
 func newCookie() (*http.Cookie, error) {
 	uuid, err := uuid.NewV4()
 	if err != nil {
@@ -39,6 +41,7 @@ func newCookie() (*http.Cookie, error) {
 	return cookie, nil
 }
 
+// disconnect a connected user 
 func disconnect(w http.ResponseWriter, r *http.Request) {
 	idUser, err := strconv.Atoi(r.FormValue("idUser"))
 	if err != nil {
