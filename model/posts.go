@@ -32,7 +32,7 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	return nil
 }
 
-//
+// get the infos of a post (id, title, content, likes, dislikes, username, categories, comments)
 func (post *Post) LoadPost(idPost string) error {
 	queryIDPost := `SELECT id, title, content, likes, dislikes,
 					username FROM posts_view WHERE id = ?`
@@ -47,6 +47,7 @@ func (post *Post) LoadPost(idPost string) error {
 	return nil
 }
 
+// get the headers infos of a post (post id, title, username, date, categories)
 func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 	rows, err := db.Query(query, args...)
 	if err != nil {
@@ -68,6 +69,7 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 	return nil
 }
 
+// convert the date in local date
 func convertDate(date *time.Time, postDate *string) {
 	*date = date.Local()
 	dateFormat := date.Format("2006-01-02 15:04:05")

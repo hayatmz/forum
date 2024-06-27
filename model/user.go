@@ -65,6 +65,7 @@ func chekingUserInDB(email, username string) error {
 	return nil
 }
 
+// add a new session
 func NewSession(token any, idUser int) error {
 	queryUser := "UPDATE `users` SET session = ? WHERE id = ?"
 	_, err := execQuery(queryUser, token, idUser)
