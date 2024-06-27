@@ -8,6 +8,7 @@ import (
 
 var db *sql.DB
 
+// open the DB and return an error if the it's not possible
 func InitDB() error {
 	const file string = "model/database/forum.db"
 

@@ -32,6 +32,7 @@ func NewPost(categories []string, title, content string, idUser int) error {
 	return nil
 }
 
+//
 func (post *Post) LoadPost(idPost string) error {
 	queryIDPost := `SELECT id, title, content, likes, dislikes,
 					username FROM posts_view WHERE id = ?`
