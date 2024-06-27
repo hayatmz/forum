@@ -1,5 +1,6 @@
 package model
 
+// all queries to get the headers post's infos (post id, title, username, date)
 const (
 	QueryCategories = `SELECT posts_view.id, posts_view.title, posts_view.username, posts_view.date
 	FROM posts_view INNER JOIN post_categories 
@@ -39,6 +40,7 @@ func execQuery(query string, args ...any) (int64, error) {
 	return idRes, nil
 }
 
+// get the id user depending of a session value
 func GetIdUser(token string) (string, error){
 	var idUser string
 	queryUser := "SELECT id FROM users WHERE session = ?"
