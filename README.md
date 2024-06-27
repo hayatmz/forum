@@ -5,9 +5,6 @@ Forum is a program which allows members to hold discussions online. The discussi
 ## ‧₊˚✧ Description ✧˚₊‧
 
 
-
-Groupie Tracker uses a given API with music bands info displayed in a RESTful API (Representational State Transfer Application Program Interface).
-
 ## ‧₊˚✧ [ Installation ] ✧˚₊‧
 
     Go programming language: https://go.dev/dl/
