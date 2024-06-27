@@ -73,6 +73,7 @@
 
     #accueilSlogan {
         font-size: 2.5em;
+        margin-top: 70px;
     }
 
     #inscriptionTitle {
@@ -84,6 +85,19 @@
         display: none;
     }
     
+    #contenuPoster {
+        width: 70%;
+    }
+
+    #tagsButtonPoster {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    #buttonPoster {
+        margin-top: 10px;
+    }
+
 /* TABLEAU TEMPLATE, LISTE DES POSTS */
     .postTable {
         display: none;
