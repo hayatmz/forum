@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// Insert the post with its title, content and associed isUser in the table posts.
+// Insert the post with its title, content and associed id User in the table posts.
 //
 // For each category existing, get its id and,
 // if the category doesn't exist, insert it in the table categories and get its id.
@@ -69,7 +69,7 @@ func (posts *Posts) GetHeadersPosts(query string, args ...any) error {
 	return nil
 }
 
-// convert the date in local date
+// convert the date in local time date
 func convertDate(date *time.Time, postDate *string) {
 	*date = date.Local()
 	dateFormat := date.Format("2006-01-02 15:04:05")
