@@ -349,7 +349,7 @@ div#\ itemContainerRegister\ itemButtonRegister {
 }
 
 /* TEMPLATE LISTE DES POSTS */
-#postTableResponsive {
+.postTableResponsive {
     display: none;
 }
 
@@ -492,7 +492,7 @@ h3#postUniqueUser {
 
 /* contenu du post */
 div#postUniqueContent {
-    width: 50%;
+    /* width: 50%; */
     margin: 120px auto 10px auto;
     background-color: rgba(31, 46, 67, 0.5);
     border-radius: 20px;
