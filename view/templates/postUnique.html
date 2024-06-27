@@ -10,11 +10,13 @@
         <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
     </head>
     <body>
+        <!-- affiche un header différent selon si l'user est co ou pas -->
         {{if eq .Tmpl "connected"}}
             {{template "headerConnected"}}
         {{else}}
             {{template "headerNotConnected"}}
         {{end}}
+        <!-- affiche les informations liées à un post, dont son contenu -->
         <h1 id="postUniqueTitre">{{.Data.Title}}</h1>
         <h3 id="postUniqueUser">{{.Data.Username}}</h3>
         <div id="postUniqueTags">
@@ -26,6 +28,7 @@
             {{end}}
         </div>
         <div id="postUniqueContent">{{.Data.Content}}</div>
+        <!-- permet de liker ou disliker un post -->
         <div id="postUniqueLikeDislike">
             <form id="formPostLike" action="/likeForm">
                 <input type="hidden" name="id-post" value="{{.Data.ID}}">
@@ -42,6 +45,7 @@
                 </button>
             </form>
         </div>
+        <!-- affiche les commentaires liées au post -->
         <div id="comments-container">
             {{range .Data.Comments}}
             <div id="comment-container">
@@ -55,6 +59,7 @@
                             {{.Likes}}
                         </button>
                     </form>
+                    <!-- permet de liker ou disliker un commentaire -->
                     <form action="dislike-comment">
                         <input type="hidden" name="id-comment" value="{{.ID}}">
                         <button class="buttonPostDislike" type="submit">
@@ -66,11 +71,13 @@
             </div>
             {{end}}
         </div>
+        <!-- permet d'ajouter un nouveau commentaire sous le post -->
         <form id="formAddComment" action="/comForm">
             <input type="hidden" name="id-post" value="{{.Data.ID}}">
             <textarea id="textarea-addComment" name="user-com" cols="30" rows="10" placeholder="Ajouter un commentaire..."></textarea>
             <button id="button-addComment" type="submit">Comment</button>
         </form>
+        <!-- affiche le template définit dans footer.html -->
         {{template "footer"}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
         <script src="/view/static/js/HeaderScriptHayat.js"></script>
