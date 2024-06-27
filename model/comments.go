@@ -1,5 +1,6 @@
 package model
 
+// add to the DB a comment ()
 func NewComment(idUser, idPost, userComment string) error {
 	queryComment := "INSERT INTO `comments` (user_id, post_id, content) VALUES (?, ?, ?)"
 	_, err := execQuery(queryComment, idUser, idPost, userComment)

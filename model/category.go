@@ -27,6 +27,7 @@ func GetIdCategory(category string, insert bool) (int64, error) {
 	return idCategory, err
 }
 
+// get the categories id and the categories name of a post
 func getCategoriesPost(idPost string) []Category {
 	queryCategories := `SELECT categories.id, categories.category FROM categories INNER JOIN post_categories 
 	ON categories.id = post_categories.category_id WHERE post_categories.post_id = ?`
