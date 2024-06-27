@@ -702,16 +702,11 @@ p#comment-user {
 
 /* FOOTER */
 
-/* .site-footer {
-    margin-top: 30px;
-} */
 footer {
     width: 100%;
     margin-top: 70px;
     background-color: rgba(31, 46, 67, 0.9);
     font-family: "Arimo";
-    /* position: absolute;
-    bottom: 0; */
 }
 
 footer li {

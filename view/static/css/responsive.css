@@ -67,6 +67,7 @@
         width: 100vw;
     }
 
+    /* Titre et slogan page d'accueil */
     #accueilTitre {
         font-size: 3em;
     }
@@ -174,6 +175,7 @@
         font-weight: bolder;
     }
 
+    /* Ne pas afficher le footer si page trop petite */
     footer {
         display: none;
     }
