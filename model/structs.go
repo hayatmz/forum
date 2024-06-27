@@ -1,5 +1,6 @@
 package model
 
+// POST INFOS
 type Post struct {
 	ID 			string
 	Title 		string
@@ -13,6 +14,7 @@ type Post struct {
 	Comments	[]Comment
 }
 
+// RATING INFOS (LIKE OR DISLIKE)
 type Rating struct {
 	IdUser 		string
 	IdPost 		string
@@ -20,6 +22,7 @@ type Rating struct {
 	NewRT 		bool
 }
 
+// COMMENT INFOS
 type Comment struct {
 	ID			int
 	Content		string
@@ -28,10 +31,12 @@ type Comment struct {
 	Dislikes	string
 }
 
+// REGROUPING MANY POSTS
 type Posts struct {
 	Posts []Post
 }
 
+// CATEGORY INFOS
 type Category struct {
 	Category	string
 	IDCategory	string

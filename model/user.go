@@ -26,7 +26,9 @@ func VerifyUserLogin(email, password string) (int, error) {
 	return idUser, nil
 }
 
-
+// check if the user can register him with its infos, if his email and password are not already used
+// 
+// if valids infos, add the user to the user table in the db
 func VerifyUserRegister(email, username, password string) error {
 	
 	err := chekingUserInDB(email, username)
@@ -42,6 +44,7 @@ func VerifyUserRegister(email, username, password string) error {
 	return nil
 }
 
+// check if the user can register him with its infos, if his email and password are not already used
 func chekingUserInDB(email, username string) error {
 	var isFieldExisting bool
 	
@@ -65,6 +68,7 @@ func chekingUserInDB(email, username string) error {
 	return nil
 }
 
+// add a new session uuid string to a user
 func NewSession(token any, idUser int) error {
 	queryUser := "UPDATE `users` SET session = ? WHERE id = ?"
 	_, err := execQuery(queryUser, token, idUser)
