@@ -8,13 +8,16 @@
         <title>Se connecter</title>
     </head>
     <body id="bodyRegister">
+        <!-- Affiche différents header en fonction de si l'user est co ou pas -->
         {{if eq .Tmpl "connected"}}
             {{template "headerConnected"}}
         {{else}}
             {{template "headerNotConnected"}}
         {{end}}
         <div id="inscriptionTitle"><p>Connexion</p></div>
+        <!-- message d'erreur lors de la tentative de connexion -->
         <p class="errorCo">{{.Msg}}</p>
+        <!-- permet de se connecter en entrant son adresse mail et son mot de passe -->
         <form action="/loginForm" method="post">
             <div id="containerFormRegister">
                 <div id="itemContainerRegister">
@@ -31,10 +34,12 @@
                 </div>
             </div>
         </form>
+        <!-- div qui affiche l'option pour créer un compte -->
         <div id="containerLinkAccueilSignIn">
             <p id="itemLinkAccueilSignIn">Pas encore de compte ?</p>
             <button id="buttonSignIn itemLinkAccueilSignIn"><a id="linkAccueilSignIn" href="/registerPage">S'ENREGISTRER</a></button>
         </div>
+        <!-- rappelle le template définit dans footer.html -->
         {{template "footer"}}
     </body>
 </html>
