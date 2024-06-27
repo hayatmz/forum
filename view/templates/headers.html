@@ -21,10 +21,12 @@
         <script src="/view/static/js/HeaderScriptHayat.js"></script>
     </body>
 </html>
-
+<!-- affiche le headerCO ou PASCO.html -->
 {{define "headers"}}
+    <!-- affiche le message du templates selon celui chargé, mes posts, mes likes... -->
     <h1 id="templatesTitre">{{.Msg}}</h1>
         {{range .Data}}
+        <!-- tableau qui affiche la liste des posts -->
         <table class="postTable">
             <tr>
                 <td class="tabCellUsername" colspan="2"><p class="tabUsername">{{.Username}}</p></td>
@@ -47,7 +49,7 @@
                 </td>
             </tr>
         </table>
-
+        <!-- remplace le tableau selon la taille de la page -->
         <div id="postTableResponsive">
             <p class="usernameResponsive">{{.Username}}</p>
             <p class="dateHeureResponsive">{{.Date}}</p>
