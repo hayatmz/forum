@@ -10,6 +10,7 @@
         <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
     </head>
     <body>
+        <!-- affiche un header différent en fonction de si l'user est co ou pas -->
         {{if eq .Tmpl "connected"}}
             {{template "headerConnected"}}
         {{else}}
@@ -17,6 +18,7 @@
         {{end}}
         <div id="page-poster">
             <h1 id="h1Poster">Poster Un Nouveau Sujet</h1>
+            <!-- Permet de choisir un titre, le contenu d'un post et des tags avant de poster -->
             <form id="formPoster" action="/formNewPost" method="post">
                 <input id="titrePoster" type="text" name="title" placeholder="Titre..."> 
                 <textarea id="contenuPoster" name="content" cols="30" rows="10" placeholder="Contenu du post..."></textarea>
@@ -26,6 +28,7 @@
                 </div>
             </form>
         </div>
+        <!-- affiche le template définit dans footer.html -->
         {{template "footer"}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
         <script src="/view/static/js/HeaderScriptHayat.js"></script>
