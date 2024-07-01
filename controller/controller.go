@@ -11,7 +11,8 @@ const port string = ":15040"
 
 // init the database and open it
 func init() {
-	if model.InitDB() != nil {
+	var file string = "model/database/forum.db"
+	if model.InitDB(file) != nil {
 		log.Fatal("database doesn't exist")
 	}
 }
