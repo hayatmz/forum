@@ -1,0 +1,46 @@
+{{define "headerNotConnected"}}
+<header>
+    <!-- partie du header qui affiche le logo -->
+    <nav id="Header">
+        <div class="HeaderLogo">
+            <a href="/">
+                <img
+                    src="/view/static/img/logos/HeaderLogoAccueil.png"
+                    alt="UnityLogo"/>
+                </a>
+        </div>
+        <!-- partie du header qui affiche la barre de recherche -->
+        <div id="searchHeader">
+            <form action="/categorySearch">
+                <button id="buttonHeader" type="submit" value="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input id="inputHeader" name="categoryFilter" type="search" placeholder="Rechercher une catégorie" maxlength="200" spellcheck="false"/>
+            </form>
+        </div>
+        <!-- partie du header qui affiche les liens pour se connecter et s'inscrire -->
+        <div class="HeaderLinks">
+            <ul>
+                <li><a href="/loginPage">Se connecter</a></li>
+                <li><a href="/registerPage">S'inscrire</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- header qui remplace le précédent selon la taille de la page -->
+    <div class="HeaderLogoResponsive">
+        <a href="/">
+            <img src="/view/static/img/logos/logoLight.png" alt="UnityLogo" width="60px"/>
+        </a>
+    </div>
+    <div class="AccueilResponsive">
+        <a href="/">Accueil</a>
+    </div>
+    <i class="fa fa-bars"></i>
+    <div class="HeaderLinksResponsive">
+        <ul>
+            <li><a href="/loginPage">Se connecter</a></li>
+            <li><a href="/registerPage">S'inscrire</a></li>
+        </ul>
+    </div>
+</header>
+{{end}}

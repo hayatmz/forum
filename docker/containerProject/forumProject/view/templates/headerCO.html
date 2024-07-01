@@ -1,0 +1,48 @@
+{{define "headerConnected"}}
+    <header>
+        <!-- partie du header qui affiche le logo -->
+        <nav id="Header">
+            <div class="HeaderLogo">
+                <a href="/">
+                    <img src="/view/static/img/logos/HeaderLogoAccueil.png" alt="UnityLogo"/>
+                </a>
+            </div>
+            <!-- partie du header avec la barre de recherche -->
+            <div id="searchHeader">
+                <form action="/categorySearch">
+                    <button id="buttonHeader" type="submit" value="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input id="inputHeader" name="categoryFilter" type="search" placeholder="Rechercher une catégorie" maxlength="200" spellcheck="false"/>
+                </form>
+            </div>
+            <!-- liens dans le header -->
+            <div class="HeaderLinks">
+                <ul>
+                    <li><a href="/pageNewPost">Poster</a></li>
+                    <li><a href="/postsByUser">Mes posts</a></li>
+                    <li><a href="/postsByLikes">Mes likes ♥</a></li>
+                    <li><a href="/disconnect">Déconnexion</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- même header mais qui s'affiche différemment -->
+        <div class="HeaderLogoResponsive">
+            <a href="/">
+                <img src="/view/static/img/logos/logoLight.png" alt="UnityLogo" width="60px"/>
+            </a>
+        </div>
+        <div class="AccueilResponsive">
+            <a href="/">Accueil</a>
+        </div>
+        <i class="fa fa-bars"></i>
+        <div class="HeaderLinksResponsive">
+            <ul>
+                <li><a href="/pageNewPost">Poster</a></li>
+                <li><a href="/postsByUser">Mes posts</a></li>
+                <li><a href="/postsByLikes">Mes likes ♥</a></li>
+                <li><a href="/disconnect">Déconnexion</a></li>
+            </ul>
+        </div>
+    </header>
+{{end}}

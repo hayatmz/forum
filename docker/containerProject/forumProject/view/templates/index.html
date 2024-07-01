@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unity Unleashed</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" type="text/css" href="/view/static/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/view/static/css/responsive.css">
+        <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
+    </head>
+    <body>
+        <!-- affiche le header co ou pas co en fonction de si l'utilisateur est connecté ou pas -->
+        <header class="site-header">
+            {{if eq .Tmpl "connected"}}
+                {{template "headerConnected"}}
+            {{else}}
+                {{template "headerNotConnected"}}
+            {{end}}
+        </header>
+        <main class="site-content">
+            <!-- Titre et Slogan sur la page d'accueil -->
+            <div id="titresAccueil">
+                <h1 id="accueilTitre">Unity<br />Unleashed</h1>
+                <h2 id="accueilSlogan">Where Minds Meet</h2>
+            </div>
+            <!-- Boutons pour se co ou se register sur la page d'accueil. Ne s'affiche que si l'utilisateur n'est pas connecté -->
+            {{if not (eq .Tmpl "connected")}}
+            <div id="boutonsAccueil">
+                <form action="/registerPage"><button id="bInscrireAccueil">S'inscrire</button></form>
+                <form action="/loginPage"><button id="bCoAccueil">Se connecter</button></form>
+            </div>
+            {{end}}
+            <p id="AccueilDerniersMsg">↓ Les derniers messages ↓</p>
+            <!-- rappelle le template "headers" de headers.html pour afficher la liste des posts -->
+            {{template "headers" .}}
+        </main>
+        <!-- rappelle le template "footer" de footer.html -->
+        {{template "footer"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+        <script src="/view/static/js/HeaderScriptHayat.js"></script>
+    </body>
+</html>

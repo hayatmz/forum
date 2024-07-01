@@ -1,0 +1,780 @@
+@font-face {
+    font-family: "Arimo";
+    src: url(/view/static/fonts/Arimo.ttf);
+}
+
+@font-face {
+    font-family: "Arsenica";
+    src: url(/view/static/fonts/Arsenica.ttf);
+}
+
+@font-face {
+    font-family: "TTCommons";
+    src: url(/view/static/fonts/TTCommons.otf);
+}
+
+@font-face {
+    font-family: "Belleza";
+    src: url(/view/static/fonts/Belleza-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    background-color: #f2f1ec;
+    background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
+    background-size: 100% 68vh;
+    background-repeat: no-repeat;
+    background-attachment: sticky;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+/* MESSAGE D'ERREUR POUR CO ET REGISTER */
+.errorCo {
+    width: fit-content;
+    margin: auto;
+    font-family: "TTCommons";
+    align-items: center;
+    color: #d13f47;
+    font-size: 1.5em;
+    font-variant: all-small-caps;
+}
+
+/* HEADER */
+header {
+    width: 100vw;
+    background-color: transparent;
+    border-bottom: 1px solid #f2f1ec;
+    font-size: 19px;
+}
+
+nav#Header {
+    width: 98%;
+    height: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0;
+    font-family: "Arimo";
+    font-variant: all-small-caps;
+    color: #f2f1ec;
+}
+
+.HeaderLinksResponsive {
+    display: none;
+}
+
+.fa {
+    display: none;
+}
+
+.AccueilResponsive a {
+    color: #a9bbc9;
+    text-decoration: none;
+    font-size: 20px;
+    position: absolute;
+    top: 1.8em;
+    left: 45%;
+    cursor: pointer;
+    text-align: center;
+    font-variant: all-small-caps;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.AccueilResponsive a:hover {
+    color: #f2f1ec;
+}
+
+.AccueilResponsive p:hover {
+    color: #a9bbc9;
+}
+
+.HeaderLogo img {
+    float: left;
+}
+
+.HeaderLogoResponsive {
+    float: left;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    display: none;
+}
+
+.HeaderLinks {
+    width: 40%;
+}
+
+.HeaderLinks ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.HeaderLinks li {
+    list-style-type: none;
+}
+
+.HeaderLinks a {
+    text-decoration: none;
+    color: #f2f1ec;
+    cursor: pointer;
+    padding-bottom: 0.5em;
+    background-image: linear-gradient(#a9bbc9, #a9bbc9);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.3s;
+}
+
+.HeaderLinks a:hover {
+    color: #a9bbc9;
+    background-size: 80% 0.1em;
+}
+
+#buttonHeader,
+#inputHeader {
+    border: none;
+    font-size: 16px;
+    background-color: transparent;
+    color: #f2f1ec;
+}
+
+#inputHeader {
+    margin-left: 5px;
+    text-align: center;
+    font-family: "Arimo";
+    padding: 6px;
+    padding-bottom: 0.5em;
+    background-image: linear-gradient(#a9bbc9, #a9bbc9);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.3s;
+}
+
+#inputHeader:hover {
+    background-size: 90% 0.1em;
+}
+
+#buttonHeader:hover {
+    color: #a9bbc9;
+}
+
+/* MESSAGES PAGE ACCUEIL */
+#titresAccueil {
+    width: 70vw;
+    margin: 40px auto;
+}
+
+#accueilTitre,
+#accueilSlogan {
+    text-align: center;
+}
+
+#accueilTitre {
+    font-size: 6em;
+    font-family: "Arimo";
+    color: #f2f1ec;
+}
+
+#accueilSlogan {
+    margin: auto;
+    margin-top: 7%;
+    font-size: 5em;
+    font-family: "Arsenica";
+    color: #1f2e43;
+    font-weight: 80;
+}
+
+#boutonsAccueil {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+/* BOUTONS INSCRIPTION & CONNEXION (disparaissent lorsqu'un user est co) */
+#bInscrireAccueil,
+#bCoAccueil {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#bInscrireAccueil {
+    background-color: transparent;
+    border: 1px solid #1f2e43;
+    color: #1f2e43;
+    font-size: 1.3em;
+}
+
+#bCoAccueil {
+    background-color: #1f2e43;
+    border: 1px solid #1f2e43;
+    color: #f2f1ec;
+    font-size: 1.3em;
+}
+
+/* BANDEROLE "DERNIERS MESSAGES" */
+#AccueilDerniersMsg {
+    width: 97%;
+    margin: 6% auto;
+    color: #1f2e43;
+    text-align: center;
+    font-family: "TTCommons";
+    font-weight: bold;
+    font-size: 1.5em;
+    font-variant: all-small-caps;
+    border-bottom: 2px solid #1f2e43;
+    border-top: 2px solid #1f2e43;
+    padding: 7px;
+}
+
+/* PAGE REGISTER */
+#inscriptionTitle {
+    text-align: center;
+    font-family: "Arimo";
+    font-size: 6rem;
+    color: #f2f1ec;
+    margin: 3%;
+}
+
+#bodyRegister {
+    background-image: url(/view/static/img/backgrounds/BackgroundTopLarge.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#containerFormRegister {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-left: 28%;
+    margin-right: 28%;
+    border-radius: 20px 20px / 20px 20px;
+    margin-top: 2%;
+    background-color: rgba(242, 241, 236, 0.33);
+    box-shadow: 0px 0px 5px 4px #3d3d3d;
+    border: none;
+    backdrop-filter: blur(2px);
+}
+
+#containerLinkAccueilSignIn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3%;
+    gap: 3%;
+    align-items: center;
+}
+
+a#linkAccueilSignIn:link {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:visited {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:hover {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+a#linkAccueilSignIn:active {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+#buttonRegister,
+button#buttonSignIn\ itemLinkAccueilSignIn {
+    background-color: #1f2e43;
+    color: #f2f1ec;
+    border: none;
+    width: 150px;
+    height: 44px;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 5px 2px #3d3d3d;
+}
+
+div#\ itemContainerRegister\ itemButtonRegister {
+    margin: 2%;
+}
+
+#itemContainerRegister {
+    text-align: left;
+    flex: 1 0 calc(33.33% - 20px);
+    padding: 10px;
+    color: #1f2e43;
+    background-color: #f2f1ec;
+    opacity: 0.4;
+    margin: 2%;
+    width: 48%;
+    box-shadow: 0px 0px 5px 4px black;
+}
+
+#inputRegister {
+    background: transparent;
+    border: none;
+    color: #1f2e43;
+    caret-color: #1f2e43;
+}
+
+/* TITRE SUR PAGE MES LIKES ETC */
+#templatesTitre {
+    margin: 70px auto;
+    color: #a9bbc9;
+    font-family: "Belleza";
+    font-size: 3em;
+}
+
+#templatesTitre:empty {
+    display: none;
+}
+
+/* TEMPLATE LISTE DES POSTS */
+.postTableResponsive {
+    display: none;
+}
+
+table.postTable {
+    width: 870px;
+    border-collapse: collapse;
+    border: solid 1px #1f2e43;
+    margin: 0px auto;
+    background-color: #f2f1ec;
+}
+
+td {
+    padding: 0.2rem;
+}
+
+.tabCellUsername {
+    width: 790px;
+}
+
+.tabUsername {
+    width: fit-content;
+    margin: 5px;
+    padding: 4px 5px;
+    color: #8b744b;
+    font-family: "Belleza";
+    border: 1px solid #8b744b;
+    border-radius: 15px;
+}
+
+.tabDateHeure {
+    width: 80px;
+    text-align: center;
+    font-family: "Belleza";
+    color: #8b744b;
+    border-left: 1px solid #1f2e43;
+}
+
+.titreTagCell {
+    width: 790px;
+}
+
+.tabTitre,
+.formTitre {
+    width: 500px;
+}
+
+form.formTitre {
+    overflow-x: scroll;
+    scrollbar-width: thin;
+}
+
+button.boutonPostTitre {
+    border: none;
+    font-size: 1.4em;
+    font-family: "Arimo";
+    font-variant: all-small-caps;
+    color: #1f2e43;
+    background-color: #f2f1ec;
+}
+
+button.boutonPostTitre:hover {
+    background-color: #f2f1ec;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.tabTags,
+.formTags {
+    overflow-x: scroll;
+    display: inline-flex;
+    float: right;
+    margin-right: 3px;
+}
+
+.tabTags:hover {
+    background-color: #a9bbc9;
+    border-radius: 15px;
+}
+
+button.boutonCategory {
+    font-size: 1em;
+    color: #1f2e43;
+    border: none;
+    margin: 2px;
+    background-color: transparent;
+}
+
+button.boutonCategory:hover {
+    font-weight: bold;
+}
+
+/* PAGE DES POST UNIQUE (quand click sur un titre) */
+h1#postUniqueTitre {
+    width: 70%;
+    overflow: scroll;
+    scrollbar-width: thin;
+    margin: 70px auto 10px auto;
+    text-align: center;
+    color: #a9bbc9;
+    font-family: "Belleza";
+    font-size: 3em;
+}
+
+/* nom de l'user */
+h3#postUniqueUser {
+    color: #8b744b;
+    border: 2px solid #8b744b;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 5px;
+    margin: 0px auto;
+    /* margin-top: 0px; */
+    text-align: center;
+    background-color: #f2f1ec;
+    font-family: "Belleza";
+}
+
+/* tags du post */
+#postUniqueTags {
+    width: 50%;
+    margin: 30px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+}
+
+#postUniqueTag {
+    border: none;
+    margin: 5px;
+    padding: 3px 5px;
+    background-color: #a9bbc9;
+    border-radius: 15px;
+    color: #1f2e43;
+}
+
+#postUniqueTag:hover {
+    font-weight: bolder;
+}
+
+/* contenu du post */
+div#postUniqueContent {
+    /* width: 50%; */
+    margin: 120px auto 10px auto;
+    background-color: rgba(31, 46, 67, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: justify;
+    color: #1f2e43;
+    font-family: "Arimo";
+    font-size: 1.2em;
+    border: 1px solid #1f2e43;
+    /* box-shadow: 3px 3px 20px #1f2e43,
+                -3px -3px 20px #1f2e43; */
+}
+
+/* BOUTONS LIKE & DISLIKE D'UN POST */
+#postUniqueLikeDislike {
+    width: 150px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonPostLike,
+.buttonPostDislike {
+    font-size: 16px;
+    border: none;
+    padding: 5px 9px;
+    border-radius: 15px;
+    color: #f2f1ec;
+    background-color: #1f2e43;
+}
+
+.buttonPostLike:hover {
+    background-color: #518ebd;
+}
+
+.buttonPostDislike:hover {
+    background-color: #d13f47;
+}
+
+/* COMMENTAIRES PAGE POST */
+#comments-container {
+    width: 30%;
+    margin: 10px auto 0px auto;
+}
+
+#comment-container {
+    background-color: #a9bbc9;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    padding: 0px 10px 10px 10px;
+}
+
+p#comments {
+    font-family: "TTCommons";
+    font-size: 1.3em;
+    color: #1f2e43;
+    border-bottom: 1px solid #1f2e43;
+    padding: 10px;
+    margin: 10px;
+    overflow: scroll;
+    scrollbar-width: thin;
+}
+
+p#comment-user {
+    color: #8b744b;
+    border: 1px solid #8b744b;
+    border-radius: 20px;
+    background-color: #f2f1ec;
+    width: fit-content;
+    float: right;
+    padding: 3px 5px;
+    font-family: "Belleza";
+}
+
+#comment-likeDislike {
+    width: fit-content;
+    display: flex;
+}
+
+/* AJOUTER UN COMMENTAIRE PAGE POST */
+#formAddComment {
+    width: 50%;
+    margin: auto;
+}
+
+#textarea-addComment {
+    margin-top: 15px;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(31, 46, 67, 0.7);
+    border-radius: 15px;
+    padding: 10px;
+    color: #fff;
+    resize: none;
+}
+
+#textarea-addComment:focus {
+    outline: none;
+}
+
+#button-addComment {
+    font-family: "Belleza";
+    float: right;
+    background-color: #a9bbc9;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    color: #1f2e43;
+    border: 1px solid transparent;
+}
+
+#button-addComment:hover {
+    border: 1px solid #1f2e43;
+    background-color: #9fb1be;
+}
+
+/* PAGE POSTER */
+#h1Poster {
+    width: fit-content;
+    font-family: "Belleza";
+    font-variant: all-small-caps;
+    text-align: center;
+    color: #f2f1ec;
+    margin: 50px auto;
+    font-size: 2.5em;
+}
+
+#titrePoster {
+    background-color: rgba(169, 187, 201, 0.5);
+    color: #f2f1ec;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 1.2em;
+    display: block;
+    margin: auto;
+    border: none;
+    font-family: "Arimo";
+}
+
+#titrePoster:focus {
+    outline: none;
+    background-color: #a9bbc9;
+    color: #1f2e43;
+}
+
+#formPoster {
+    width: 80%;
+    margin: auto;
+}
+
+#contenuPoster {
+    display: block;
+    margin: 50px auto;
+    width: 40%;
+    resize: none;
+    background-color: #f2f1ec;
+    border: 1px solid #1f2e43;
+    border-radius: 15px;
+    padding: 20px;
+    font-family: "Arimo";
+}
+
+#contenuPoster:focus {
+    outline: none;
+}
+
+#tagsButtonPoster {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+#tagsPoster {
+    width: 280px;
+    background-color: rgba(139, 116, 75, 0.2);
+    color: #1f2e43;
+    border: 1px solid #8b744b;
+    border-radius: 20px;
+    padding: 8px;
+    font-weight: bolder;
+    font-size: 1em;
+    font-family: "Arimo";
+}
+
+#tagsPoster:focus {
+    background-color: #8b744b;
+    color: #f2f1ec;
+    outline: none;
+}
+
+#buttonPoster {
+    background-color: #8b744b;
+    border: none;
+    color: #f2f1ec;
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 20px;
+    font-family: "Arimo";
+    font-variant: small-caps;
+}
+
+#buttonPoster:hover {
+    color: #1f2e43;
+    background-color: #9fb1be;
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    margin-top: 70px;
+    background-color: rgba(31, 46, 67, 0.9);
+    font-family: "Arimo";
+}
+
+footer li {
+    list-style-type: none;
+}
+
+footer p:not(.discord) {
+    color: #a9bbc9;
+    font-weight: 800;
+    font-variant: all-small-caps;
+    font-family: "Arimo";
+}
+
+.footerContainer {
+    width: 80%;
+    margin: auto;
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerDiv {
+    width: 20%;
+    padding: 0.5em;
+}
+
+.footerDiv a {
+    text-decoration: none;
+    color: #f2f1ec;
+}
+
+.footerZone {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+
+.footerZone ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerZone img {
+    border-radius: 50%;
+}
+
+footer > hr {
+    width: 33%;
+    margin: 1em auto;
+    color: #1f2e43;
+}
+
+.footerMentions {
+    width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+    color: #a9bbc9;
+}
+
+#aMentions {
+    color: #a9bbc9;
+}
+
+.footerSpace {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}

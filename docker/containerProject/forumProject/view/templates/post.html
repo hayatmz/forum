@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Poster</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" type="text/css" href="/view/static/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/view/static/css/responsive.css">
+        <link rel="icon" type="image/png" href="/view/static/img/logos/logoDark.png" />
+    </head>
+    <body>
+        <!-- affiche un header différent en fonction de si l'user est co ou pas -->
+        {{if eq .Tmpl "connected"}}
+            {{template "headerConnected"}}
+        {{else}}
+            {{template "headerNotConnected"}}
+        {{end}}
+        <div id="page-poster">
+            <h1 id="h1Poster">Poster Un Nouveau Sujet</h1>
+            <!-- Permet de choisir un titre, le contenu d'un post et des tags avant de poster -->
+            <form id="formPoster" action="/formNewPost" method="post">
+                <input id="titrePoster" type="text" name="title" placeholder="Titre..."> 
+                <textarea id="contenuPoster" name="content" cols="30" rows="10" placeholder="Contenu du post..."></textarea>
+                <div id="tagsButtonPoster">
+                    <input id="tagsPoster" type="text" name="categories" placeholder="#tags #séparés #par #des #espaces">
+                    <button id="buttonPoster" type="submit">Poster</button>
+                </div>
+            </form>
+        </div>
+        <!-- affiche le template définit dans footer.html -->
+        {{template "footer"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+        <script src="/view/static/js/HeaderScriptHayat.js"></script>
+    </body>
+</html>

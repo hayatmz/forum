@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="/view/static/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/view/static/css/responsive.css">
+        <title>Se connecter</title>
+    </head>
+    <body id="bodyRegister">
+        <!-- Affiche différents header en fonction de si l'user est co ou pas -->
+        {{if eq .Tmpl "connected"}}
+            {{template "headerConnected"}}
+        {{else}}
+            {{template "headerNotConnected"}}
+        {{end}}
+        <div id="inscriptionTitle"><p>Connexion</p></div>
+        <!-- message d'erreur lors de la tentative de connexion -->
+        <p class="errorCo">{{.Msg}}</p>
+        <!-- permet de se connecter en entrant son adresse mail et son mot de passe -->
+        <form action="/loginForm" method="post">
+            <div id="containerFormRegister">
+                <div id="itemContainerRegister">
+                    <label for="username">E-mail :</label>
+                    <input id="inputRegister" type="email" name="email"/>
+                </div>
+                <div id="itemContainerRegister">
+                    <label for="pass">Mot de passe :</label>
+                    <input id="inputRegister" type="password" name="password"
+                        minlength="8" required />
+                </div>
+                <div id=" itemContainerRegister itemButtonRegister">
+                    <button type="submit" id="buttonRegister">CONNEXION</button>
+                </div>
+            </div>
+        </form>
+        <!-- div qui affiche l'option pour créer un compte -->
+        <div id="containerLinkAccueilSignIn">
+            <p id="itemLinkAccueilSignIn">Pas encore de compte ?</p>
+            <button id="buttonSignIn itemLinkAccueilSignIn"><a id="linkAccueilSignIn" href="/registerPage">S'ENREGISTRER</a></button>
+        </div>
+        <!-- rappelle le template définit dans footer.html -->
+        {{template "footer"}}
+    </body>
+</html>
+

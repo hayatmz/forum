@@ -1,0 +1,192 @@
+/* RESPONSIVE S (768px) / M (992px) */
+@media (max-width:992px) {
+    /* HEADER */
+    .HeaderLogo {
+        display: none;
+    }
+
+    #searchHeader {
+        display: none;
+    }
+
+    .HeaderLogoResponsive {
+        display: block;
+    }
+
+    .HeaderLinks {
+        display: none;
+    }
+
+    .AccueilResponsive a {
+        display: block;
+    }
+
+    .fa {
+        display: block;
+        color: #f2f1ec;
+        font-size: 25px;
+        position: absolute;
+        top: 1.5em;
+        right: 2em;
+        cursor: pointer;
+    }
+
+    .fa:hover {
+        color: #a9bbc9;
+    }
+
+    .HeaderLinksResponsive li {
+        text-align: center;
+    }
+
+    .HeaderLinksResponsive li {
+        padding: 0.5em 0;
+    }
+
+    .HeaderLinksResponsive a {
+        text-decoration: none;
+        font-family: "Arimo";
+        font-variant: all-small-caps;
+        color: #f2f1ec;
+        font-size: 17px;
+        cursor: pointer;
+        background-image: linear-gradient(#a9bbc9, #a9bbc9);
+        background-size: 0% 0.1em;
+        background-position-y: 100%;
+        background-position-x: 50%;
+        background-repeat: no-repeat;
+        transition: background-size ease-in-out 0.3s;
+    }
+
+    .HeaderLinksResponsive a:hover {
+        color: #a9bbc9;
+        background-size: 80% 0.1em;
+    }
+
+    .site-content {
+        width: 100vw;
+    }
+
+    /* Titre et slogan page d'accueil */
+    #accueilTitre {
+        font-size: 3em;
+    }
+
+    #accueilSlogan {
+        font-size: 2.5em;
+        margin-top: 70px;
+    }
+
+    #inscriptionTitle {
+        font-size: 3em;
+        height: fit-content;
+    }
+
+    .errorCo:empty {
+        display: none;
+    }
+    
+    #contenuPoster {
+        width: 70%;
+    }
+
+    #tagsButtonPoster {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    #buttonPoster {
+        margin-top: 10px;
+    }
+
+/* TABLEAU TEMPLATE, LISTE DES POSTS */
+    .postTable {
+        display: none;
+    }
+
+    .postTableResponsive {
+        background-color: #f2f1ec;
+        display: block;
+        width: 50%;
+        margin: 0px auto;
+        padding: 10px;
+        border-bottom: 1px solid #1f2e43;
+    }
+
+    .usernameResponsive {
+        width: fit-content;
+        margin: 5px auto;
+        padding: 4px 5px;
+        color: #8b744b;
+        font-family: Belleza;
+        border: 1px solid #8b744b;
+        border-radius: 15px;
+    }
+
+    .dateHeureResponsive {
+        color: #8b744b;
+        font-family: "Belleza";
+        text-align: center;
+    }
+
+    .formTitreResponsive {
+        max-width: 90%;
+        margin: auto;
+        text-align: center;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    .titreResponsive {
+        background-color: #f2f1ec;
+        border: none;
+        white-space: nowrap;
+        color: #1f2e43;
+        font-size: 1.3em;
+        margin: 8px;
+        font-variant: all-small-caps;
+    }
+
+    .titreResponsive:hover {
+        font-weight: bolder;
+    }
+
+    .categoriesContainResponsive {
+        display: inline-flex;
+        margin-top: 8px;
+    }
+
+    .categoriesContainResponsive:hover {
+        background-color: #a9bbc9;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+
+    .buttonCategoryResponsive {
+        background-color: transparent;
+        border: none;
+        margin: 3px 5px;
+        color: #1f2e43;
+        font-family: "Belleza";
+        font-size: 1em;
+    }
+
+    .buttonCategoryResponsive:hover {
+        font-weight: bolder;
+    }
+
+    /* Ne pas afficher le footer si page trop petite */
+    footer {
+        display: none;
+    }
+
+}
+
+/* RESPONSIVE XS (568px) */
+@media (max-width:568px) {
+
+    .titreResponsive {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
