@@ -37,6 +37,7 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// check if the credentials informations are empty
 func loginEmptyCredentials(email, password string) bool {
 	if strings.TrimSpace(email) == "" || strings.TrimSpace(password) == "" {
 		return true
