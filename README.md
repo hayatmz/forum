@@ -29,4 +29,4 @@ We also integrate advanced technologies such as View SQL for complex queries and
 
 ## ‧₊˚✧ [ Contact ] ✧˚₊‧
 
-Ismael Mazlin (imazlin), Bryan De Souza (bdesouza), Marina Bott (mbott), Mohammed-Ali Chahlafi (mchahlaf) & Hayat Mazlin (hmazlin).
+Ismael Mazlin (imazlin), Bryan De Souza (bdesouza), Marina Bott (mbott), Hayat Mazlin (hmazlin) & Mohammed-Ali Chahlafi (mchahlaf).
