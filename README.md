@@ -4,6 +4,13 @@ Forum is a program which allows members to hold discussions online. The discussi
 
 ## ‧₊˚✧ Description ✧˚₊‧
 
+This project utilizes the MVC (Model-View-Controller) architecture to develop an online forum.
+
+    Model: The database that stores all forum information.
+    View: The front-end that allows users to interact with the forum.
+    Controller: The back-end that handles business logic and interactions between the model and the view.
+
+We also integrate advanced technologies such as View SQL for complex queries and middleware to enhance request handling and data security.
 
 ## ‧₊˚✧ [ Installation ] ✧˚₊‧
 
@@ -18,6 +25,7 @@ Forum is a program which allows members to hold discussions online. The discussi
     Once on the web page you can see the post but to post yourself you'll have to create an account or login if you already have one.
     You can use the search bar to look for a certain category.
     When connected, you can post by using the "Poster" link. You'll have to choose a title, put a content then choose tags.
+    You can like and dislike post and comments.
 
 ## ‧₊˚✧ [ Contact ] ✧˚₊‧
 
