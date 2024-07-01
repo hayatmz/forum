@@ -4,6 +4,7 @@ import (
 	model "forum/model"
 	view "forum/view"
 	"net/http"
+	"strings"
 )
 
 // load and display the login page
@@ -18,9 +19,11 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var email string = r.FormValue("email")
 	var password string = r.FormValue("password")
+	if loginEmptyCredentials(email, password) {
+		view.ExecTemplate(w, "login.html", "empty credentials !", nil)
+	}
 
 	id, err := model.VerifyUserLogin(email, password)
-
 	if err != nil {
 		if err.Error() == "no account associated for this email" {
 			view.ExecTemplate(w, "register.html", err.Error(), nil)
@@ -32,4 +35,11 @@ func loginForm(w http.ResponseWriter, r *http.Request) {
 	} else {
 		newSession(w, r, id)
 	}
+}
+
+func loginEmptyCredentials(email, password string) bool {
+	if strings.TrimSpace(email) == "" || strings.TrimSpace(password) == "" {
+		return true
+	}
+	return false
 }
