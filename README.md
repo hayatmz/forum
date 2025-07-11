@@ -1,32 +1,38 @@
-# 「 ✦ FORUM ✦ 」
+# 🗨️ Forum
+Forum est un projet collaboratif réalisé dans le cadre de la formation [Zone01](https://campus-saint-marc.com/zone-01/).
+Il s'agit d'un forum web full-stack a été entièrement développé en **Go**, avec une base de données **SQLite**, sans aucun framework frontend externe.
 
-Forum is a program which allows members to hold discussions online. The discussion is started by one member by posting a topic and other members reply.
+## 🚀 Fonctionnalités principales
+- 🔐 **Authentification** : Inscription et connexion utilisateur avec sessions cookies.
+- 📬 **Posts** : Création de posts vivibles par tous.
+- 💬 **Commentaires** : Ajout de commentaires à des posts.
+- 👍👎 **Likes/Dislikes** : Pour les posts et commentaires.
+- 🗂️ **Catégories** : Association d'une ou plusieurs catégories à un post avec des #Hashtags.
+- 🔍 **Barre de recherche** : Suggestions dynamiques en tapant dans la barre de recherche.
+- 🧼 **Filtrage** : Par catégories, posts aimés ou crées.
+- 📦 **Docker** : Projet intégralement dockerisé pour une exécution isolée.
 
-## ‧₊˚✧ Description ✧˚₊‧
+## 🔧 Utilisation
+1. Assure toi d'avoir **Go** et **Docker** installés sur ta machine :
+```
+go version
+docker -v
+```
+si ce n'est pas le cas, [installe Golang](https://go.dev/doc/install) et [installe Docker](https://docs.docker.com/get-started/get-docker/).
 
-This project utilizes the MVC (Model-View-Controller) architecture to develop an online forum.
+2. **Clone le dépôt** :
+```
+git clone https://github.com/hayatmz/forum
+cd forum
+```
 
-    Model: The database that stores all forum information.
-    View: The front-end that allows users to interact with the forum.
-    Controller: The back-end that handles business logic and interactions between the model and the view.
+3. **Lancer automatiquement avec le script ```forumDocker.sh```** :
+Un script bash est fourni pour **supprimer l'ancien conteneur/image** (si existants), **reconstruire** le projet, et **lancer** l'application proprement :
+```
+cd docker
+chmod +x forumDocker.sh
+./forumDocker.sh
+```
 
-We also integrate advanced technologies such as View SQL for complex queries and middleware to enhance request handling and data security.
-
-## ‧₊˚✧ [ Installation ] ✧˚₊‧
-
-    Go programming language: https://go.dev/dl/
-    Clone the repository: git clone https://zone01normandie.org/git/imazlin/forum.git
-    Change into the project directory: cd forum
-    Run the program with this command: go run .
-
-## ‧₊˚✧ [ Usage ] ✧˚₊‧
-
-    Open the link in your terminal. (http://localhost:15040/)
-    Once on the web page you can see the post but to post yourself you'll have to create an account or login if you already have one.
-    You can use the search bar to look for a certain category.
-    When connected, you can post by using the "Poster" link. You'll have to choose a title, put a content then choose tags.
-    You can like and dislike post and comments.
-
-## ‧₊˚✧ [ Contact ] ✧˚₊‧
-
-Ismael Mazlin (imazlin), Bryan De Souza (bdesouza), Marina Bott (mbott), Hayat Mazlin (hmazlin) & Mohammed-Ali Chahlafi (mchahlaf).
+L'application sera alors accessible à l'adresse :<br>
+[http://localhost:15040](http://localhost:15040)
