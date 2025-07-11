@@ -1,6 +1,6 @@
 # 🗨️ Forum
-Forum est un projet collaboratif réalisé dans le cadre de la formation [Zone01](https://campus-saint-marc.com/zone-01/).
-Il s'agit d'un forum web full-stack a été entièrement développé en **Go**, avec une base de données **SQLite**, sans aucun framework frontend externe.
+Il s'agit d'un forum web full-stack entièrement développé en **Go**, avec une base de données **SQLite**, sans aucun framework frontend externe.
+> Projet collaboratif réalisé dans le cadre de la formation [Zone01](https://campus-saint-marc.com/zone-01/).
 
 ## 🚀 Fonctionnalités principales
 - 🔐 **Authentification** : Inscription et connexion utilisateur avec sessions cookies.
